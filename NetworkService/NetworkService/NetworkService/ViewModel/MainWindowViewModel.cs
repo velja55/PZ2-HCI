@@ -111,6 +111,7 @@ namespace NetworkService.ViewModel
                 ColspanFrame = _isToggled ? "2" : "1";
                 ToggleText = _isToggled ? "ON" : "OFF";
                 HelpWidth = _isToggled ? "0" : "200";
+                graphView.ChangeLinePositionsForToggle(_isToggled);
             }
         }
 
@@ -178,6 +179,7 @@ namespace NetworkService.ViewModel
             tableView=new TableViewModel();
             gridView=new GridViewModel();
             graphView=new GraphViewModel();
+            graphView.L1 = 100;
             CurrentViewModel = homeView;
             Title = "HOME VIEW";
             ToggleText = "OFF";

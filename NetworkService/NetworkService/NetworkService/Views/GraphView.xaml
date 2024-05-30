@@ -42,14 +42,16 @@
             </Grid.RowDefinitions>
 
 
-            <Canvas Background="Gray" Margin="0,0,5,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
+            <Canvas Background="Gray" Margin="{Binding Margins}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
                 <Line StrokeThickness="1" X1="21" X2="470" Stroke="Black" Canvas.Bottom="70"/>
                 <Line StrokeThickness="0.5" X1="22" X2="690" Stroke="Black" Margin="0 0 0 33"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="60"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="142"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="224"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="306"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="410"/>
+                <Line StrokeThickness="1" X1="21" X2="470" Stroke="Black" Canvas.Bottom="70"/>
+                <Line StrokeThickness="0.5" X1="22" X2="690" Stroke="Black" Margin="0 0 0 33"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L1}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L2}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L3}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L4}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L5}"/>
 
             </Canvas>
             
