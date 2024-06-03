@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:model="clr-namespace:NetworkService.Model"
-             xmlns:viewModel="clr-namespace:NetworkService.ViewModel" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewModel="clr-namespace:NetworkService.ViewModel" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:NetworkService.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -12,51 +13,108 @@
     <UserControl.DataContext>
         <viewModel:GraphViewModel/>
     </UserControl.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="4*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Background="White" Orientation="Vertical">
-            <TextBlock Text="Select entity" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></TextBlock>
-            <ComboBox ItemsSource="{Binding ComboboxItems}" Margin="7">
+        <StackPanel Background="{StaticResource LightBlueBrush}" Orientation="Vertical">
+            <TextBlock Text="Select entity" Foreground="{StaticResource DarkBlueBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></TextBlock>
+            <ComboBox ItemsSource="{Binding ComboboxItems}" 
+                      SelectedItem="{Binding SelectedEntity, Mode=TwoWay}" 
+                      Margin="7"
+                      Background="{StaticResource LightBlueBrush}"
+                      >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectionChanged}" 
+                                               CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType=ComboBox}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Id}" Margin="5"/>
-                            <TextBlock Text="{Binding Name}" Margin="5"/>
+                            <TextBlock Text="{Binding Id}" Foreground="{StaticResource DarkBlueBrush}"  Margin="5"/>
+                            <TextBlock Text="{Binding Name}" Foreground="{StaticResource DarkBlueBrush}" Margin="5"/>
+                            <TextBlock Text="{Binding Value}" Foreground="{StaticResource DarkBlueBrush}" Margin="5"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
-
             </ComboBox>
-
         </StackPanel>
 
         <Grid Grid.Column="1" Background="White">
-            <Grid.RowDefinitions >
-                <RowDefinition Height="3*"></RowDefinition>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-
             </Grid.RowDefinitions>
+            <Border BorderBrush="Black" BorderThickness="1">
 
-
-            <Canvas Background="Gray" Margin="{Binding Margins}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
-                <Line StrokeThickness="1" X1="21" X2="470" Stroke="Black" Canvas.Bottom="70"/>
+                <Canvas Background="White" Margin="{Binding Margins}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" >
+                <Line StrokeThickness="1" X1="{Binding LineBottom}" X2="{Binding LineBottom2}" Stroke="Black" Canvas.Bottom="70"/>
+                <Line StrokeThickness="1" X1="{Binding LineBottom}" X2="{Binding LineBottom2}" Stroke="Gray" Canvas.Top="120"/>
                 <Line StrokeThickness="0.5" X1="22" X2="690" Stroke="Black" Margin="0 0 0 33"/>
-                <Line StrokeThickness="1" X1="21" X2="470" Stroke="Black" Canvas.Bottom="70"/>
-                <Line StrokeThickness="0.5" X1="22" X2="690" Stroke="Black" Margin="0 0 0 33"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L1}"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L2}"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L3}"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L4}"/>
-                <Line StrokeThickness="0.5" Y1="10" Y2="310" Stroke="Black" Canvas.Left="{Binding L5}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="270" Stroke="Black" Canvas.Left="{Binding L1}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="270" Stroke="Black" Canvas.Left="{Binding L2}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="270" Stroke="Black" Canvas.Left="{Binding L3}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="270" Stroke="Black" Canvas.Left="{Binding L4}"/>
+                <Line StrokeThickness="0.5" Y1="10" Y2="270" Stroke="Black" Canvas.Left="{Binding L5}"/>
 
+                
+                <Ellipse Width="{Binding Radius1}" Height="{Binding Radius1}" Fill="{Binding Color1}" 
+                         Canvas.Left="{Binding Ellipse1Left}" Canvas.Top="{Binding Ellipse1Top}" />
+
+               
+                <Ellipse Width="{Binding Radius2}" Height="{Binding Radius2}" Fill="{Binding Color2}" 
+                         Canvas.Left="{Binding Ellipse2Left}" Canvas.Top="{Binding Ellipse2Top}" />
+
+               
+                <Ellipse Width="{Binding Radius3}" Height="{Binding Radius3}" Fill="{Binding Color3}" 
+                         Canvas.Left="{Binding Ellipse3Left}" Canvas.Top="{Binding Ellipse3Top}" />
+
+               
+                <Ellipse Width="{Binding Radius4}" Height="{Binding Radius4}" Fill="{Binding Color4}" 
+                         Canvas.Left="{Binding Ellipse4Left}" Canvas.Top="{Binding Ellipse4Top}" />
+
+                
+                <Ellipse Width="{Binding Radius5}" Height="{Binding Radius5}" Fill="{Binding Color5}" 
+                         Canvas.Left="{Binding Ellipse5Left}" Canvas.Top="{Binding Ellipse5Top}" />
+
+                    <TextBlock Canvas.Bottom="40" Canvas.Left="{Binding TextBlock1}" Text="{Binding Text1}"></TextBlock>
+                    <TextBlock Canvas.Bottom="40" Canvas.Left="{Binding TextBlock2}" Text="{Binding Text2}"></TextBlock>
+                    <TextBlock Canvas.Bottom="40" Canvas.Left="{Binding TextBlock3}" Text="{Binding Text3}"></TextBlock>
+                    <TextBlock Canvas.Bottom="40" Canvas.Left="{Binding TextBlock4}" Text="{Binding Text4}"></TextBlock>
+                    <TextBlock Canvas.Bottom="40" Canvas.Left="{Binding TextBlock5}" Text="{Binding Text5}"></TextBlock>
             </Canvas>
-            
-
+                    </Border>
+            <Border Grid.Row="1" Margin="5" BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="1">
+            <Grid  Background="{StaticResource LightBlueBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="1.4*"></RowDefinition>
+                
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Details" FontSize="16" FontWeight="Bold" Margin="5"/>
+                <TextBlock Text="ID:" FontWeight="Bold" Margin="5" FontSize="18" Grid.Row="1" VerticalAlignment="Bottom"/>
+                <TextBlock Text="{Binding SelectedId}" FontWeight="Bold" FontSize="15" Margin="5" Grid.Row="2"/>
+                <TextBlock Text="Name:" FontWeight="Bold" Margin="5" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+                <TextBlock Text="{Binding SelectedName}" Margin="5" Grid.Column="1" Grid.Row="2"/>
+                <TextBlock Text="Value:" FontWeight="Bold" Margin="5" Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom"/>
+                <TextBlock Text="{Binding SelectedValue}" Margin="5" Grid.Column="2" Grid.Row="2"/>
+                <Image Source="{Binding  SelectedImage}" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="2,2,30,2"></Image>
+                    </Grid>
+            </Border>
         </Grid>
-
+       
     </Grid>
 </UserControl>

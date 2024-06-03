@@ -9,7 +9,7 @@
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000"
-        Background="Gray"
+        Background="{StaticResource BlueBrush}"
         
         >
     <Window.DataContext>
@@ -38,7 +38,7 @@
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="Black" Grid.RowSpan="2">
+        <Grid Grid.Column="0" Background="{StaticResource DarkBlueBrush}" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -46,33 +46,33 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Margin="10" Name="HomeButton" Command="{Binding NavCommand}" CommandParameter="home">
+            <Button Margin="10" Name="HomeButton" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="home">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Home" FontSize="25"/>
                     <TextBlock Text="Home" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
 
-            <Button Margin="10" Name="TableButton" Grid.Row="1" Command="{Binding NavCommand}" CommandParameter="table">
+            <Button Margin="10" Name="TableButton" Grid.Row="1" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="table">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Table" FontSize="25"/>
                     <TextBlock Text="Table" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
 
-            <Button Margin="10" Name="GridButton" Grid.Row="2" Command="{Binding NavCommand}" CommandParameter="grid">
+            <Button Margin="10" Name="GridButton" Grid.Row="2" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="grid">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Th" FontSize="25"/>
                     <TextBlock Text="Grid" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button Margin="10" Name="GraphButton" Grid.Row="3" Command="{Binding NavCommand}" CommandParameter="graph">
+            <Button Margin="10" Name="GraphButton" Grid.Row="3" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="graph">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_ChartPie" FontSize="25"/>
                     <TextBlock Text="Graph" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button Margin="10" Name="HelpButton" Grid.Row="4">
+            <Button Margin="10" Name="HelpButton" Grid.Row="4" Background="{StaticResource LightBlueBrush}" Command="{Binding NavCommand}">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Question" FontSize="25"/>
                     <TextBlock Text="Help" FontSize="15" FontWeight="Bold"/>
@@ -89,17 +89,19 @@
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Help" FontSize="20" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
-                <ToggleButton  Content="{Binding ToggleText}" FontSize="15" FontWeight="Bold" Width="60" Height="40" IsChecked="{Binding IsToggled}" Margin="5,12,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text="Help" FontSize="20" Foreground="White" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                <ToggleButton  Content="{Binding ToggleText}" Background="White" Foreground="{StaticResource DarkBlueBrush}" FontSize="15" FontWeight="Bold" Width="60" Height="40" IsChecked="{Binding IsToggled}" Margin="5,12,0,0" VerticalAlignment="Center"/>
             </StackPanel>
-            <ContentControl Grid.Column="0" Grid.Row="1" Margin="8,3,8,7" Grid.ColumnSpan="{Binding ColspanFrame}" x:Name="ContentControl" Content="{Binding CurrentViewModel}" />
-            <TextBlock Text="{Binding Title}" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Black"> </TextBlock>
+            <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="{Binding ColspanFrame}" Margin="8,3,8,7" BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="1" >
+            <ContentControl   x:Name="ContentControl" Content="{Binding CurrentViewModel}" />
+            </Border>
+                <TextBlock Text="{Binding Title}" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Black" Foreground="White"> </TextBlock>
             <StackPanel Background="White" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Margin="7" Width="{Binding HelpWidth}">
-                <TextBlock Text="Help" HorizontalAlignment="Center" FontSize="20"  FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Help" HorizontalAlignment="Center" FontSize="20"  FontWeight="Bold" Foreground="{StaticResource DarkBlueBrush}"></TextBlock>
                 <ListView ItemsSource="{Binding HelpItems}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}" FontSize="15" Margin="5"/>
+                            <TextBlock Text="{Binding}" Foreground="{StaticResource DarkBlueBrush}" FontSize="15" Margin="5"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

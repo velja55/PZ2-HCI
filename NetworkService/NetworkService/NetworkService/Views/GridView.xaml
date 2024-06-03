@@ -19,7 +19,7 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.7*"/>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
@@ -52,24 +52,38 @@
                     </StackPanel>
                 </HierarchicalDataTemplate>
                 <DataTemplate DataType="{x:Type model:PressureInVentil}">
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
-                        <Image Source="{Binding Image}"></Image>
+                   
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Id}" FontSize="12" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding Name}" FontSize="12" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
+                        <Image Source="{Binding Image}" Width="50" Height="50"></Image>
+
                     </StackPanel>
+                    
                 </DataTemplate>
                 
             </TreeView.Resources>
 
         </TreeView>
+        
+        
+        <Border  BorderBrush="{Binding BorderBrushes[0]}" BorderThickness="2" Margin="0" Grid.Column="1">
+            <Grid Background="{Binding GridBackgrounds[0]}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.52*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+           
 
-        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-        <StackPanel  AllowDrop="True" Background="Gray" Height="130" VerticalAlignment="Bottom">
-                <StackPanel Background="Gray" HorizontalAlignment="Right" Height="16">
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
                     <Button Height="16" Name="Delete0" Command="{Binding Delete}" CommandParameter="0">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
-            <ContentControl Content="{Binding Path=CollectionCanvas[0]}" Height="95" Width="105">
+            <ContentControl Content="{Binding Path=CollectionCanvas[0]}"  Grid.Row="1">
                 <i:Interaction.Triggers>
 
                     <i:EventTrigger EventName="Drop">
@@ -84,21 +98,42 @@
                    
 
             </ContentControl>
-                <StackPanel Orientation="Horizontal" Width="105" Background="Gray">
-                    <TextBlock  Name="IdTextBlock1" Text="{Binding SelectedId[0]}" Margin="20,0,0,10"></TextBlock>
-                    <TextBlock  Name="ValueTextBlock1" Text="{Binding SelectedValue[0]}" Margin="40,0,2,10"></TextBlock>
-                </StackPanel>
-            
-            </StackPanel>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock  Name="IdTextBlock1" Text="{Binding SelectedId[0]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Name="ValueTextBlock1" Text="{Binding SelectedValue[0]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+                    
+                </Grid>
+
+
+            </Grid>
         </Border>
-        <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1">
-            <StackPanel  AllowDrop="True" Background="Gray"  Height="130" VerticalAlignment="Bottom">
-                <StackPanel Background="Gray" HorizontalAlignment="Right" Height="16">
-                    <Button Height="16" Name="Delete1" Command="{Binding Delete}" CommandParameter="1">
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[1]}" BorderThickness="2" Margin="0" Grid.Column="2">
+            <Grid Background="{Binding GridBackgrounds[1]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="1">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
-                <ContentControl Content="{Binding Path=CollectionCanvas[1]}" Height="95" Width="105">
+                <ContentControl Content="{Binding Path=CollectionCanvas[1]}"  Grid.Row="1">
                     <i:Interaction.Triggers>
 
                         <i:EventTrigger EventName="Drop">
@@ -108,58 +143,561 @@
                             <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="1"/>
 
                         </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
                 </ContentControl>
-                <StackPanel Orientation="Horizontal" Width="105" Background="Gray">
-                    <TextBlock  Name="IdTextBlock2" Text="{Binding SelectedId[1]}" Margin="20,0,0,10"></TextBlock>
-                    <TextBlock  Name="ValueTextBlock2" Text="{Binding SelectedValue[1]}" Margin="40,0,2,10"></TextBlock>
-                </StackPanel>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock  Text="{Binding SelectedId[1]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[1]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
-            </StackPanel>
+                </Grid>
+
+
+            </Grid>
         </Border>
 
-        <Border BorderBrush="Black" Grid.Column="3" Grid.Row="2" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
+        <Border  BorderBrush="{Binding BorderBrushes[2]}" BorderThickness="2" Margin="0" Grid.Column="3">
+                <Grid Background="{Binding GridBackgrounds[2]}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.52*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-            <Border BorderBrush="Black" Grid.Column="2" Grid.Row="1" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
 
-            <Border BorderBrush="Black" Grid.Column="2" Grid.Row="1" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
+                    <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                        <Button Height="16" Command="{Binding Delete}" CommandParameter="2">
+                            <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                        </Button>
+                    </StackPanel>
+                    <ContentControl Content="{Binding Path=CollectionCanvas[2]}"  Grid.Row="1">
+                        <i:Interaction.Triggers>
 
-            <Border BorderBrush="Black" Grid.Column="2" Grid.Row="2" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
+                            <i:EventTrigger EventName="Drop">
+                                <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="2"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="2"/>
 
-            <Border BorderBrush="Black" Grid.Column="3" Grid.Row="0" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
+                            </i:EventTrigger>
 
-            <Border BorderBrush="Black" Grid.Column="3" Grid.Row="1" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
+                        </i:Interaction.Triggers>
 
-            <Border BorderBrush="Black" Grid.Column="3" Grid.Row="2" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
 
-            <Border BorderBrush="Black" Grid.Column="4" Grid.Row="0" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
-            <Border BorderBrush="Black" Grid.Column="4" Grid.Row="1" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
+                    </ContentControl>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="ID:" FontSize="12"/>
+                        <TextBlock   Text="{Binding SelectedId[2]}" Grid.Row="1" FontSize="12"></TextBlock>
+                        <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                        <TextBlock  Text="{Binding SelectedValue[2]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
-            <Border BorderBrush="Black" Grid.Column="4" Grid.Row="2" BorderThickness="1" Margin="2">
-                <Canvas/>
-            </Border>
+                    </Grid>
 
-            
-       
+
+                </Grid>
+      
+
+        </Border>
+
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[3]}" BorderThickness="2" Margin="0" Grid.Column="4">
+            <Grid Background="{Binding GridBackgrounds[3]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="3">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[3]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="3"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="3"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[3]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[3]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[4]}" BorderThickness="2" Margin="0" Grid.Column="1" Grid.Row="1">
+            <Grid Background="{Binding GridBackgrounds[4]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="4">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[4]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="4"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="4"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[4]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[4]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[5]}" BorderThickness="2" Margin="0" Grid.Column="2" Grid.Row="1">
+            <Grid Background="{Binding GridBackgrounds[5]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="5">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[5]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="5"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="5"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[5]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[5]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[6]}" BorderThickness="2" Margin="0" Grid.Column="3" Grid.Row="1">
+            <Grid Background="{Binding GridBackgrounds[6]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="6">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[6]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="6"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="6"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[6]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[6]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[7]}" BorderThickness="2" Margin="0" Grid.Column="4" Grid.Row="1">
+            <Grid Background="{Binding GridBackgrounds[7]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="7">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[7]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="7"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="7"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[7]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[7]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[8]}" BorderThickness="2" Margin="0" Grid.Column="1" Grid.Row="2">
+            <Grid Background="{Binding GridBackgrounds[8]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="8">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[8]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="8"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="8"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[8]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[8]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[9]}" BorderThickness="2" Margin="0" Grid.Column="2" Grid.Row="2">
+            <Grid Background="{Binding GridBackgrounds[9]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="9">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[9]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="9"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="9"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[9]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[9]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[10]}" BorderThickness="2" Margin="0" Grid.Column="3" Grid.Row="2">
+            <Grid Background="{Binding GridBackgrounds[10]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="10">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[10]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="10"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="10"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[10]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[10]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+        <Border  BorderBrush="{Binding BorderBrushes[11]}" BorderThickness="2" Margin="0" Grid.Column="4" Grid.Row="2">
+            <Grid Background="{Binding GridBackgrounds[11]}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.52*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
+                    <Button Height="16" Command="{Binding Delete}" CommandParameter="11">
+                        <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
+                    </Button>
+                </StackPanel>
+                <ContentControl Content="{Binding Path=CollectionCanvas[11]}"  Grid.Row="1">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Drop">
+                            <i:InvokeCommandAction Command="{Binding Drop}" CommandParameter="11"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="11"/>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+
+                </ContentControl>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ID:" FontSize="12"/>
+                    <TextBlock   Text="{Binding SelectedId[11]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding SelectedValue[11]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
+
+                </Grid>
+
+
+            </Grid>
+
+
+        </Border>
+
+
+
+
+
     </Grid>
 </UserControl>

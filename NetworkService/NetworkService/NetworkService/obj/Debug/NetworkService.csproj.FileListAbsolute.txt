@@ -46,3 +46,6 @@ C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\NetworkService\NetworkServ
 C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\NetworkService\NetworkService\NetworkService\bin\Debug\System.Windows.Interactivity.xml
 C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\GraphView.g.cs
 C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\GraphView.baml
+C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\NetworkService\NetworkService\NetworkService\bin\Debug\MVVMLight.Messaging.dll
+C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\NetworkService\NetworkService\NetworkService\bin\Debug\MVVMLight.Messaging.xml
+C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\NetworkService\NetworkService\NetworkService\obj\Debug\App.baml

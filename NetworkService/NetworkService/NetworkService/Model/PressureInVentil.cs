@@ -60,6 +60,17 @@ namespace NetworkService.Model
         }
 
 
+        public List<double> lastFive = new List<double>() { 0, 0, 0, 0, 0 };
+        public List<string> lastFiveTime = new List<string>() { "", "", "", "","" };
+
+        private int brojac;
+
+        public int Brojac
+        {
+            get { return brojac; }
+            set { brojac = value; }
+        }
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -70,8 +81,7 @@ namespace NetworkService.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
 
-            // Pojednostavljeni ekvivalentan zapis:
-            // PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+         
         }
 
         public PressureInVentil(int id, string name, string type,string image)
@@ -81,7 +91,7 @@ namespace NetworkService.Model
             Type = type;
             Value = 0;
             Image = image;
-            
+            Brojac = 0;
         }
 
         public List<int> LastFiveMessures = new List<int>();

@@ -5,6 +5,13 @@
              xmlns:local="clr-namespace:NetworkService"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Color x:Key="LightBlueColor">#BCD6F7</Color>
+        <SolidColorBrush x:Key="LightBlueBrush" Color="{StaticResource LightBlueColor}"/>
+        <Color x:Key="DarkBlueColor">#0A0049</Color>
+        <SolidColorBrush x:Key="DarkBlueBrush" Color="{StaticResource DarkBlueColor}"/>
+        <Color x:Key="BlueColor">#2B55FF</Color>
+        <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource BlueColor}"/>
+
+
     </Application.Resources>
 </Application>

@@ -1,4 +1,5 @@
 ﻿using MVVM1;
+using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
 using NetworkService.Views;
@@ -22,7 +23,7 @@ namespace NetworkService.ViewModel
 {
     public class MainWindowViewModel:BindableBase
     {
-        private int count = 4; // Inicijalna vrednost broja objekata u sistemu
+        private int count = 2; // Inicijalna vrednost broja objekata u sistemu
                                 // ######### ZAMENITI stvarnim brojem elemenata
                                 //           zavisno od broja entiteta u listi
         HomeViewModel homeView;
@@ -31,6 +32,9 @@ namespace NetworkService.ViewModel
         GraphViewModel graphView;
         BindableBase currentViewModel;
         private string colspanFrame;
+        ObservableCollection<string> TimeForGraph = new ObservableCollection<string>();
+
+
 
         ObservableCollection<string> HomeHelpers= new ObservableCollection<string>
             {
@@ -38,6 +42,8 @@ namespace NetworkService.ViewModel
                 "Help Item 2",
                 "Help Item 3"
             };
+
+
 
 
         ObservableCollection<string> GridHelpers = new ObservableCollection<string>
@@ -111,7 +117,7 @@ namespace NetworkService.ViewModel
                 ColspanFrame = _isToggled ? "2" : "1";
                 ToggleText = _isToggled ? "ON" : "OFF";
                 HelpWidth = _isToggled ? "0" : "200";
-                graphView.ChangeLinePositionsForToggle(_isToggled);
+                Messenger.Default.Send<bool>(_isToggled);
             }
         }
 
@@ -175,20 +181,24 @@ namespace NetworkService.ViewModel
         public MainWindowViewModel()
         {
             createListener(); //Povezivanje sa serverskom aplikacijom
-            homeView=new HomeViewModel();
-            tableView=new TableViewModel();
-            gridView=new GridViewModel();
-            graphView=new GraphViewModel();
+        
+            ListEntities.pressureInVentils.Add(new PressureInVentil(0, "Cable1","Cable sensor", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg"));
+            ListEntities.pressureInVentils.Add(new PressureInVentil(1, "Digital1", "Digital manometar", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
+            /* ListEntities.pressureInVentils.Add(new PressureInVentil(3, "Digital2", "Digital manometar", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
+             ListEntities.pressureInVentils.Add(new PressureInVentil(4, "Cable2", "Cable sensor", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
+         */
+
+            homeView = new HomeViewModel();
+            tableView = new TableViewModel();
+            gridView = new GridViewModel();
+            graphView = new GraphViewModel();
             graphView.L1 = 100;
             CurrentViewModel = homeView;
             Title = "HOME VIEW";
             ToggleText = "OFF";
             HelpItems = HomeHelpers;
             NavCommand = new MyICommand<string>(OnNav);
-            ListEntities.pressureInVentils.Add(new PressureInVentil(1, "Cable1","Cable sensor", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg"));
-            ListEntities.pressureInVentils.Add(new PressureInVentil(2, "Digital1", "Digital manometar", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
-            ListEntities.pressureInVentils.Add(new PressureInVentil(3, "Digital2", "Digital manometar", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
-            ListEntities.pressureInVentils.Add(new PressureInVentil(4, "Cable2", "Cable sensor", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
+
         }
 
         private void createListener()
@@ -211,6 +221,7 @@ namespace NetworkService.ViewModel
                         //Primljena poruka je sacuvana u incomming stringu
                         incomming = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
 
+                        
                         //Ukoliko je primljena poruka pitanje koliko objekata ima u sistemu -> odgovor
                         if (incomming.Equals("Need object count"))
                         {
@@ -242,11 +253,22 @@ namespace NetworkService.ViewModel
                                 if (entityId == p.Id)
                                 {
                                     p.Value = value;
+                                    p.lastFive[p.Brojac % 5] = value;
+                                   
+                                    DateTime now = DateTime.Now;
 
+                                    TimeSpan timePart = now.TimeOfDay;
+
+                                  
+                                    string timeString = timePart.ToString(@"hh\:mm\:ss");
+                                    p.lastFiveTime[p.Brojac % 5] = timeString;
+                                    p.Brojac++;
+                                    Messenger.Default.Send<PressureInVentil>(p);
+                                  
                                     using (StreamWriter sr = File.AppendText("Log.txt"))
                                     {
-                                        DateTime dateTime = DateTime.Now;
-                                        sr.WriteLine($"{dateTime},{p.Id},{value}");
+                                        
+                                        sr.WriteLine($"{DateTime.Now},{p.Id},{value}");
                                     }
 
                                     break;

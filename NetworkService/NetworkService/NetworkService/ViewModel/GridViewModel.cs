@@ -1,5 +1,6 @@
 ﻿
 using MVVM1;
+using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
 using System;
@@ -14,6 +15,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
 using static System.Net.Mime.MediaTypeNames;
 
 namespace NetworkService.ViewModel
@@ -41,6 +43,7 @@ namespace NetworkService.ViewModel
         }
 
         private ObservableCollection<string> selectedId;
+       
 
         public ObservableCollection<string> SelectedId
         {
@@ -67,6 +70,31 @@ namespace NetworkService.ViewModel
 
         List<int> originalIndexs;
         List<PressureInVentil> objectsOnCanvas;
+
+
+        private ObservableCollection<string> borderBrushes;
+
+        public ObservableCollection<string> BorderBrushes
+        {
+            get { return borderBrushes; }
+            set { borderBrushes = value;
+                OnPropertyChanged(nameof(BorderBrushes));
+            }
+        }
+
+
+        private ObservableCollection<string> gridbackgrounds;
+
+        public ObservableCollection<string> GridBackgrounds
+        {
+            get { return gridbackgrounds; }
+            set
+            {
+                gridbackgrounds = value;
+                OnPropertyChanged(nameof(GridBackgrounds));
+            }
+        }
+
 
 
 
@@ -120,6 +148,8 @@ namespace NetworkService.ViewModel
             SelectedValue = new ObservableCollection<string>();
             originalIndexs = new List<int>();
             objectsOnCanvas = new List<PressureInVentil>();
+            BorderBrushes = new ObservableCollection<string>();
+            GridBackgrounds = new ObservableCollection<string>();
             MouseLeftButtonDownCanvas = new MyICommand<object>(OnMouseLeftButtonDownCanvas);
 
             EntitiesByType digitalEntities = new EntitiesByType("Digital manometar");
@@ -147,7 +177,7 @@ namespace NetworkService.ViewModel
                 {
                     CollectionCanvas.Add(new Canvas()
                     {
-                        Background = (Brush)(new BrushConverter().ConvertFrom("#8B9DC3")),
+                        Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue")),
                         AllowDrop = true
                     });
 
@@ -156,6 +186,8 @@ namespace NetworkService.ViewModel
                     originalIndexs.Add(-1);
                     objectsOnCanvas.Add(null);
                     sourceCollections.Add(-1);
+                    BorderBrushes.Add("Black");
+                    GridBackgrounds.Add("White");
                 }
 
             }
@@ -163,6 +195,7 @@ namespace NetworkService.ViewModel
 
             EntitiesByTypes.Add(digitalEntities);
             EntitiesByTypes.Add(cableEntities);
+            Messenger.Default.Register<PressureInVentil>(this, UpdateValueOnCanvas);
 
 
         }
@@ -202,6 +235,7 @@ namespace NetworkService.ViewModel
                     CollectionCanvas[index].Background = new ImageBrush(logo);
                     SelectedId[index] = draggedItem.Id.ToString();
                     SelectedValue[index] = draggedItem.Value.ToString();
+                    GridBackgrounds[index] = "LightSteelBlue";
                     sourceCollection.Remove(draggedItem);
                     if (draggedItem.Type.Equals("Cable sensor"))
                     {
@@ -214,6 +248,7 @@ namespace NetworkService.ViewModel
                     originalIndexs[index] = originalIndex;
                     objectsOnCanvas[index] = draggedItem;
                     draggedItem = null;
+
                     dragging = false;
                     dropped = true;
 
@@ -270,22 +305,27 @@ namespace NetworkService.ViewModel
             int index = Convert.ToInt32(parameter);
             if (objectsOnCanvas[index] != null)
             {
-                CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("#8B9DC3"));
+                CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
                 selectedId[index] = "";
                 selectedValue[index] = "";
                 // originalCollection.Insert(originalIndexs[index], objectsOnCanvas[index]);
 
                 if (sourceCollections[index] == 0)
                 {
-                    EntitiesByTypes[0].Pressures.Insert(originalIndexs[index], objectsOnCanvas[index]);
+              
+                    EntitiesByTypes[0].Pressures.Add(objectsOnCanvas[index]);
+                    SortObservableCollectionDescending(EntitiesByTypes[0].Pressures);
                 }
                 else
                 {
-                    EntitiesByTypes[1].Pressures.Insert(originalIndexs[index], objectsOnCanvas[index]);
+                    EntitiesByTypes[1].Pressures.Add(objectsOnCanvas[index]);
+                    SortObservableCollectionDescending(EntitiesByTypes[1].Pressures);
                 }
-
+                sourceCollections[index] = -1;
                 originalIndexs[index] = -1;
                 objectsOnCanvas[index] = null;
+                GridBackgrounds[index] = "White";
+                BorderBrushes[index] = "Black";
             }
 
         }
@@ -304,11 +344,13 @@ namespace NetworkService.ViewModel
                     DragDrop.DoDragDrop(CollectionCanvas[index], draggedItem, DragDropEffects.Move);
                     if (dropped)
                     {
+
                         selectedId[index] = "";
                         selectedValue[index] = "";
                         objectsOnCanvas[index] = null;
                         originalIndexs[index] = -1;
-                        CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("#8B9DC3"));
+                        GridBackgrounds[index] = "White";
+                        CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
                     }
 
                 }
@@ -320,7 +362,42 @@ namespace NetworkService.ViewModel
             }
         }
 
+        private void SortObservableCollectionDescending(ObservableCollection<PressureInVentil> collection)
+        {
+            var sortedList = collection.OrderBy(a => a.Id).ToList();
+            collection.Clear();
+            foreach (var item in sortedList)
+            {
+                collection.Add(item);
+            }
+        }
 
+
+
+        public void UpdateValueOnCanvas(PressureInVentil p) {
+
+            int idx = -1;
+            for (int i = 0; i < objectsOnCanvas.Count; i++) {
+                if (SelectedId[i].Equals(p.Id.ToString())) {
+                    idx = i;
+                    break;
+                }
+            }
+            if (idx != -1)
+            {
+                SelectedId[idx] = p.Id.ToString();
+                SelectedValue[idx] = p.Value.ToString();
+                if (p.Value < 4 || p.Value > 16)
+                {
+                    BorderBrushes[idx] = "Red";
+                    GridBackgrounds[idx] = "HotPink";
+                }
+                else {
+                    BorderBrushes[idx] = "Black";
+                    GridBackgrounds[idx] = "LightSteelBlue";
+                }
+            }
+        }
 
     }
 }

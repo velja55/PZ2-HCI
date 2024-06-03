@@ -39,3 +39,5 @@ C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\MeteringSimulator\Metering
 C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\MeteringSimulator\MeteringSimulator\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\MeteringSimulator\MeteringSimulator\bin\Debug\Microsoft.Expression.Interactions.xml
 C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\MeteringSimulator\MeteringSimulator\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\MeteringSimulator\MeteringSimulator\bin\Debug\MVVMLight.Messaging.dll
+C:\Users\lukic\Desktop\fax3.godina\2.semestar\HCI\PZ2\MeteringSimulator\MeteringSimulator\bin\Debug\MVVMLight.Messaging.xml

@@ -125,10 +125,10 @@ namespace NetworkService.ViewModel
             SearchCommand = new MyICommand(OnSearch);
             ClearCommand = new MyICommand(OnClear);
             DeleteCommand = new MyICommand(OnDelete);
-
+            
             Entities = ListEntities.pressureInVentils;
             Types = new ObservableCollection<string> { "Cable sensor", "Digital manometar" };
-
+            TypeText = Types[0];
         }
 
 
