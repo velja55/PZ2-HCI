@@ -11,8 +11,5 @@ namespace NetworkService.Model
     {
 		public static ObservableCollection<PressureInVentil> pressureInVentils=new ObservableCollection<PressureInVentil>() ;
 
-		
-
-
 	}
 }

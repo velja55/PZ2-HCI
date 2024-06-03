@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkService.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace NetworkService
         public MainWindow()
         {
             InitializeComponent();
+            InitializeComponent();
+            MainWindowViewModel viewModel = (MainWindowViewModel)this.DataContext;
+            if (viewModel.CloseAction == null)
+            {
+                viewModel.CloseAction = new Action(() => this.Close());
+            }
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)

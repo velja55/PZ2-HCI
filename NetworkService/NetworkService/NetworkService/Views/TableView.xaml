@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NetworkService.Views"
       xmlns:fa5="http://schemas.fontawesome.com/icons/"
-      xmlns:viewModel="clr-namespace:NetworkService.ViewModel"
-      mc:Ignorable="d" 
+      xmlns:viewModel="clr-namespace:NetworkService.ViewModel" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="770"
       >
     <UserControl.DataContext>
@@ -52,14 +52,29 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.4*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" FontWeight="Bold" FontSize="20"/>
                     <RadioButton Name="TypeRadioButton" Content="Type" FontSize="12"  Grid.Row="1" Margin="10,0,10,0" VerticalAlignment="Center" Height="26" IsChecked="{Binding TypeSelected}"/>
                     <RadioButton Name="NameRadioButton" Content="Name" FontSize="12" Margin="10,0,10,0"   Grid.Row="2" VerticalAlignment="Center" Height="27" IsChecked="{Binding NameSelected}"/>
-                    <TextBox Grid.Row="3" Margin="10,5,5,5" Name="SearchTextBox"  BorderBrush="Black" Text="{Binding SearchText}" BorderThickness="1"/>
-                    <Border Grid.Row="3" Margin="10,5,5,5" BorderBrush="Black" BorderThickness="1" Visibility="Hidden">
+                    <StackPanel Grid.Row="3" Margin="10,5,5,5">
+                        <TextBox  Name="SearchTextBox"  Height="25" Text="{Binding SearchText}" Foreground="{Binding ColorSearch}"  BorderBrush="{Binding BorderBrushSearch}" BorderThickness="1">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="GotFocus">
+                                    <i:InvokeCommandAction Command="{Binding Focused}" 
+                                        CommandParameter="search" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding LostFocused}" 
+                                        CommandParameter="search" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+                        </TextBox>
+                        <Label Content="{Binding SearchErrorLabel}" Foreground="Red"></Label>
+                    </StackPanel>
+                        <Border Grid.Row="3" Margin="10,5,5,5" BorderBrush="Black" BorderThickness="1" Visibility="Hidden">
                         <StackPanel Orientation="Horizontal" >
                             <fa5:FontAwesome Icon="Solid_Search" VerticalAlignment="Center" Margin="2,0,0,0" Foreground="Gray"/>
                             <TextBlock Text="Search" VerticalAlignment="Center" Foreground="Gray"/>
@@ -100,16 +115,40 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Add entity" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold" />
+                    <TextBlock Text="Add entity" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Grid.ColumnSpan="2" FontSize="20" FontWeight="Bold" />
                     <TextBlock Text="ID:" Grid.Row="1" HorizontalAlignment="Center"  Margin="2" FontSize="15" FontWeight="DemiBold" />
                     <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                    <TextBox Name="IdTextBox" Height="22"  Margin="2"  BorderBrush="Black" BorderThickness="1" Text="{Binding ID}"/>
-                        <Label Content="Field isn't filed correctly" FontSize="10"></Label>
+                        <TextBox Name="IdTextBox" Height="22"  Margin="2,2,2,0" Foreground="{Binding ColorId}"  BorderBrush="{Binding BorderBrushId}" BorderThickness="1" Text="{Binding ID}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="GotFocus">
+                                    <i:InvokeCommandAction Command="{Binding Focused}" 
+                               CommandParameter="id" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding LostFocused}" 
+                                         CommandParameter="id" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+                        </TextBox>
+                        <Label Content="{Binding IdErrorLabel}" FontSize="10" Foreground="Red" FontWeight="Regular"> </Label>
                     </StackPanel>
                     <TextBlock Text="Name:" Grid.Row="2" HorizontalAlignment="Center"  Margin="2" FontSize="15" FontWeight="DemiBold" />
                     <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
-                        <TextBox  Height="22"  Margin="2"  BorderBrush="Black" BorderThickness="1" Text="{Binding NameText}"/>
-                        <Label Content="Field isn't filed correctly" FontSize="10"></Label>
+                        <TextBox  Height="22"  Margin="2" Foreground="{Binding ColorName}" BorderBrush="{Binding BorderBrushName}" BorderThickness="1" Text="{Binding NameText}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="GotFocus">
+                                    <i:InvokeCommandAction Command="{Binding Focused}" 
+                                            CommandParameter="name" />
+                                </i:EventTrigger>
+
+                                <i:EventTrigger EventName="LostFocus">
+                                    <i:InvokeCommandAction Command="{Binding LostFocused}" 
+                                            CommandParameter="name" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            </TextBox>
+                        <Label Content="{Binding NameErrorLabel}" FontSize="10" Foreground="Red" FontWeight="Regular"></Label>
                     </StackPanel>
                     
                     <TextBlock Text="Type:" Grid.Row="3" HorizontalAlignment="Center" Margin="2" FontSize="15" FontWeight="DemiBold"/>
@@ -117,7 +156,7 @@
                         <ComboBox Name="TypeComboBox"  Height="22" Grid.Column="1" Grid.Row="3" Margin="2" ItemsSource="{Binding Types}" SelectedItem="{Binding TypeText}">
                             
                         </ComboBox>
-                        <Label Content="Field isn't filed correctly" FontSize="10"></Label>
+                        <Label Content="{Binding TypeErrorLabel}" Foreground="Red" FontSize="10"></Label>
                     </StackPanel>
                     <Grid  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
@@ -164,16 +203,22 @@
                         </StackPanel>
                     </Button>
                     </Grid>
-                    <DataGrid ItemsSource="{Binding Entities}" SelectedItem="{Binding SelectedEntity}" Name="TableEntities" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" IsReadOnly="True"  AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,70,1,24" Grid.RowSpan="2">
+                    <DataGrid ItemsSource="{Binding Entities}" 
+                               SelectedItem="{Binding SelectedEntity}" Name="TableEntities"
+                              CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" Grid.Row="1"
+                              IsReadOnly="True"  AutoGenerateColumns="False" CanUserAddRows="False"
+                               HorizontalAlignment="Center" 
+                                HorizontalContentAlignment="Center" Width="374"
+                              >
                         
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID"  x:Name="Id_column" Binding="{Binding Id}" Width="60" ElementStyle="{StaticResource CenterTextStyle}">
+                            <DataGridTextColumn Header="ID"  x:Name="Id_column" Binding="{Binding Id}" Width="*" ElementStyle="{StaticResource CenterTextStyle}">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Name" x:Name="Name_column" Binding="{Binding Name}" Width="80"  ElementStyle="{StaticResource CenterTextStyle}">
+                            <DataGridTextColumn Header="Name" x:Name="Name_column" Binding="{Binding Name}" Width="*"  ElementStyle="{StaticResource CenterTextStyle}">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Type" x:Name="Type_column" Binding="{Binding Type}" Width="110"  ElementStyle="{StaticResource CenterTextStyle}">
+                            <DataGridTextColumn Header="Type" x:Name="Type_column" Binding="{Binding Type}" Width="2*"  ElementStyle="{StaticResource CenterTextStyle}">
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Value" x:Name="Value_column" Binding="{Binding Value}" Width="60"  ElementStyle="{StaticResource CenterTextStyle}">
+                            <DataGridTextColumn Header="Value" x:Name="Value_column" Binding="{Binding Value}" Width="*"  ElementStyle="{StaticResource CenterTextStyle}">
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>

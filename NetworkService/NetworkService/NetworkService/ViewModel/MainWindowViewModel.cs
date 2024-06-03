@@ -3,6 +3,7 @@ using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
 using NetworkService.Views;
+using Notification.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 
 namespace NetworkService.ViewModel
@@ -33,7 +35,7 @@ namespace NetworkService.ViewModel
         BindableBase currentViewModel;
         private string colspanFrame;
         ObservableCollection<string> TimeForGraph = new ObservableCollection<string>();
-
+        private NotificationManager notificationManager;
 
 
         ObservableCollection<string> HomeHelpers= new ObservableCollection<string>
@@ -178,6 +180,10 @@ namespace NetworkService.ViewModel
             }
         }
 
+
+        public Action CloseAction { get; set; }
+
+
         public MainWindowViewModel()
         {
             createListener(); //Povezivanje sa serverskom aplikacijom
@@ -198,7 +204,24 @@ namespace NetworkService.ViewModel
             ToggleText = "OFF";
             HelpItems = HomeHelpers;
             NavCommand = new MyICommand<string>(OnNav);
+            ExitCommand = new MyICommand(OnExit);
+            Messenger.Default.Register<NotificationContent>(this, ShowToastNotification);
+            notificationManager = new NotificationManager();
 
+        }
+
+        private void OnExit()
+        {
+
+            if (MessageBox.Show("Are you sure want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                CloseAction?.Invoke();
+            }
+        }
+
+        private void ShowToastNotification(NotificationContent obj)
+        {
+            notificationManager.Show(obj, "MainWindowNotificationArea");
         }
 
         private void createListener()
@@ -288,6 +311,7 @@ namespace NetworkService.ViewModel
 
 
         public MyICommand<string> NavCommand { get; private set; }
+        public ICommand ExitCommand { get; set; }
 
         private void OnNav(string destination)
         {

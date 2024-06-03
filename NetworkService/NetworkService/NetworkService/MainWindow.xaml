@@ -4,14 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkService"
+        
         xmlns:viewModel="clr-namespace:NetworkService.ViewModel"
         xmlns:views="clr-namespace:NetworkService.Views"
-        xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/" xmlns:notifications="clr-namespace:Notification.Wpf.Controls;assembly=Notification.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000"
         Background="{StaticResource BlueBrush}"
         
         >
+    
+    
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="home" Key="D1" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="table" Key="D2" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="grid" Key="D3" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="graph" Key="D4" Modifiers="Control"/>
+        <KeyBinding Command="{Binding ExitCommand}" Key="Esc"/>
+    </Window.InputBindings>
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
@@ -30,14 +40,29 @@
             <views:GraphView/>
         </DataTemplate>
     </Window.Resources>
-   
+
+    
+
     <Grid>
-        
+
+       
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
 
+        <notifications:NotificationArea
+             x:Name="MainWindowNotificationArea"
+             Panel.ZIndex="1000"
+             MaxItems="3"
+             Position="TopLeft"
+                Grid.Column="1" 
+            Width="400"
+            Height="200"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            />
         <Grid Grid.Column="0" Background="{StaticResource DarkBlueBrush}" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -46,6 +71,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
             <Button Margin="10" Name="HomeButton" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="home">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Home" FontSize="25"/>
@@ -72,10 +98,10 @@
                     <TextBlock Text="Graph" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button Margin="10" Name="HelpButton" Grid.Row="4" Background="{StaticResource LightBlueBrush}" Command="{Binding NavCommand}">
+            <Button Margin="10" Name="HelpButton" Grid.Row="4" Background="{StaticResource LightBlueBrush}" Command="{Binding ExitCommand}">
                 <StackPanel Orientation="Vertical">
-                    <fa5:FontAwesome Icon="Solid_Question" FontSize="25"/>
-                    <TextBlock Text="Help" FontSize="15" FontWeight="Bold"/>
+                    <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="30"/>
+                    <TextBlock Text="Exit" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
         </Grid>
