@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,8 @@ namespace NetworkService.Model
 
         public List<double> lastFive = new List<double>() { 0, 0, 0, 0, 0 };
         public List<string> lastFiveTime = new List<string>() { "", "", "", "","" };
+     
+
 
         private int brojac;
 
@@ -84,7 +87,7 @@ namespace NetworkService.Model
          
         }
 
-        public PressureInVentil(int id, string name, string type,string image)
+        public PressureInVentil(int id, string name, string type, string image)
         {
             Id = id;
             Name = name;
@@ -92,9 +95,37 @@ namespace NetworkService.Model
             Value = 0;
             Image = image;
             Brojac = 0;
+
+            string logFilePath = "Log.txt";
+            if (File.Exists(logFilePath))
+            {
+                string[] logLines = File.ReadAllLines(logFilePath);
+              
+                foreach (string line in logLines)
+                {
+                    string[] parts = line.Split(',');
+                    if (Int32.Parse(parts[1]) == Id) {
+                        Value = Int32.Parse(parts[2]);
+                    }
+                }
+                int cnt = 0;
+                foreach (string line in logLines) { 
+                    string[] parts= line.Split(',');
+                    if (parts.Length == 3 && int.TryParse(parts[1], out int logId) && logId == Id) {
+                        if (double.TryParse(parts[2], out double value))
+                        {
+                            if (cnt < 5) {
+                                lastFive[cnt] = value;
+                                string time = parts[0].Split(' ')[1];
+                                lastFiveTime[cnt] = time;
+                                cnt++;
+                            }
+                        }
+                    }
+                }
+               
+            }
         }
-
-        public List<int> LastFiveMessures = new List<int>();
-
     }
 }
+   

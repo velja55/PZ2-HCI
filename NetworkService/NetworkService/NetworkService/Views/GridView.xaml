@@ -34,7 +34,14 @@
             
         </Grid.RowDefinitions>
 
-        <TreeView x:Name="TreeView" ItemsSource="{Binding EntitiesByTypes}" AllowDrop="False" Grid.RowSpan="3">
+
+        <Grid Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Background="White" Foreground="{StaticResource DarkBlueBrush}" FontSize="20" FontWeight="Bold">All entities </TextBlock>
+            <TreeView x:Name="TreeView" ItemsSource="{Binding EntitiesByTypes}" AllowDrop="False" Grid.Row="1" Cursor="Hand">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
                     <i:InvokeCommandAction Command="{Binding SelectionChanged}"
@@ -67,9 +74,11 @@
             </TreeView.Resources>
 
         </TreeView>
+        </Grid>
         
         
-        <Border  BorderBrush="{Binding BorderBrushes[0]}" BorderThickness="2" Margin="0" Grid.Column="1">
+        <Border  BorderBrush="{Binding BorderBrushes[0]}" Background="Red" BorderThickness="2" Margin="10" Grid.Column="1">
+
             <Grid Background="{Binding GridBackgrounds[0]}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.52*"/>
@@ -79,7 +88,7 @@
            
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Name="Delete0" Command="{Binding Delete}" CommandParameter="0">
+                    <Button Height="16" Name="Delete0" Command="{Binding Delete}" Cursor="Hand" CommandParameter="0">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -94,8 +103,14 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
                    
+
 
             </ContentControl>
                 <Grid Grid.Row="2">
@@ -107,8 +122,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock  Name="IdTextBlock1" Text="{Binding SelectedId[0]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock  Name="IdTextBlock1" Text="{Binding SelectedId[0]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Name="ValueTextBlock1" Text="{Binding SelectedValue[0]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
                     
@@ -119,7 +134,7 @@
         </Border>
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[1]}" BorderThickness="2" Margin="0" Grid.Column="2">
+        <Border  BorderBrush="{Binding BorderBrushes[1]}" BorderThickness="2" Margin="10" Grid.Column="2">
             <Grid Background="{Binding GridBackgrounds[1]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -129,7 +144,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="1">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="1">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -141,6 +156,10 @@
                         </i:EventTrigger>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="1"/>
+
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
 
                         </i:EventTrigger>
 
@@ -157,8 +176,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock  Text="{Binding SelectedId[1]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock  Text="{Binding SelectedId[1]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[1]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -168,7 +187,7 @@
             </Grid>
         </Border>
 
-        <Border  BorderBrush="{Binding BorderBrushes[2]}" BorderThickness="2" Margin="0" Grid.Column="3">
+        <Border  BorderBrush="{Binding BorderBrushes[2]}" BorderThickness="2" Margin="10" Grid.Column="3">
                 <Grid Background="{Binding GridBackgrounds[2]}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.52*"/>
@@ -178,7 +197,7 @@
 
 
                     <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                        <Button Height="16" Command="{Binding Delete}" CommandParameter="2">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="2">
                             <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                         </Button>
                     </StackPanel>
@@ -192,8 +211,12 @@
                                 <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="2"/>
 
                             </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
 
-                        </i:Interaction.Triggers>
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
 
 
                     </ContentControl>
@@ -206,8 +229,8 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="ID:" FontSize="12"/>
-                        <TextBlock   Text="{Binding SelectedId[2]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[2]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                         <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                         <TextBlock  Text="{Binding SelectedValue[2]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -221,7 +244,7 @@
 
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[3]}" BorderThickness="2" Margin="0" Grid.Column="4">
+        <Border  BorderBrush="{Binding BorderBrushes[3]}" BorderThickness="2" Margin="10" Grid.Column="4">
             <Grid Background="{Binding GridBackgrounds[3]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -231,7 +254,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="3">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="3">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -246,6 +269,11 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
@@ -259,8 +287,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[3]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[3]}" Grid.Row="1" Margin="5,0,0,0" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[3]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -273,7 +301,7 @@
         </Border>
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[4]}" BorderThickness="2" Margin="0" Grid.Column="1" Grid.Row="1">
+        <Border  BorderBrush="{Binding BorderBrushes[4]}" BorderThickness="2" Margin="10" Grid.Column="1" Grid.Row="1">
             <Grid Background="{Binding GridBackgrounds[4]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -283,7 +311,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="4">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="4">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -298,6 +326,11 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
@@ -311,8 +344,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[4]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[4]}" Grid.Row="1" Margin="5,0,0,0" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[4]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -325,7 +358,7 @@
         </Border>
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[5]}" BorderThickness="2" Margin="0" Grid.Column="2" Grid.Row="1">
+        <Border  BorderBrush="{Binding BorderBrushes[5]}" BorderThickness="2" Margin="10" Grid.Column="2" Grid.Row="1">
             <Grid Background="{Binding GridBackgrounds[5]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -335,7 +368,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="5">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="5">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -349,6 +382,10 @@
                             <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="5"/>
 
                         </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
 
                     </i:Interaction.Triggers>
 
@@ -363,8 +400,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[5]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[5]}" Grid.Row="1" Margin="5,0,0,0" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[5]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -378,7 +415,7 @@
 
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[6]}" BorderThickness="2" Margin="0" Grid.Column="3" Grid.Row="1">
+        <Border  BorderBrush="{Binding BorderBrushes[6]}" BorderThickness="2" Margin="10" Grid.Column="3" Grid.Row="1">
             <Grid Background="{Binding GridBackgrounds[6]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -388,7 +425,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="6">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="6">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -400,6 +437,10 @@
                         </i:EventTrigger>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCanvas}" CommandParameter="6"/>
+
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
 
                         </i:EventTrigger>
 
@@ -416,8 +457,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[6]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[6]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[6]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -431,7 +472,7 @@
 
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[7]}" BorderThickness="2" Margin="0" Grid.Column="4" Grid.Row="1">
+        <Border  BorderBrush="{Binding BorderBrushes[7]}" BorderThickness="2" Margin="10" Grid.Column="4" Grid.Row="1">
             <Grid Background="{Binding GridBackgrounds[7]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -441,7 +482,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="7">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="7">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -456,6 +497,11 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
@@ -469,8 +515,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[7]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[7]}" Grid.Row="1" Margin="5,0,0,0" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[7]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -485,7 +531,7 @@
 
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[8]}" BorderThickness="2" Margin="0" Grid.Column="1" Grid.Row="2">
+        <Border  BorderBrush="{Binding BorderBrushes[8]}" BorderThickness="2" Margin="10" Grid.Column="1" Grid.Row="2">
             <Grid Background="{Binding GridBackgrounds[8]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -495,7 +541,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="8">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="8">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -510,6 +556,11 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
@@ -523,8 +574,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[8]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[8]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[8]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -539,7 +590,7 @@
 
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[9]}" BorderThickness="2" Margin="0" Grid.Column="2" Grid.Row="2">
+        <Border  BorderBrush="{Binding BorderBrushes[9]}" BorderThickness="2" Margin="10" Grid.Column="2" Grid.Row="2">
             <Grid Background="{Binding GridBackgrounds[9]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -549,7 +600,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="9">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="9">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -564,6 +615,11 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
@@ -577,8 +633,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[9]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[9]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[9]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -592,7 +648,7 @@
 
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[10]}" BorderThickness="2" Margin="0" Grid.Column="3" Grid.Row="2">
+        <Border  BorderBrush="{Binding BorderBrushes[10]}" BorderThickness="2" Margin="10" Grid.Column="3" Grid.Row="2">
             <Grid Background="{Binding GridBackgrounds[10]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -602,7 +658,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="10">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="10">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -617,6 +673,11 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
@@ -630,8 +691,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[10]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[10]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[10]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 
@@ -644,7 +705,7 @@
         </Border>
 
 
-        <Border  BorderBrush="{Binding BorderBrushes[11]}" BorderThickness="2" Margin="0" Grid.Column="4" Grid.Row="2">
+        <Border  BorderBrush="{Binding BorderBrushes[11]}" BorderThickness="2" Margin="10" Grid.Column="4" Grid.Row="2">
             <Grid Background="{Binding GridBackgrounds[11]}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.52*"/>
@@ -654,7 +715,7 @@
 
 
                 <StackPanel Background="Gray" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" >
-                    <Button Height="16" Command="{Binding Delete}" CommandParameter="11">
+                    <Button Height="16" Command="{Binding Delete}" Cursor="Hand" CommandParameter="11">
                         <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="10"></fa5:FontAwesome>
                     </Button>
                 </StackPanel>
@@ -669,6 +730,11 @@
 
                         </i:EventTrigger>
 
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding MouseLeftButtonUp}"/>
+
+                        </i:EventTrigger>
+
                     </i:Interaction.Triggers>
 
 
@@ -682,8 +748,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="ID:" FontSize="12"/>
-                    <TextBlock   Text="{Binding SelectedId[11]}" Grid.Row="1" FontSize="12"></TextBlock>
+                    <TextBlock Text="ID:" FontSize="12" Margin="5,0,0,0"/>
+                    <TextBlock   Text="{Binding SelectedId[11]}" Margin="5,0,0,0" Grid.Row="1" FontSize="12"></TextBlock>
                     <TextBlock Text="Value:" FontSize="12" Grid.Column="1"/>
                     <TextBlock  Text="{Binding SelectedValue[11]}" Grid.Column="1" Grid.Row="1" FontSize="12"></TextBlock>
 

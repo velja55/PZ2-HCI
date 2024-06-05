@@ -10,6 +10,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -242,6 +244,18 @@ namespace NetworkService.ViewModel
         }
 
 
+        private string toolTipVisibility;
+
+        public string ToolTipVisibility
+        {
+            get { return toolTipVisibility; }
+            set { toolTipVisibility = value;
+                OnPropertyChanged(nameof(ToolTipVisibility));
+            }
+        }
+
+
+
         public TableViewModel()
         {
             AddCommand = new MyICommand(OnAdd);
@@ -253,6 +267,7 @@ namespace NetworkService.ViewModel
             ClearCommand = new MyICommand(OnClear);
             DeleteCommand = new MyICommand(OnDelete);
             LostFocused = new MyICommand<string>(OnLostFocus);
+            ClearInputs = new MyICommand(ResetFormFields);
             ID = "Input id here";
             NameText = "Input name here";
             BorderBrushId = "Black";
@@ -264,7 +279,14 @@ namespace NetworkService.ViewModel
 
             Entities = ListEntities.pressureInVentils;
             Types = new ObservableCollection<string> { "Cable sensor", "Digital manometar" };
+
+            Messenger.Default.Register<string>(this,ChangeVisibilityToolTips);
             
+        }
+
+        private void ChangeVisibilityToolTips(string obj)
+        {
+            ToolTipVisibility = obj;
         }
 
         private void OnLostFocus(string obj)
@@ -334,6 +356,7 @@ namespace NetworkService.ViewModel
         public ICommand DeleteCommand { get; set; }
         public ICommand Focused { get; set; }
         public ICommand LostFocused { get; set; }
+        public ICommand ClearInputs { get; set; }
 
         private void OnAdd()
         {
@@ -469,7 +492,7 @@ namespace NetworkService.ViewModel
                 var notificationContent = new NotificationContent
                 {
                     Title = "Error",
-                    Message = "Not all fields are corectlly filed!",
+                    Message = "Not all fields for add are corectlly filed!",
                     Type = NotificationType.Error,
                     TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
                     RowsCount = 2,
@@ -499,7 +522,24 @@ namespace NetworkService.ViewModel
             {
                 SearchErrorLabel = "Input somenthing in search";
                 BorderBrushSearch = "Red";
-                
+                var notificationContent = new NotificationContent
+                {
+                    Title = "Error",
+                    Message = "Not all fields for search are corectlly filed!",
+                    Type = NotificationType.Error,
+                    TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
+                    RowsCount = 2,
+                    CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
+
+                    Background = new SolidColorBrush(Colors.Red),
+                    Foreground = new SolidColorBrush(Colors.White),
+
+
+                };
+
+
+                Messenger.Default.Send<NotificationContent>(notificationContent);
+
             }
             else
             {
@@ -551,15 +591,60 @@ namespace NetworkService.ViewModel
             get { return selectedEntity; }
             set { selectedEntity = value;
                 OnPropertyChanged(nameof(SelectedEntity));
+               
             }
         }
+
+        int idxDeleted = -1;
 
         private void OnDelete()
         {
             if (SelectedEntity != null)
             {
+                if (System.Windows.MessageBox.Show($"Are you sure you want to delete entity with id {SelectedEntity.Id}?", "Delete", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+
+                    idxDeleted = SelectedEntity.Id;
+                    var notificationContent = new NotificationContent
+                {
+                    Title = "Success",
+                    Message = $"Successfuly removed Entity with id {SelectedEntity.Id}!",
+                    Type = NotificationType.Success,
+                    TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
+                    RowsCount = 2,
+                    CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
+
+                    Background = new SolidColorBrush(Colors.LimeGreen),
+                    Foreground = new SolidColorBrush(Colors.White),
+                
+
+                };
+
                 Entities.Remove(SelectedEntity);
+                Messenger.Default.Send<NotificationContent>(notificationContent);
+                Messenger.Default.Send<int>(idxDeleted);
+                    }
             }
+            else
+            {
+                var notificationContent = new NotificationContent
+                {
+                    Title = "Warning",
+                    Message = "To delete you must select entity from table!",
+                    Type = NotificationType.Warning,
+                    TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
+                    RowsCount = 2,
+                    CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
+
+                    Background = new SolidColorBrush(Colors.Orange),
+                    Foreground = new SolidColorBrush(Colors.White),
+
+
+                };
+                Messenger.Default.Send<NotificationContent>(notificationContent);
+            }
+
+            
         }
 
         

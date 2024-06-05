@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,8 @@ namespace NetworkService.ViewModel
 
         private ObservableCollection<PressureInVentil> entities;
         private ObservableCollection<PressureInVentil> sourceCollection;//za brisanje
+
+        private int sourceCanvas=-1;
 
         public bool dragging;
 
@@ -130,6 +133,7 @@ namespace NetworkService.ViewModel
 
         public ICommand Delete { get; set; }
         public ICommand MouseLeftButtonDownCanvas { get; set; }
+        public ICommand MouseLeftButtonUpGrid { get; set; }
 
 
 
@@ -139,7 +143,7 @@ namespace NetworkService.ViewModel
 
             dragging = false;
             SelectionChanged = new MyICommand<object>(OnSelectionChanged);
-            EntitiesByTypes = new ObservableCollection<EntitiesByType>();
+           
             MouseLeftButtonUp = new MyICommand(OnMouseLeftButtonUp);
             DragOver = new MyICommand<DragEventArgs>(OnDragOver);
             Drop = new MyICommand<object>(OnDrop);
@@ -151,57 +155,101 @@ namespace NetworkService.ViewModel
             BorderBrushes = new ObservableCollection<string>();
             GridBackgrounds = new ObservableCollection<string>();
             MouseLeftButtonDownCanvas = new MyICommand<object>(OnMouseLeftButtonDownCanvas);
+            
 
-            EntitiesByType digitalEntities = new EntitiesByType("Digital manometar");
-            EntitiesByType cableEntities = new EntitiesByType("Cable sensor");
+
+            EntitiesByType digitalEntities = ListEntities.digitalEntities;
+            EntitiesByType cableEntities = ListEntities.cableEntities;
             sourceCollections = new List<int>();
+
+
+              CollectionCanvas=ListEntities.collectionCanvas;
+            SelectedId=ListEntities.selectedId;
+            SelectedValue=ListEntities.selectedValue;
+            objectsOnCanvas =ListEntities.objectsOnCanvas;
+            sourceCollections = ListEntities.sourceColections;
+            BorderBrushes=ListEntities.borderBrushes;
+            GridBackgrounds=ListEntities.GridBackgrounds;
+            originalIndexs = ListEntities.originalIndexes;
+            EntitiesByTypes =ListEntities.EntitiesByTypes;
+
+
+
             foreach (var entity in ListEntities.pressureInVentils)
             {
+
                 if (entity.Type.Equals("Digital manometar"))
                 {
-                    digitalEntities.Pressures.Add(entity);
+                    PressureInVentil p = digitalEntities.Pressures.ToList().Find(x => x.Id == entity.Id);
+                    PressureInVentil po = objectsOnCanvas.ToList().Where(x => x != null).FirstOrDefault(x => x.Id == entity.Id);
+                    if (p == null && po==null)
+                    {
+                        digitalEntities.Pressures.Add(entity);
+                    }
                 }
                 else
                 {
-                    cableEntities.Pressures.Add(entity);
-                }
-
-
-
-            }
-
-            if (CollectionCanvas == null)
-            {
-                CollectionCanvas = new ObservableCollection<Canvas>();
-                for (int i = 0; i < 12; i++)
-                {
-                    CollectionCanvas.Add(new Canvas()
+                    PressureInVentil p = cableEntities.Pressures.ToList().Find(x => x.Id == entity.Id);
+                    PressureInVentil po = objectsOnCanvas.ToList().ToList().Where(x => x != null).FirstOrDefault(x => x.Id == entity.Id);
+                    if (p == null && po==null)
                     {
-                        Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue")),
-                        AllowDrop = true
-                    });
-
-                    SelectedId.Add("");
-                    SelectedValue.Add("");
-                    originalIndexs.Add(-1);
-                    objectsOnCanvas.Add(null);
-                    sourceCollections.Add(-1);
-                    BorderBrushes.Add("Black");
-                    GridBackgrounds.Add("White");
+                        cableEntities.Pressures.Add(entity);
+                    }
                 }
 
+
+
+            }
+          
+            
+            Messenger.Default.Register<PressureInVentil>(this, UpdateValueOnCanvas);
+            Messenger.Default.Register<int>(this, DeleteonCanvasAndView);
+        }
+
+        private void DeleteonCanvasAndView(int obj)
+        {
+            PressureInVentil p = EntitiesByTypes[0].Pressures.ToList().Find(x => x.Id == obj);
+            if (p != null)
+            {
+                EntitiesByTypes[0].Pressures.Remove(p);
+            }
+            else {
+                PressureInVentil pf = EntitiesByTypes[1].Pressures.ToList().Find(x => x.Id == obj);
+                if (pf != null)
+                {
+                    EntitiesByTypes[1].Pressures.Remove(pf);
+                }
             }
 
+            int index = 0;
+            foreach (PressureInVentil pr in  ListEntities.objectsOnCanvas) {
+                if (pr != null)
+                {
+                    if (pr.Id == obj)
+                    {
+                       
+                        selectedId[index] = "";
+                        selectedValue[index] = "";
+                        objectsOnCanvas[index] = null;
+                        originalIndexs[index] = -1;
+                        GridBackgrounds[index] = "White";
+                        CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
+                        break;
+                    }
+                  
+                }
+                index++;
+            }
 
-            EntitiesByTypes.Add(digitalEntities);
-            EntitiesByTypes.Add(cableEntities);
-            Messenger.Default.Register<PressureInVentil>(this, UpdateValueOnCanvas);
+            
+
+
+
 
 
         }
 
-
-
+      
         private void OnDragOver(DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(PressureInVentil)))
@@ -252,6 +300,18 @@ namespace NetworkService.ViewModel
                     dragging = false;
                     dropped = true;
 
+                    if (sourceCanvas!=-1)
+                    {
+                        index=sourceCanvas;
+                        selectedId[index] = "";
+                        selectedValue[index] = "";
+                        objectsOnCanvas[index] = null;
+                        originalIndexs[index] = -1;
+                        GridBackgrounds[index] = "White";
+                        CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
+                    
+                    }
+                    sourceCanvas = -1;
                 }
 
             }
@@ -265,6 +325,9 @@ namespace NetworkService.ViewModel
             dragging = false;
             draggingSourceIndex = -1;
         }
+
+
+
 
         private object selectedItem;
 
@@ -333,32 +396,20 @@ namespace NetworkService.ViewModel
 
         private void OnMouseLeftButtonDownCanvas(object obj)
         {
-            if (!dragging)
+            if (!dragging )
             {
+               
                 int index = Convert.ToInt32(obj);
+                sourceCanvas = index;
                 if (objectsOnCanvas[index] != null)
                 {
                     dragging = true;
                     draggedItem = (PressureInVentil)objectsOnCanvas[index];
                     draggingSourceIndex = originalIndexs[index];
                     DragDrop.DoDragDrop(CollectionCanvas[index], draggedItem, DragDropEffects.Move);
-                    if (dropped)
-                    {
-
-                        selectedId[index] = "";
-                        selectedValue[index] = "";
-                        objectsOnCanvas[index] = null;
-                        originalIndexs[index] = -1;
-                        GridBackgrounds[index] = "White";
-                        CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
-                    }
+                    
 
                 }
-
-
-
-
-
             }
         }
 

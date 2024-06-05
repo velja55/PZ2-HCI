@@ -379,7 +379,12 @@ namespace NetworkService.ViewModel
             L5 = 388;
             LineBottom = 10;
             LineBottom2 = 430;
-            SelectedEntity = ListEntities.pressureInVentils[0];
+            SelectedEntity = ListEntities.selectectedForGraph;
+            Text1 = SelectedEntity.lastFiveTime[0].ToString();
+            Text2 = SelectedEntity.lastFiveTime[1].ToString();
+            Text3 = SelectedEntity.lastFiveTime[2].ToString();
+            Text4 = SelectedEntity.lastFiveTime[3].ToString();
+            Text5 = SelectedEntity.lastFiveTime[4].ToString();
             SelectedId = SelectedEntity.Id;
             SelectedName = SelectedEntity.Name;
             SelectedValue = selectedEntity.Value;
@@ -427,6 +432,7 @@ namespace NetworkService.ViewModel
         public void OnSelectionChanged(object obj)
         {
             SelectedEntity = (PressureInVentil)obj;
+            ListEntities.selectectedForGraph = (PressureInVentil)obj;
             List<string> linesWithIdTwo = new List<string>();
 
 
@@ -566,22 +572,6 @@ namespace NetworkService.ViewModel
         }
 
 
-        public void Update()
-        {
-            // Ažuriranje ComboboxItems sa najnovijim podacima
-            ComboboxItems = new ObservableCollection<PressureInVentil>(ListEntities.pressureInVentils);
-
-            foreach (PressureInVentil p in ComboboxItems)
-            {
-                if (p.Id == SelectedEntity.Id)
-                {
-                    SelectedEntity = p;  // Ovim se osigurava da je SelectedEntity referenciran sa ažuriranim objektom
-
-                    // Ponovo postavljanje radijusa i boja
-                    UpdateSelectedEntityProperties();
-                }
-            }
-        }
 
         private void UpdateSelectedEntityProperties()
         {

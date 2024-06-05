@@ -15,13 +15,7 @@
         >
     
     
-    <Window.InputBindings>
-        <KeyBinding Command="{Binding NavCommand}" CommandParameter="home" Key="D1" Modifiers="Control"/>
-        <KeyBinding Command="{Binding NavCommand}" CommandParameter="table" Key="D2" Modifiers="Control"/>
-        <KeyBinding Command="{Binding NavCommand}" CommandParameter="grid" Key="D3" Modifiers="Control"/>
-        <KeyBinding Command="{Binding NavCommand}" CommandParameter="graph" Key="D4" Modifiers="Control"/>
-        <KeyBinding Command="{Binding ExitCommand}" Key="Esc"/>
-    </Window.InputBindings>
+   
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
@@ -41,7 +35,17 @@
         </DataTemplate>
     </Window.Resources>
 
-    
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="home" Key="D1" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="table" Key="D2" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="grid" Key="D3" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="graph" Key="D4" Modifiers="Control"/>
+        <KeyBinding Command="{Binding ToggleCommand}" Key="H" Modifiers="Control"/>
+        <KeyBinding Command="{Binding ExitCommand}" Key="Esc"/>
+
+    </Window.InputBindings>
+
+
 
     <Grid>
 
@@ -71,36 +75,45 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
-            <Button Margin="10" Name="HomeButton" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="home">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Margin="10" Name="HomeButton" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="home" ToolTip="Go to home page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Home" FontSize="25"/>
                     <TextBlock Text="Home" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
 
-            <Button Margin="10" Name="TableButton" Grid.Row="1" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="table">
+            <Rectangle Grid.Column="1" Fill="{Binding Colors[0]}" Margin="10"> </Rectangle>
+            <Rectangle Grid.Column="1" Grid.Row="1" Fill="{Binding Colors[1]}" Margin="10"> </Rectangle>
+            <Rectangle Grid.Column="1" Grid.Row="2" Fill="{Binding Colors[2]}" Margin="10"> </Rectangle>
+            <Rectangle Grid.Column="1" Grid.Row="3" Fill="{Binding Colors[3]}" Margin="10"> </Rectangle>
+
+            <Button Margin="10" Name="TableButton" Grid.Row="1" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="table" ToolTip="Go to trable page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Table" FontSize="25"/>
                     <TextBlock Text="Table" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
 
-            <Button Margin="10" Name="GridButton" Grid.Row="2" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="grid">
+            <Button Margin="10" Name="GridButton" Grid.Row="2" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="grid" ToolTip="Go to grid page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Th" FontSize="25"/>
                     <TextBlock Text="Grid" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button Margin="10" Name="GraphButton" Grid.Row="3" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="graph">
+            <Button Margin="10" Name="GraphButton" Grid.Row="3" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="graph" ToolTip="Go to graphic page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_ChartPie" FontSize="25"/>
-                    <TextBlock Text="Graph" FontSize="15" FontWeight="Bold"/>
+                    <TextBlock Text="Graphic" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button Margin="10" Name="HelpButton" Grid.Row="4" Background="{StaticResource LightBlueBrush}" Command="{Binding ExitCommand}">
+            <Button Margin="10" Name="HelpButton" Grid.Row="4" Cursor="Hand" Background="{StaticResource LightBlueBrush}" Command="{Binding ExitCommand}">
                 <StackPanel Orientation="Vertical">
-                    <fa5:FontAwesome Icon="Regular_TimesCircle" FontSize="30"/>
+                    <fa5:FontAwesome Icon="Solid_PowerOff" FontSize="30"/>
                     <TextBlock Text="Exit" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
@@ -116,7 +129,7 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Help" FontSize="20" Foreground="White" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
-                <ToggleButton  Content="{Binding ToggleText}" Background="White" Foreground="{StaticResource DarkBlueBrush}" FontSize="15" FontWeight="Bold" Width="60" Height="40" IsChecked="{Binding IsToggled}" Margin="5,12,0,0" VerticalAlignment="Center"/>
+                <ToggleButton Cursor="Hand" Style="{StaticResource ToggleButtonStyle1}" Background="White" Foreground="{StaticResource DarkBlueBrush}" FontSize="15" FontWeight="Bold" IsChecked="{Binding IsToggled}" Margin="5,12,0,0" VerticalAlignment="Center" />
             </StackPanel>
             <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="{Binding ColspanFrame}" Margin="8,3,8,7" BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="1" >
             <ContentControl   x:Name="ContentControl" Content="{Binding CurrentViewModel}" />

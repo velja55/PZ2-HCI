@@ -13,10 +13,12 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
@@ -25,7 +27,7 @@ namespace NetworkService.ViewModel
 {
     public class MainWindowViewModel:BindableBase
     {
-        private int count = 2; // Inicijalna vrednost broja objekata u sistemu
+        private int count = 4; // Inicijalna vrednost broja objekata u sistemu
                                 // ######### ZAMENITI stvarnim brojem elemenata
                                 //           zavisno od broja entiteta u listi
         HomeViewModel homeView;
@@ -36,6 +38,21 @@ namespace NetworkService.ViewModel
         private string colspanFrame;
         ObservableCollection<string> TimeForGraph = new ObservableCollection<string>();
         private NotificationManager notificationManager;
+
+        private Style styleWithTips;
+        private Style styleNoTips;
+
+
+        private ObservableCollection<string> colors = new ObservableCollection<string>() { "#2B55FF", "White", "White", "White" };
+
+        public ObservableCollection<string> Colors { 
+            get { return colors; }
+            set {
+                colors = value;
+                OnPropertyChanged(nameof(Colors));
+            }
+        }
+
 
 
         ObservableCollection<string> HomeHelpers= new ObservableCollection<string>
@@ -109,6 +126,20 @@ namespace NetworkService.ViewModel
         }
 
 
+        private string toolTipVisibility;
+
+        public string ToolTipVisibility
+        {
+            get { return toolTipVisibility; }
+            set
+            {
+                toolTipVisibility = value;
+                OnPropertyChanged(nameof(ToolTipVisibility));
+            }
+        }
+
+
+
         public bool IsToggled
         {
             get => _isToggled;
@@ -117,13 +148,17 @@ namespace NetworkService.ViewModel
                 _isToggled = value;
                 OnPropertyChanged(nameof(IsToggled));
                 ColspanFrame = _isToggled ? "2" : "1";
-                ToggleText = _isToggled ? "ON" : "OFF";
                 HelpWidth = _isToggled ? "0" : "200";
                 Messenger.Default.Send<bool>(_isToggled);
+                string send;
+                send = _isToggled ? "False" : "True";
+                ToolTipVisibility = send;
+                Messenger.Default.Send<string>(send);
             }
         }
 
-        
+
+
 
 
         private string title;
@@ -187,9 +222,9 @@ namespace NetworkService.ViewModel
         public MainWindowViewModel()
         {
             createListener(); //Povezivanje sa serverskom aplikacijom
-        
-            ListEntities.pressureInVentils.Add(new PressureInVentil(0, "Cable1","Cable sensor", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg"));
-            ListEntities.pressureInVentils.Add(new PressureInVentil(1, "Digital1", "Digital manometar", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
+        /*
+            ListEntities.pressureInVentils.Add();
+            ListEntities.pressureInVentils.Add();*/
             /* ListEntities.pressureInVentils.Add(new PressureInVentil(3, "Digital2", "Digital manometar", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
              ListEntities.pressureInVentils.Add(new PressureInVentil(4, "Cable2", "Cable sensor", "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg"));
          */
@@ -205,9 +240,24 @@ namespace NetworkService.ViewModel
             HelpItems = HomeHelpers;
             NavCommand = new MyICommand<string>(OnNav);
             ExitCommand = new MyICommand(OnExit);
+            MainWindowDelete = new MyICommand(OnDelete);
             Messenger.Default.Register<NotificationContent>(this, ShowToastNotification);
             notificationManager = new NotificationManager();
+            ToggleCommand = new MyICommand(OnToggle);
 
+
+        }
+
+        private void OnDelete()
+        {
+            if (CurrentViewModel == TableView) {
+                TableView.DeleteCommand.Execute(null);
+            }
+        }
+
+        private void OnToggle()
+        {
+            IsToggled=!IsToggled;
         }
 
         private void OnExit()
@@ -268,37 +318,50 @@ namespace NetworkService.ViewModel
 
                             string incomingId = incomming.Substring(incomming.IndexOf('_') + 1, 1);
                             int rbr = int.Parse(incomingId);
-                            int entityId = ListEntities.pressureInVentils[rbr].Id;
-                            double value = double.Parse(incomming.Substring(incomming.IndexOf(':') + 1));
 
-                            foreach (PressureInVentil p in ListEntities.pressureInVentils)
-                            {
-                                if (entityId == p.Id)
-                                {
-                                    p.Value = value;
-                                    p.lastFive[p.Brojac % 5] = value;
-                                   
-                                    DateTime now = DateTime.Now;
 
-                                    TimeSpan timePart = now.TimeOfDay;
-
-                                  
-                                    string timeString = timePart.ToString(@"hh\:mm\:ss");
-                                    p.lastFiveTime[p.Brojac % 5] = timeString;
-                                    p.Brojac++;
-                                    Messenger.Default.Send<PressureInVentil>(p);
-                                  
-                                    using (StreamWriter sr = File.AppendText("Log.txt"))
-                                    {
-                                        
-                                        sr.WriteLine($"{DateTime.Now},{p.Id},{value}");
-                                    }
-
+                            bool isDeleted = true;
+                            foreach (PressureInVentil p in ListEntities.pressureInVentils) {
+                                if (p.Id == rbr) { 
+                                    isDeleted = false; 
                                     break;
                                 }
                             }
 
+                            if (!isDeleted)
+                            {
+                                PressureInVentil pr = ListEntities.pressureInVentils.ToList().Find(x => x.Id == rbr);
+                                int entityId = pr.Id;
+                                double value = double.Parse(incomming.Substring(incomming.IndexOf(':') + 1));
 
+                                foreach (PressureInVentil p in ListEntities.pressureInVentils)
+                                {
+                                    if (entityId == p.Id)
+                                    {
+                                        p.Value = value;
+                                        p.lastFive[p.Brojac % 5] = value;
+
+                                        DateTime now = DateTime.Now;
+
+                                        TimeSpan timePart = now.TimeOfDay;
+
+
+                                        string timeString = timePart.ToString(@"hh\:mm\:ss");
+                                        p.lastFiveTime[p.Brojac % 5] = timeString;
+                                        p.Brojac++;
+                                        Messenger.Default.Send<PressureInVentil>(p);
+
+                                        using (StreamWriter sr = File.AppendText("Log.txt"))
+                                        {
+
+                                            sr.WriteLine($"{DateTime.Now},{p.Id},{value}");
+                                        }
+
+                                        break;
+                                    }
+                                }
+
+                            }
 
                         }
                     }, null);
@@ -313,6 +376,9 @@ namespace NetworkService.ViewModel
         public MyICommand<string> NavCommand { get; private set; }
         public ICommand ExitCommand { get; set; }
 
+        public ICommand ToggleCommand { get; set; }
+        public ICommand MainWindowDelete { get; set; }
+
         private void OnNav(string destination)
         {
             switch (destination)
@@ -321,21 +387,37 @@ namespace NetworkService.ViewModel
                     CurrentViewModel = homeView;
                     Title = "HOME VIEW";
                     HelpItems = HomeHelpers;
+                    Colors[0] = "#2B55FF";
+                    Colors[1] = "White";
+                    Colors[2] = "White";
+                    Colors[3] = "White";
                     break;
                 case "table":
                     CurrentViewModel = tableView;
                     Title = "TABLE VIEW";
                     HelpItems = TableHelpers;
+                    Colors[1] = "#2B55FF";
+                    Colors[0] = "White";
+                    Colors[2] = "White";
+                    Colors[3] = "White";
                     break;
                 case "grid":
                     CurrentViewModel = gridView;
                     Title = "GRID VIEW";
+                    Colors[2] = "#2B55FF";
+                    Colors[1] = "White";
+                    Colors[0] = "White";
+                    Colors[3] = "White";
                     HelpItems = GridHelpers;
                     break;
                 case "graph":
                     CurrentViewModel = graphView;
                     Title = "GRAPH VIEW";
                     HelpItems = GridHelpers;
+                    Colors[3] = "#2B55FF";
+                    Colors[1] = "White";
+                    Colors[2] = "White";
+                    Colors[0] = "White";
                     break;
             }
         }
