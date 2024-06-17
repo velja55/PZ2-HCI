@@ -3,32 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\fax3.godina\\2.semestar\\hci\\pz2-git\\pz2-hci\\networkservice\\networkservice\\networkservice\\viewmodel\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\model\\displayline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\displayline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\model\\listentities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\listentities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\viewmodel\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\fax3.godina\\2.semestar\\hci\\pz2-git\\pz2-hci\\networkservice\\networkservice\\networkservice\\views\\gridview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\views\\gridview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\views\\gridview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\fax3.godina\\2.semestar\\hci\\pz2-git\\pz2-hci\\networkservice\\networkservice\\networkservice\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\fax3.godina\\2.semestar\\hci\\pz2-git\\pz2-hci\\networkservice\\networkservice\\networkservice\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\fax3.godina\\2.semestar\\hci\\pz2-git\\pz2-hci\\networkservice\\networkservice\\networkservice\\viewmodel\\tableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\viewmodel\\tableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\tableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\fax3.godina\\2.semestar\\hci\\pz2-git\\pz2-hci\\networkservice\\networkservice\\networkservice\\views\\tableview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\views\\tableview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\views\\tableview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\fax3.godina\\2.semestar\\hci\\pz2-git\\pz2-hci\\networkservice\\networkservice\\networkservice\\views\\graphview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\views\\graphview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\model\\pressureinventil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\pressureinventil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\networkservice\\model\\entitiesbytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\entitiesbytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,94 +50,129 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "GridViewModel.cs",
               "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GridViewModel.cs",
               "RelativeDocumentMoniker": "NetworkService\\ViewModel\\GridViewModel.cs",
               "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GridViewModel.cs",
               "RelativeToolTip": "NetworkService\\ViewModel\\GridViewModel.cs",
-              "ViewState": "AQIAAJgBAAAAAAAAAAAwwMYBAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T15:48:30.262Z",
+              "WhenOpened": "2024-06-06T11:51:57.6Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MainWindowViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "ViewState": "AQIAAO0AAAAAAAAAAAAswBABAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T15:38:40.817Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TableViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\TableViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\TableViewModel.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\TableViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\TableViewModel.cs",
-              "ViewState": "AQIAAOsBAAAAAAAAAAAuwAgCAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T15:33:31.954Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TableView.xaml",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\TableView.xaml",
-              "RelativeDocumentMoniker": "NetworkService\\Views\\TableView.xaml",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\TableView.xaml",
-              "RelativeToolTip": "NetworkService\\Views\\TableView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-05T15:24:13.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "GridView.xaml",
               "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\GridView.xaml",
               "RelativeDocumentMoniker": "NetworkService\\Views\\GridView.xaml",
               "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\GridView.xaml",
               "RelativeToolTip": "NetworkService\\Views\\GridView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-05T15:21:05.497Z",
+              "WhenOpened": "2024-06-05T19:33:16.82Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
+              "Title": "TableView.xaml",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\TableView.xaml",
+              "RelativeDocumentMoniker": "NetworkService\\Views\\TableView.xaml",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\TableView.xaml",
+              "RelativeToolTip": "NetworkService\\Views\\TableView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-05T21:47:40.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TableViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\TableViewModel.cs",
+              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\TableViewModel.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\TableViewModel.cs",
+              "RelativeToolTip": "NetworkService\\ViewModel\\TableViewModel.cs",
+              "ViewState": "AQIAAFYCAAAAAAAAAADwv1wCAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T20:55:08.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ListEntities.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\ListEntities.cs",
+              "RelativeDocumentMoniker": "NetworkService\\Model\\ListEntities.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\ListEntities.cs",
+              "RelativeToolTip": "NetworkService\\Model\\ListEntities.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAwFoAAABxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T20:53:37.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EntitiesByType.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\EntitiesByType.cs",
+              "RelativeDocumentMoniker": "NetworkService\\Model\\EntitiesByType.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\EntitiesByType.cs",
+              "RelativeToolTip": "NetworkService\\Model\\EntitiesByType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:36:36.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
+              "RelativeToolTip": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
+              "ViewState": "AQIAANsAAAAAAAAAAADwv4sAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:35:07.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DisplayLine.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\DisplayLine.cs",
+              "RelativeDocumentMoniker": "NetworkService\\Model\\DisplayLine.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\DisplayLine.cs",
+              "RelativeToolTip": "NetworkService\\Model\\DisplayLine.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:43:47.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\MainWindow.xaml",
               "RelativeDocumentMoniker": "NetworkService\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\MainWindow.xaml",
               "RelativeToolTip": "NetworkService\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-05T15:19:47.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-05T19:37:16.063Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GraphView.xaml",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\GraphView.xaml",
-              "RelativeDocumentMoniker": "NetworkService\\Views\\GraphView.xaml",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Views\\GraphView.xaml",
-              "RelativeToolTip": "NetworkService\\Views\\GraphView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-05T15:19:42.797Z",
-              "EditorCaption": ""
+              "DocumentIndex": 8,
+              "Title": "PressureInVentil.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\PressureInVentil.cs",
+              "RelativeDocumentMoniker": "NetworkService\\Model\\PressureInVentil.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2-git\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Model\\PressureInVentil.cs",
+              "RelativeToolTip": "NetworkService\\Model\\PressureInVentil.cs",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T19:36:40.26Z"
             }
           ]
         }

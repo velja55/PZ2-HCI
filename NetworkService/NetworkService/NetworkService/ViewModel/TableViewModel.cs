@@ -368,7 +368,7 @@ namespace NetworkService.ViewModel
             bool addt = true;
 
             if (ID.Equals("") || ID.Equals("Input id here")) {
-                IdErrorLabel = "Field not correctly filed";
+                IdErrorLabel = "Id can't be emty!";
                 BorderBrushId = "Red";
                 addi = false;
                 
@@ -381,7 +381,7 @@ namespace NetworkService.ViewModel
 
             if (NameText.Equals("") || NameText.Equals("Input name here"))
             {
-                NameErrorLabel = "Field not correctly filed";
+                NameErrorLabel = "Name can't be emty!";
                 addn = false;
                 BorderBrushName = "Red";
                 
@@ -434,11 +434,11 @@ namespace NetworkService.ViewModel
             {
                 if (TypeText.Equals("Cable sensor"))
                 {
-                    path = "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg";
+                    path = "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg";
                 }
                 else
                 {
-                    path = "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg";
+                    path = "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg";
                 }
 
                 PressureInVentil p = ListEntities.pressureInVentils.ToList().Find(x => x.Id == res);
@@ -464,6 +464,7 @@ namespace NetworkService.ViewModel
 
 
                     Messenger.Default.Send<NotificationContent>(notificationContent);
+                    Messenger.Default.Send<int>(1);
                     ResetFormFields();
                 }
                 else
@@ -520,7 +521,7 @@ namespace NetworkService.ViewModel
 
             if (SearchText.Equals("") || SearchText.Equals("Input search here"))
             {
-                SearchErrorLabel = "Input somenthing in search";
+                SearchErrorLabel = "Search input can't be empty!";
                 BorderBrushSearch = "Red";
                 var notificationContent = new NotificationContent
                 {
@@ -601,7 +602,7 @@ namespace NetworkService.ViewModel
         {
             if (SelectedEntity != null)
             {
-                if (System.Windows.MessageBox.Show($"Are you sure you want to delete entity with id {SelectedEntity.Id}?", "Delete", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (System.Windows.MessageBox.Show($"Are you sure want to delete entity with id {SelectedEntity.Id}?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
 
                     idxDeleted = SelectedEntity.Id;

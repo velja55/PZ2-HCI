@@ -14,13 +14,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Contexts;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media.Media3D;
 
 
 namespace NetworkService.ViewModel
@@ -54,39 +58,20 @@ namespace NetworkService.ViewModel
         }
 
 
+       
 
-        ObservableCollection<string> HomeHelpers= new ObservableCollection<string>
-            {
-                "Help Item 1",
-                "Help Item 2",
-                "Help Item 3"
-            };
+        private string help;
 
-
-
-
-        ObservableCollection<string> GridHelpers = new ObservableCollection<string>
-            {
-                "Grid Help Item 1",
-                "Grid Help Item 2",
-                "Help Item 3"
-            };
-
-
-        ObservableCollection<string> TableHelpers = new ObservableCollection<string>
-            {
-                "Table Help Item 1",
-                "Table Help Item 2",
-                "Table Item 3"
-            };
-
-
-        private ObservableCollection<string> _helpItems;
-        public ObservableCollection<string> HelpItems
+        public string Help
         {
-            get { return _helpItems; }
-            set { _helpItems = value; OnPropertyChanged(nameof(HelpItems)); }
+            get { return help; }
+            set { help = value;
+                OnPropertyChanged(nameof(Help));
+            }
         }
+
+
+
 
         private bool _isToggled;
         private string toggleText;
@@ -237,7 +222,20 @@ namespace NetworkService.ViewModel
             CurrentViewModel = homeView;
             Title = "HOME VIEW";
             ToggleText = "OFF";
-            HelpItems = HomeHelpers;
+            Help = "To go to the table page press\n the TABLE button\n" +
+                 "-------------------------\n" +
+                "To go to the grid page press\n the GRID button\n" +
+                 "-------------------------\n" +
+                "To go to the graphic page press\n the GRAPHIC button\n" +
+                 "-------------------------\n" +
+                "To exit from app press\n EXIT button\n" +
+                    "\nSHORTCUTS\n" +
+                "\nHome Ctrl+1\n" +
+                "Table Ctrl+2\n" +
+                "Grid Ctrl+3\n" +
+                "Graphic Ctrl+4\n" +
+                "Trn off help Ctrl+H\n" +
+                "Exit Esc";
             NavCommand = new MyICommand<string>(OnNav);
             ExitCommand = new MyICommand(OnExit);
             MainWindowDelete = new MyICommand(OnDelete);
@@ -370,8 +368,15 @@ namespace NetworkService.ViewModel
 
             listeningThread.IsBackground = true;
             listeningThread.Start();
+            Messenger.Default.Register<int>(this,OnAdd);
         }
 
+        private void OnAdd(int obj)
+        {
+            count += 1;
+        }
+
+        
 
         public MyICommand<string> NavCommand { get; private set; }
         public ICommand ExitCommand { get; set; }
@@ -386,20 +391,52 @@ namespace NetworkService.ViewModel
                 case "home":
                     CurrentViewModel = homeView;
                     Title = "HOME VIEW";
-                    HelpItems = HomeHelpers;
+                   
                     Colors[0] = "#2B55FF";
                     Colors[1] = "White";
                     Colors[2] = "White";
                     Colors[3] = "White";
+                    Help = "To go to the table page press\n the TABLE button\n" +
+                 "-------------------------\n" +
+                "To go to the grid page press\n the GRID button\n" +
+                 "-------------------------\n" +
+                "To go to the graphic page press\n the GRAPHIC button\n" +
+                 "-------------------------\n" +
+                "To exit from app press\n EXIT button\n" +
+                    "\nSHORTCUTS\n" +
+                "\nHome Ctrl+1\n" +
+                "Table Ctrl+2\n" +
+                "Grid Ctrl+3\n" +
+                "Graphic Ctrl+4\n" +
+                "Trn off help Ctrl+H\n" +
+                "Exit Esc";
                     break;
                 case "table":
                     CurrentViewModel = tableView;
                     Title = "TABLE VIEW";
-                    HelpItems = TableHelpers;
+                    
                     Colors[1] = "#2B55FF";
                     Colors[0] = "White";
                     Colors[2] = "White";
                     Colors[3] = "White";
+                    Help = "To delete entity you need to\nselect it from table\nand press DELETE button\n" +
+               "------------------------------------\n" +
+                            "To serach entities you need to\nchose do you want \nto seach by type or name\nand type text in search input\nand press button SEARCH\n"+
+               "-------------------------------------\n" +
+                             "To restore table in previus state\npress button RESET SEARCH\n"+
+               "--------------------------------------\n" +
+               "To Add new entity you need \nto input all information of entity\nand Press ADD button\n"+
+               "--------------------------------------\n" +
+
+                  "\nSHORTCUTS\n" +
+              "\nHome Ctrl+1\n" +
+              "Table Ctrl+2\n" +
+              "Grid Ctrl+3\n" +
+              "Graphic Ctrl+4\n" +
+              "Trn off help Ctrl+H\n" +
+              "Exit Esc";
+
+
                     break;
                 case "grid":
                     CurrentViewModel = gridView;
@@ -408,16 +445,39 @@ namespace NetworkService.ViewModel
                     Colors[1] = "White";
                     Colors[0] = "White";
                     Colors[3] = "White";
-                    HelpItems = GridHelpers;
+                    Help = "Select entity from tree view and\n put on the network.\n" +
+               "--------------------------------------\n" +
+                           "You can change  position of \nentity on the grid.\nDrag and drop from canvas \nto another canvas.\n" +
+                "--------------------------------------\n" +
+                "To connect the entities \nin grid you have to\nhold the right click\nand drag to the desired one.\n" +
+                "--------------------------------------\n" +
+                "To delete entities from grid\npress button x on right \ntop of canvas,\n" +
+                "--------------------------------------\n" +
+                "\nSHORTCUTS\n" +
+                "\nHome Ctrl+1\n" +
+                "Table Ctrl+2\n" +
+                "Grid Ctrl+3\n" +
+                "Graphic Ctrl+4\n" +
+                "Trn off help Ctrl+H\n" +
+                "Exit Esc";
                     break;
                 case "graph":
                     CurrentViewModel = graphView;
                     Title = "GRAPH VIEW";
-                    HelpItems = GridHelpers;
+                   
                     Colors[3] = "#2B55FF";
                     Colors[1] = "White";
                     Colors[2] = "White";
                     Colors[0] = "White";
+                    Help="To see five last mesurements and\n theirs values you need to select \nentity from Combobox\n"
+                    + "--------------------------------------\n" +
+                "\nSHORTCUTS\n" +
+                "\nHome Ctrl+1\n" +
+                "Table Ctrl+2\n" +
+                "Grid Ctrl+3\n" +
+                "Graphic Ctrl+4\n" +
+                "Trn off help Ctrl+H\n" +
+                "Exit Esc";
                     break;
             }
         }

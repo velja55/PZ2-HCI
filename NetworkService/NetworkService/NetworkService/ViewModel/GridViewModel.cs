@@ -6,6 +6,7 @@ using NetworkService.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -16,7 +17,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace NetworkService.ViewModel
@@ -24,12 +25,23 @@ namespace NetworkService.ViewModel
     public class GridViewModel : BindableBase
     {
 
+        
+        private List<Point> points=ListEntities.points;
+
+        private bool addPoints=ListEntities.addPoints;
+        public ObservableCollection<DisplayLine> LinesOnDisplay { get; set; }
+
+
         private ObservableCollection<PressureInVentil> entities;
         private ObservableCollection<PressureInVentil> sourceCollection;//za brisanje
 
         private int sourceCanvas=-1;
 
         public bool dragging;
+
+
+        private int drawSource = -1;
+        private int drawTarget = -1;
 
         PressureInVentil draggedItem;
         public int draggingSourceIndex = -1;
@@ -135,6 +147,9 @@ namespace NetworkService.ViewModel
         public ICommand MouseLeftButtonDownCanvas { get; set; }
         public ICommand MouseLeftButtonUpGrid { get; set; }
 
+        public ICommand StarDraw { get; set; }
+        public ICommand EndDraw { get; set; }
+
 
 
         public GridViewModel()
@@ -143,7 +158,7 @@ namespace NetworkService.ViewModel
 
             dragging = false;
             SelectionChanged = new MyICommand<object>(OnSelectionChanged);
-           
+
             MouseLeftButtonUp = new MyICommand(OnMouseLeftButtonUp);
             DragOver = new MyICommand<DragEventArgs>(OnDragOver);
             Drop = new MyICommand<object>(OnDrop);
@@ -155,23 +170,25 @@ namespace NetworkService.ViewModel
             BorderBrushes = new ObservableCollection<string>();
             GridBackgrounds = new ObservableCollection<string>();
             MouseLeftButtonDownCanvas = new MyICommand<object>(OnMouseLeftButtonDownCanvas);
-            
+
+            StarDraw = new MyICommand<string>(OnStartDraw);
+            EndDraw = new MyICommand<string>(OnEndDraw);
 
 
             EntitiesByType digitalEntities = ListEntities.digitalEntities;
             EntitiesByType cableEntities = ListEntities.cableEntities;
             sourceCollections = new List<int>();
+            LinesOnDisplay = ListEntities.LinesOnDisplay;
 
-
-              CollectionCanvas=ListEntities.collectionCanvas;
-            SelectedId=ListEntities.selectedId;
-            SelectedValue=ListEntities.selectedValue;
-            objectsOnCanvas =ListEntities.objectsOnCanvas;
+            CollectionCanvas = ListEntities.collectionCanvas;
+            SelectedId = ListEntities.selectedId;
+            SelectedValue = ListEntities.selectedValue;
+            objectsOnCanvas = ListEntities.objectsOnCanvas;
             sourceCollections = ListEntities.sourceColections;
-            BorderBrushes=ListEntities.borderBrushes;
-            GridBackgrounds=ListEntities.GridBackgrounds;
+            BorderBrushes = ListEntities.borderBrushes;
+            GridBackgrounds = ListEntities.GridBackgrounds;
             originalIndexs = ListEntities.originalIndexes;
-            EntitiesByTypes =ListEntities.EntitiesByTypes;
+            EntitiesByTypes = ListEntities.EntitiesByTypes;
 
 
 
@@ -182,7 +199,7 @@ namespace NetworkService.ViewModel
                 {
                     PressureInVentil p = digitalEntities.Pressures.ToList().Find(x => x.Id == entity.Id);
                     PressureInVentil po = objectsOnCanvas.ToList().Where(x => x != null).FirstOrDefault(x => x.Id == entity.Id);
-                    if (p == null && po==null)
+                    if (p == null && po == null)
                     {
                         digitalEntities.Pressures.Add(entity);
                     }
@@ -191,7 +208,7 @@ namespace NetworkService.ViewModel
                 {
                     PressureInVentil p = cableEntities.Pressures.ToList().Find(x => x.Id == entity.Id);
                     PressureInVentil po = objectsOnCanvas.ToList().ToList().Where(x => x != null).FirstOrDefault(x => x.Id == entity.Id);
-                    if (p == null && po==null)
+                    if (p == null && po == null)
                     {
                         cableEntities.Pressures.Add(entity);
                     }
@@ -200,10 +217,96 @@ namespace NetworkService.ViewModel
 
 
             }
-          
+
+
+            //definisanje tacke za linije
+            if (addPoints)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        Point p = new Point(46 + j * 116, 60 + i * 165);
+                        points.Add(p);
+                    }
+                }
+                addPoints = false;
+            }
+
+            //points sadrzi sve potrebne koordinate
+
+
             
             Messenger.Default.Register<PressureInVentil>(this, UpdateValueOnCanvas);
             Messenger.Default.Register<int>(this, DeleteonCanvasAndView);
+        }
+
+        private void OnStartDraw(string value)
+        {
+            int index = int.Parse(value);
+
+            //ako nemamo tamo nigde, nemozemo ni da napravimo liniju
+            if(objectsOnCanvas[index] == null)
+            {
+                drawSource = -1;
+                drawTarget = -1;
+                return;
+            }
+
+
+            //resetovanje prethodni vrednosti
+            drawSource = -1;
+            drawTarget = -1;
+
+            drawSource = index;
+        }   
+        
+        private void OnEndDraw(string value)
+        {
+            int index = int.Parse(value);
+            //ako nemamo tamo nigde, ne mozemo ni da napravimo liniju
+            if (objectsOnCanvas[index] == null)
+            {
+                drawSource = -1;
+                drawTarget = -1;
+                return;
+            }
+
+            if (drawSource == -1 || index==-1) 
+            {
+                return;
+            }
+
+            Point startPoint=points.ElementAt(drawSource);
+            Point endPoint=points.ElementAt(index);
+
+            DisplayLine todelete = null;
+
+            foreach(DisplayLine d in LinesOnDisplay)
+            {
+
+                if(d.Y1==startPoint.Y && d.X1==startPoint.X && d.X2==endPoint.X && d.Y2 == endPoint.Y)
+                {
+                    todelete = d; 
+                    break;    
+                }
+                else if(d.Y1== endPoint.Y && d.X1== endPoint.X && d.X2==startPoint.X && d.Y2 == startPoint.Y)
+                {
+                    todelete = d; 
+                    break;    
+                }
+            }
+
+            if (todelete != null)
+            {
+                LinesOnDisplay.Remove(todelete);
+                return;
+            }
+
+            DisplayLine dl = new DisplayLine(startPoint.X, endPoint.X, startPoint.Y, endPoint.Y);
+
+            LinesOnDisplay.Add(dl);          
+
         }
 
         private void DeleteonCanvasAndView(int obj)
@@ -227,7 +330,29 @@ namespace NetworkService.ViewModel
                 {
                     if (pr.Id == obj)
                     {
-                       
+                        Point point = points.ElementAt(index);
+
+                        List<DisplayLine> toDeleteLine = new List<DisplayLine>();
+
+                        foreach (DisplayLine d in LinesOnDisplay)
+                        {
+                            if (d.X1 == point.X && d.Y1 == point.Y)
+                            {
+                                toDeleteLine.Add(d);
+                            }
+                            else if (d.X2 == point.X && d.Y2 == point.Y)
+                            {
+                                toDeleteLine.Add(d);
+
+                            }
+                        }
+
+                        foreach (DisplayLine dl in toDeleteLine)
+                        {
+                            LinesOnDisplay.Remove(dl);
+                        }
+
+
                         selectedId[index] = "";
                         selectedValue[index] = "";
                         objectsOnCanvas[index] = null;
@@ -284,7 +409,11 @@ namespace NetworkService.ViewModel
                     SelectedId[index] = draggedItem.Id.ToString();
                     SelectedValue[index] = draggedItem.Value.ToString();
                     GridBackgrounds[index] = "LightSteelBlue";
-                    sourceCollection.Remove(draggedItem);
+
+                    if (sourceCollection != null)
+                    {
+                        sourceCollection.Remove(draggedItem);
+                    }
                     if (draggedItem.Type.Equals("Cable sensor"))
                     {
                         sourceCollections[index] = 1;
@@ -302,7 +431,31 @@ namespace NetworkService.ViewModel
 
                     if (sourceCanvas!=-1)
                     {
-                        index=sourceCanvas;
+
+
+                        Point newPoint = points.ElementAt(index);
+                        Point point = points.ElementAt(sourceCanvas);
+
+
+                        foreach (DisplayLine d in LinesOnDisplay)
+                        {
+                            if (d.X1 == point.X && d.Y1 == point.Y)
+                            {
+                                d.X1 = newPoint.X;
+                                d.Y1 = newPoint.Y;
+                            }
+                            else if (d.X2 == point.X && d.Y2 == point.Y)
+                            {
+                                d.X2 = newPoint.X;
+                                d.Y2 = newPoint.Y;
+
+                            }
+                        }
+
+
+
+
+                        index =sourceCanvas;
                         selectedId[index] = "";
                         selectedValue[index] = "";
                         objectsOnCanvas[index] = null;
@@ -384,6 +537,29 @@ namespace NetworkService.ViewModel
                     EntitiesByTypes[1].Pressures.Add(objectsOnCanvas[index]);
                     SortObservableCollectionDescending(EntitiesByTypes[1].Pressures);
                 }
+
+                Point point = points.ElementAt(index);
+
+                List<DisplayLine> toDeleteLine = new List<DisplayLine>();
+
+                foreach (DisplayLine d in LinesOnDisplay)
+                {
+                    if (d.X1 == point.X && d.Y1 == point.Y)
+                    {
+                        toDeleteLine.Add(d);
+                    }
+                    else if (d.X2 == point.X && d.Y2 == point.Y)
+                    {
+                        toDeleteLine.Add(d);
+
+                    }
+                }
+
+                foreach(DisplayLine dl in toDeleteLine)
+                {
+                    LinesOnDisplay.Remove(dl);
+                }
+
                 sourceCollections[index] = -1;
                 originalIndexs[index] = -1;
                 objectsOnCanvas[index] = null;
@@ -450,5 +626,9 @@ namespace NetworkService.ViewModel
             }
         }
 
+
+        
     }
+
 }
+

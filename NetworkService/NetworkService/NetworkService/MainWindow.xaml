@@ -9,9 +9,11 @@
         xmlns:views="clr-namespace:NetworkService.Views"
         xmlns:fa5="http://schemas.fontawesome.com/icons/" xmlns:notifications="clr-namespace:Notification.Wpf.Controls;assembly=Notification.Wpf"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="600" Width="1000"
         Background="{StaticResource BlueBrush}"
-        
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         >
     
     
@@ -80,7 +82,8 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Margin="10" Name="HomeButton" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="home" ToolTip="Go to home page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
+            <Button Margin="10" Name="HomeButton" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="home" ToolTip="Go to home page" 
+                    ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_Home" FontSize="25"/>
                     <TextBlock Text="Home" FontSize="15" FontWeight="Bold"/>
@@ -111,7 +114,7 @@
                     <TextBlock Text="Graphic" FontSize="15" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button Margin="10" Name="HelpButton" Grid.Row="4" Cursor="Hand" Background="{StaticResource LightBlueBrush}" Command="{Binding ExitCommand}">
+            <Button Margin="10" Name="HelpButton" Grid.Row="4" Cursor="Hand" ToolTip="Exit from app" ToolTipService.IsEnabled="{Binding ToolTipVisibility}" Background="{StaticResource LightBlueBrush}" Command="{Binding ExitCommand}" >
                 <StackPanel Orientation="Vertical">
                     <fa5:FontAwesome Icon="Solid_PowerOff" FontSize="30"/>
                     <TextBlock Text="Exit" FontSize="15" FontWeight="Bold"/>
@@ -137,13 +140,11 @@
                 <TextBlock Text="{Binding Title}" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Black" Foreground="White"> </TextBlock>
             <StackPanel Background="White" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Margin="7" Width="{Binding HelpWidth}">
                 <TextBlock Text="Help" HorizontalAlignment="Center" FontSize="20"  FontWeight="Bold" Foreground="{StaticResource DarkBlueBrush}"></TextBlock>
-                <ListView ItemsSource="{Binding HelpItems}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding}" Foreground="{StaticResource DarkBlueBrush}" FontSize="15" Margin="5"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+
+                <TextBlock Text="{Binding Help}" Foreground="{StaticResource DarkBlueBrush}" FontSize="13" Margin="5"/>
+                           
+                   
+                
             </StackPanel>
         </Grid>
         

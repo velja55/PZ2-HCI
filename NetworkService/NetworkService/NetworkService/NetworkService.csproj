@@ -84,8 +84,7 @@
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Helpers\Commands.cs" />
     <Compile Include="Helpers\MyICommand.cs" />
-    <Compile Include="Helpers\ValidationBase.cs" />
-    <Compile Include="Helpers\ValidationErrors.cs" />
+    <Compile Include="Model\DisplayLine.cs" />
     <Compile Include="Model\EntitiesByType.cs" />
     <Compile Include="Model\Krug.cs" />
     <Compile Include="Model\ListEntities.cs" />
