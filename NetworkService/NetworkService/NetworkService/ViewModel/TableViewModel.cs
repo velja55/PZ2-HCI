@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 
+//Generalno obrisi svuda usinge koje ne koristis i razmake
+
 
 namespace NetworkService.ViewModel
 {
@@ -268,9 +270,9 @@ namespace NetworkService.ViewModel
             DeleteCommand = new MyICommand(OnDelete);
             LostFocused = new MyICommand<string>(OnLostFocus);
             ClearInputs = new MyICommand(ResetFormFields);
-            ID = "Input id here";
+            ID = "Input id here"; //ove stvari se binduju kroz resourse fajlove guglaj resx :)
             NameText = "Input name here";
-            BorderBrushId = "Black";
+            BorderBrushId = "Black"; // takodje ovo se binduje na xamlu ne ovde
             BorderBrushName = "Black";
             BorderBrushSearch = "Black";
             ColorId = "Gray";
