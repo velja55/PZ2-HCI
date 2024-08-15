@@ -270,7 +270,7 @@ namespace NetworkService.ViewModel
             DeleteCommand = new MyICommand(OnDelete);
             LostFocused = new MyICommand<string>(OnLostFocus);
             ClearInputs = new MyICommand(ResetFormFields);
-            ID = "Input id here"; //ove stvari se binduju kroz resourse fajlove guglaj resx :)
+            ID = NetworkService.Resources.NetworkService.TableViewModel_Id; //ove stvari se binduju kroz resourse fajlove guglaj resx :) Ove stvari se direktno binduju preko resx na XAML
             NameText = "Input name here";
             BorderBrushId = "Black"; // takodje ovo se binduje na xamlu ne ovde
             BorderBrushName = "Black";
@@ -280,7 +280,7 @@ namespace NetworkService.ViewModel
             ColorSearch = "Gray";
 
             Entities = ListEntities.pressureInVentils;
-            Types = new ObservableCollection<string> { "Cable sensor", "Digital manometar" };
+            Types = new ObservableCollection<string> { "Cable sensor", "Digital manometar" };//ovo da bude u resx
 
             Messenger.Default.Register<string>(this,ChangeVisibilityToolTips);
             
@@ -291,7 +291,7 @@ namespace NetworkService.ViewModel
             ToolTipVisibility = obj;
         }
 
-        private void OnLostFocus(string obj)
+        private void OnLostFocus(string obj) //Pogledaj opciju triger event na XAMLu
         {
             if (obj.Equals("id")) {
                 if (ID.Equals("")) {
@@ -360,6 +360,7 @@ namespace NetworkService.ViewModel
         public ICommand LostFocused { get; set; }
         public ICommand ClearInputs { get; set; }
 
+        //Istrazi validatore za xaml
         private void OnAdd()
         {
             string path = "";
@@ -600,6 +601,7 @@ namespace NetworkService.ViewModel
 
         int idxDeleted = -1;
 
+        //Resi svuda spacinge
         private void OnDelete()
         {
             if (SelectedEntity != null)
