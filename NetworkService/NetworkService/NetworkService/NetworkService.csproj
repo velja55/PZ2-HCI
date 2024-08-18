@@ -84,10 +84,13 @@
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Helpers\Commands.cs" />
     <Compile Include="Helpers\MyICommand.cs" />
+    <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Model\DisplayLine.cs" />
     <Compile Include="Model\EntitiesByType.cs" />
     <Compile Include="Model\Krug.cs" />
     <Compile Include="Model\ListEntities.cs" />
+    <Compile Include="Model\NavigationDictionary.cs" />
+    <Compile Include="Model\NavigationElement.cs" />
     <Compile Include="Model\PressureInVentil.cs" />
     <Compile Include="Resources\NetworkService.Designer.cs">
       <AutoGen>True</AutoGen>

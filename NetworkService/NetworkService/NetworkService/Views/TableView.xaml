@@ -58,18 +58,15 @@
                     <RadioButton Name="TypeRadioButton" Content="Type" FontSize="12"  Grid.Row="1" Margin="10,0,10,0" VerticalAlignment="Center" Height="26" IsChecked="{Binding TypeSelected}"/>
                     <RadioButton Name="NameRadioButton" Content="Name" FontSize="12" Margin="10,0,10,0"   Grid.Row="2" VerticalAlignment="Center" Height="27" IsChecked="{Binding NameSelected}"/>
                     <StackPanel Grid.Row="3" Margin="10,5,5,5">
-                        <TextBox  Name="SearchTextBox"    Height="25" Text="{Binding SearchText}" Foreground="{Binding ColorSearch}"  BorderBrush="{Binding BorderBrushSearch}" BorderThickness="1">
+                        <TextBox Name="SearchTextBox" Height="25" Text="{Binding SearchText}" Foreground="{Binding ColorSearch}" BorderBrush="{Binding BorderBrushSearch}" BorderThickness="1">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="GotFocus">
-                                    <i:InvokeCommandAction Command="{Binding Focused}" 
-                                        CommandParameter="search" />
+                                    <i:InvokeCommandAction Command="{Binding Focused}" CommandParameter="search" />
                                 </i:EventTrigger>
                                 <i:EventTrigger EventName="LostFocus">
-                                    <i:InvokeCommandAction Command="{Binding LostFocused}" 
-                                        CommandParameter="search" />
+                                    <i:InvokeCommandAction Command="{Binding LostFocused}" CommandParameter="search" />
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-
                         </TextBox>
                         <Label Content="{Binding SearchErrorLabel}" Foreground="Red"></Label>
                     </StackPanel>

@@ -22,15 +22,38 @@ namespace NetworkService.ViewModel
 {
     public class TableViewModel : BindableBase
     {
+        #region Fields
         private ObservableCollection<PressureInVentil> entities;
         public ObservableCollection<string> Types { get; set; }
-
         private string _idText;
         private string _nameText;
-
         private string _valueText;
         private string _typeText;
-
+        public ICommand AddCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
+        public ICommand ClearCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand Focused { get; set; }
+        public ICommand LostFocused { get; set; }
+        public ICommand ClearInputs { get; set; }
+        private bool typeSelected;
+        private bool nameSelected;
+        private string searchText;
+        private string idErrorLabel;
+        private string nameErrorLabel;
+        private string searchErrorLabel;
+        private string typeErrorLabel;
+        private string colorId;
+        private string colorSearch;
+        private string colorName;
+        private string borderBrushId;
+        private string borderBrushName;
+        private string borderBrushSearch;
+        private string toolTipVisibility;
+        private PressureInVentil selectedEntity;
+        int idxDeleted = -1;
+        #endregion
+        #region Propertys
         public string TypeText
         {
             get { return _typeText; }
@@ -40,7 +63,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(TypeText));
             }
         }
-
 
         public string ValueText
         {
@@ -52,10 +74,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-
-
-
         public string NameText
         {
             get { return _nameText; }
@@ -65,7 +83,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(NameText));
             }
         }
-
 
         public string ID
         {
@@ -77,10 +94,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-
-        private bool nameSelected;
-
         public bool NameSelected
         {
             get { return nameSelected; }
@@ -88,9 +101,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(NameSelected));
             }
         }
-
-
-        private bool typeSelected;
 
         public bool TypeSelected
         {
@@ -100,9 +110,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        private string searchText;
-
         public string SearchText
         {
             get { return searchText; }
@@ -111,7 +118,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
         public ObservableCollection<PressureInVentil> Entities
         {
             get { return entities; }
@@ -119,10 +125,7 @@ namespace NetworkService.ViewModel
                 entities = value;
                 OnPropertyChanged(nameof(Entities));
             }
-
         }
-
-        private string idErrorLabel;
 
         public string IdErrorLabel
         {
@@ -131,9 +134,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(IdErrorLabel));
             }
         }
-
-
-        private string nameErrorLabel;
 
         public string NameErrorLabel
         {
@@ -145,9 +145,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        private string typeErrorLabel;
-
         public string TypeErrorLabel
         {
             get { return typeErrorLabel; }
@@ -157,8 +154,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(TypeErrorLabel));
             }
         }
-
-        private string searchErrorLabel;
 
         public string SearchErrorLabel
         {
@@ -170,8 +165,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private string colorId;
-
         public string ColorId
         {
             get { return colorId; }
@@ -181,8 +174,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(ColorId));
             }
         }
-
-        private string colorSearch;
 
         public string ColorSearch
         {
@@ -194,8 +185,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private string colorName;
-
         public string ColorName
         {
             get { return colorName; }
@@ -205,10 +194,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(ColorName));
             }
         }
-
-
-
-        private string borderBrushId;
 
         public string BorderBrushId
         {
@@ -220,8 +205,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private string borderBrushName;
-
         public string BorderBrushName
         {
             get { return borderBrushName; }
@@ -231,9 +214,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(BorderBrushName));
             }
         }
-
-
-        private string borderBrushSearch;
 
         public string BorderBrushSearch
         {
@@ -245,9 +225,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        private string toolTipVisibility;
-
         public string ToolTipVisibility
         {
             get { return toolTipVisibility; }
@@ -255,37 +232,33 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(ToolTipVisibility));
             }
         }
-
-
-
+        #endregion
         public TableViewModel()
         {
             AddCommand = new MyICommand(OnAdd);
             Focused = new MyICommand<string>(OnFocus);
             TypeSelected = true;
             NameSelected = false;
-            SearchText = "Input search here";
+            
             SearchCommand = new MyICommand(OnSearch);
             ClearCommand = new MyICommand(OnClear);
             DeleteCommand = new MyICommand(OnDelete);
             LostFocused = new MyICommand<string>(OnLostFocus);
             ClearInputs = new MyICommand(ResetFormFields);
-            ID = "Input id here"; //ove stvari se binduju kroz resourse fajlove guglaj resx :)
-            NameText = "Input name here";
-            BorderBrushId = "Black"; // takodje ovo se binduje na xamlu ne ovde
-            BorderBrushName = "Black";
-            BorderBrushSearch = "Black";
-            ColorId = "Gray";
-            ColorName = "Gray";
-            ColorSearch = "Gray";
-
+            ID = Resources.NetworkService.TableViewModel_Id;//"Input id here"; //ove stvari se binduju kroz resourse fajlove guglaj resx :)
+            SearchText = Resources.NetworkService.TableViewModel_Search;
+            NameText = Resources.NetworkService.TableViewModel_Name;
+            BorderBrushId = Resources.NetworkService.BlackColor; // takodje ovo se binduje na xamlu ne ovde
+            BorderBrushName = Resources.NetworkService.BlackColor;
+            BorderBrushSearch = Resources.NetworkService.BlackColor;
+            ColorId = Resources.NetworkService.GrayColor;
+            ColorName = Resources.NetworkService.GrayColor;
+            ColorSearch = Resources.NetworkService.GrayColor;
             Entities = ListEntities.pressureInVentils;
-            Types = new ObservableCollection<string> { "Cable sensor", "Digital manometar" };
-
+            Types = new ObservableCollection<string> { Resources.NetworkService.CableSensorString, Resources.NetworkService.DigitalManometarString };
             Messenger.Default.Register<string>(this,ChangeVisibilityToolTips);
-            
         }
-
+        #region Methods
         private void ChangeVisibilityToolTips(string obj)
         {
             ToolTipVisibility = obj;
@@ -295,8 +268,8 @@ namespace NetworkService.ViewModel
         {
             if (obj.Equals("id")) {
                 if (ID.Equals("")) {
-                    ID = "Input id here";
-                    ColorId = "Gray";
+                    ID = Resources.NetworkService.TableViewModel_Id;
+                    ColorId = Resources.NetworkService.GrayColor;
 
                 }
             }
@@ -304,16 +277,16 @@ namespace NetworkService.ViewModel
             {
                 if (NameText.Equals(""))
                 {
-                    NameText = "Input name here";
-                    ColorName = "Gray";
+                    NameText = Resources.NetworkService.TableViewModel_Name;
+                    ColorName = Resources.NetworkService.GrayColor;
                 }
 
             }else if (obj.Equals("search"))
                 {
                     if (SearchText.Equals(""))
                     {
-                        SearchText = "Input search here";
-                        ColorSearch = "Gray";
+                        SearchText =Resources.NetworkService.TableViewModel_Search;
+                        ColorSearch =Resources.NetworkService.GrayColor;
                     }
 
                 }
@@ -322,234 +295,84 @@ namespace NetworkService.ViewModel
         private void OnFocus(string obj)
         {
             if (obj.Equals("id")) {
-                if (ID.Equals("Input id here")) {
-                    ID = "";
-                    ColorId = "Black";
+                if (ID.Equals(Resources.NetworkService.TableViewModel_Id)) {
+                    ID = String.Empty;
+                    ColorId = Resources.NetworkService.BlackColor;
                 }
             }
             else if (obj.Equals("name"))
             {
-                if (NameText.Equals("Input name here"))
+                if (NameText.Equals(Resources.NetworkService.TableViewModel_Name))
                 {
-                    NameText = "";
-                    ColorName = "Black";
+                    NameText =String.Empty;
+                    ColorName = Resources.NetworkService.BlackColor;
 
                 }
 
             }
             else if (obj.Equals("search"))
             {
-                if (SearchText.Equals("Input search here"))
+                if (SearchText.Equals(Resources.NetworkService.TableViewModel_Search))
                 {
-                    SearchText = "";
-                    ColorSearch = "Black";
+                    SearchText = String.Empty;
+                    ColorSearch = Resources.NetworkService.BlackColor;
 
                 }
 
             }
         }
 
-
-
-
-        public ICommand AddCommand { get; set; }
-        public ICommand SearchCommand { get; set; }
-        public ICommand ClearCommand { get; set; }
-        public ICommand DeleteCommand { get; set; }
-        public ICommand Focused { get; set; }
-        public ICommand LostFocused { get; set; }
-        public ICommand ClearInputs { get; set; }
-
         private void OnAdd()
         {
             string path = "";
-            
+            bool addi = Validator.ValidateId(ID, out string idError, out string borderBrushId);
+            bool addn = Validator.ValidateName(NameText, out string nameError, out string borderBrushName);
+            bool addt = Validator.ValidateType(TypeText, out string typeError);
 
-            bool addi = true;
-            bool addn = true;
-            bool addt = true;
+            IdErrorLabel = idError;
+            BorderBrushId = borderBrushId;
+            NameErrorLabel = nameError;
+            BorderBrushName = borderBrushName;
+            TypeErrorLabel = typeError;
 
-            if (ID.Equals("") || ID.Equals("Input id here")) {
-                IdErrorLabel = "Id can't be emty!";
-                BorderBrushId = "Red";
-                addi = false;
-                
-
-            }
-            else {
-                IdErrorLabel = "";
-                BorderBrushId = "Black";
-            }
-
-            if (NameText.Equals("") || NameText.Equals("Input name here"))
+            if (addi && addn && addt)
             {
-                NameErrorLabel = "Name can't be emty!";
-                addn = false;
-                BorderBrushName = "Red";
-                
+                path = TypeText.Equals(Resources.NetworkService.CableSensorString) ?
+                    "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg" :
+                    "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg";
 
-            }
-            else
-            {
-                NameErrorLabel = "";
-
-                BorderBrushName = "Black";
-            }
-
-            if (TypeText == null || TypeText.Equals(""))
-            {
-                TypeErrorLabel = "You must chose one type";
-                addt = false;
-               
-            }
-            else {
-                TypeErrorLabel = "";
-            }
-
-
-            int res;
-            if (!Int32.TryParse(ID, out res) && addi==true)
-            {
-                IdErrorLabel = "Id must be number";
-                addi = false;
-                BorderBrushId = "Red";
-               
-            }
-            else if(addi==true){
-                if (res < 0)
-                {
-                    IdErrorLabel = "Id must positive number";
-                    addi = false;
-                    BorderBrushId = "Red";
-                    
-
-                }
-                else {
-                    IdErrorLabel = "";
-                    BorderBrushId = "Black";
-                }
-            }
-
-
-
-            if (addi == true && addn == true && addt == true)
-            {
-                if (TypeText.Equals("Cable sensor"))
-                {
-                    path = "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg";
-                }
-                else
-                {
-                    path = "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg";
-                }
-
-                PressureInVentil p = ListEntities.pressureInVentils.ToList().Find(x => x.Id == res);
+                PressureInVentil p = ListEntities.pressureInVentils.ToList().Find(x => x.Id == int.Parse(ID));
 
                 if (p == null)
                 {
-                    ListEntities.pressureInVentils.Add(new PressureInVentil(res, NameText, TypeText, path));
-
-                    var notificationContent = new NotificationContent
-                    {
-                        Title = "Succes",
-                        Message = $"Entity whit Id {res} succesfully added!",
-                        Type = NotificationType.Success,
-                        TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
-                        RowsCount = 2,
-                        CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
-
-                        Background = new SolidColorBrush(Colors.LimeGreen),
-                        Foreground = new SolidColorBrush(Colors.White),
-
-
-                    };
-
-
-                    Messenger.Default.Send<NotificationContent>(notificationContent);
+                    ListEntities.pressureInVentils.Add(new PressureInVentil(int.Parse(ID), NameText, TypeText, path));
+                    ShowNotification("Success", $"Entity with Id {ID} successfully added!", NotificationType.Success, Colors.LimeGreen);
                     Messenger.Default.Send<int>(1);
                     ResetFormFields();
                 }
                 else
                 {
-                    var notificationContent = new NotificationContent
-                    {
-                        Title = "Error",
-                        Message = $"Entity with Id {res} already exists!",
-                        Type = NotificationType.Error,
-                        TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
-                        RowsCount = 2,
-                        CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
-
-                        Background = new SolidColorBrush(Colors.Red),
-                        Foreground = new SolidColorBrush(Colors.White),
-
-
-                    };
-
-
-                    Messenger.Default.Send<NotificationContent>(notificationContent);
-
+                    ShowNotification("Error", $"Entity with Id {ID} already exists!", NotificationType.Error, Colors.Red);
                 }
-            }
-            else {
-                var notificationContent = new NotificationContent
-                {
-                    Title = "Error",
-                    Message = "Not all fields for add are corectlly filed!",
-                    Type = NotificationType.Error,
-                    TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
-                    RowsCount = 2,
-                    CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
-
-                    Background = new SolidColorBrush(Colors.Red),
-                    Foreground = new SolidColorBrush(Colors.White),
-
-
-                };
-
-
-                Messenger.Default.Send<NotificationContent>(notificationContent);
-            }
-        }
-
-        private void OnClear() {
-            Entities = ListEntities.pressureInVentils;
-            SearchText= String.Empty;
-        }
-
-        private void OnSearch() {
-
-
-
-            if (SearchText.Equals("") || SearchText.Equals("Input search here"))
-            {
-                SearchErrorLabel = "Search input can't be empty!";
-                BorderBrushSearch = "Red";
-                var notificationContent = new NotificationContent
-                {
-                    Title = "Error",
-                    Message = "Not all fields for search are corectlly filed!",
-                    Type = NotificationType.Error,
-                    TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
-                    RowsCount = 2,
-                    CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
-
-                    Background = new SolidColorBrush(Colors.Red),
-                    Foreground = new SolidColorBrush(Colors.White),
-
-
-                };
-
-
-                Messenger.Default.Send<NotificationContent>(notificationContent);
-
             }
             else
             {
-                SearchErrorLabel = "";
-                BorderBrushSearch = "Black";
+                ShowNotification("Error", "Not all fields for add are correctly filled!", NotificationType.Error, Colors.Red);
+            }
+        }
+
+        private void OnSearch()
+        {
+            bool searchValid = Validator.ValidateSearch(SearchText, out string searchError, out string borderBrushSearch);
+
+            SearchErrorLabel = searchError;
+            BorderBrushSearch = borderBrushSearch;
+
+            if (searchValid)
+            {
                 ObservableCollection<PressureInVentil> filtered = new ObservableCollection<PressureInVentil>();
-                if (TypeSelected == true)
+
+                if (TypeSelected)
                 {
                     foreach (PressureInVentil p in Entities)
                     {
@@ -559,7 +382,7 @@ namespace NetworkService.ViewModel
                         }
                     }
                 }
-                else if (NameSelected == true)
+                else if (NameSelected)
                 {
                     foreach (PressureInVentil p in Entities)
                     {
@@ -569,11 +392,35 @@ namespace NetworkService.ViewModel
                         }
                     }
                 }
-
                 Entities = filtered;
+            }
+            else
+            {
+                ShowNotification("Error", "Not all fields for search are correctly filled!", NotificationType.Error, Colors.Red);
             }
         }
 
+        private void ShowNotification(string title, string message, NotificationType type, Color color)
+        {
+            var notificationContent = new NotificationContent
+            {
+                Title = title,
+                Message = message,
+                Type = type,
+                TrimType = NotificationTextTrimType.AttachIfMoreRows,
+                RowsCount = 2,
+                CloseOnClick = true,
+                Background = new SolidColorBrush(color),
+                Foreground = new SolidColorBrush(Colors.White),
+            };
+
+            Messenger.Default.Send<NotificationContent>(notificationContent);
+        }
+
+        private void OnClear() {
+            Entities = ListEntities.pressureInVentils;
+            SearchText= String.Empty;
+        }
 
         private void ResetFormFields()
         {
@@ -583,23 +430,15 @@ namespace NetworkService.ViewModel
             ValueText = string.Empty;
             IdErrorLabel = "";
             NameErrorLabel = "";
-
-
         }
-
-        private PressureInVentil selectedEntity;
 
         public PressureInVentil SelectedEntity
         {
             get { return selectedEntity; }
             set { selectedEntity = value;
                 OnPropertyChanged(nameof(SelectedEntity));
-               
             }
         }
-
-        int idxDeleted = -1;
-
         private void OnDelete()
         {
             if (SelectedEntity != null)
@@ -616,11 +455,8 @@ namespace NetworkService.ViewModel
                     TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
                     RowsCount = 2,
                     CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
-
                     Background = new SolidColorBrush(Colors.LimeGreen),
                     Foreground = new SolidColorBrush(Colors.White),
-                
-
                 };
 
                 Entities.Remove(SelectedEntity);
@@ -638,18 +474,12 @@ namespace NetworkService.ViewModel
                     TrimType = NotificationTextTrimType.AttachIfMoreRows, // Will show attach button on message
                     RowsCount = 2,
                     CloseOnClick = true, // Set true if u want close message when left mouse button click on message (base = true)
-
                     Background = new SolidColorBrush(Colors.Orange),
                     Foreground = new SolidColorBrush(Colors.White),
-
-
                 };
                 Messenger.Default.Send<NotificationContent>(notificationContent);
             }
-
-            
         }
-
-        
+        #endregion
     }
 }

@@ -8,20 +8,24 @@ using System.Threading.Tasks;
 
 namespace NetworkService.Model
 {
-
     public class PressureInVentil:INotifyPropertyChanged
     {
 		private int id;
-
-		public int Id
+        private string name;
+        private string type;
+        private double _value;
+        private string image;
+        public List<double> lastFive = new List<double>() { 0, 0, 0, 0, 0 };
+        public List<string> lastFiveTime = new List<string>() { "", "", "", "", "" };
+        private int brojac;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public int Id
 		{
 			get { return id; }
 			set { id = value;
 				OnPropertyChanged(nameof(Id));
 			}
 		}
-
-        private string name;
 
         public string Name
         {
@@ -31,8 +35,6 @@ namespace NetworkService.Model
             }
         }
 
-        private string type;
-
         public string Type
         {
             get { return type; }
@@ -41,9 +43,6 @@ namespace NetworkService.Model
             }
         }
 
-
-        private double _value;
-
         public double Value        {
             get { return _value; }
             set { _value = value;
@@ -51,22 +50,11 @@ namespace NetworkService.Model
             }
         }
 
-
-        private string image;
-
         public string Image
         {
             get { return image; }
             set { image = value; }
         }
-
-
-        public List<double> lastFive = new List<double>() { 0, 0, 0, 0, 0 };
-        public List<string> lastFiveTime = new List<string>() { "", "", "", "","" };
-     
-
-
-        private int brojac;
 
         public int Brojac
         {
@@ -74,9 +62,6 @@ namespace NetworkService.Model
             set { brojac = value; }
         }
 
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -95,7 +80,6 @@ namespace NetworkService.Model
             Value = 0;
             Image = image;
             Brojac = 0;
-
             string logFilePath = "Log.txt";
             if (File.Exists(logFilePath))
             {
