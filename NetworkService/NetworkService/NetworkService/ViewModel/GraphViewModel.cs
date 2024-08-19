@@ -2,33 +2,17 @@
 using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
-using NetworkService.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NetworkService.ViewModel
 {
     public class GraphViewModel : BindableBase
     {
+        #region Fields
         private ObservableCollection<PressureInVentil> comboboxItems;
-        public ObservableCollection<PressureInVentil> ComboboxItems
-        {
-            get { return comboboxItems; }
-            set
-            {
-                comboboxItems = value;
-                OnPropertyChanged(nameof(ComboboxItems));
-            }
-        }
-
         private int l1;
         private int l2;
         private int l3;
@@ -37,7 +21,6 @@ namespace NetworkService.ViewModel
         private int lineBottom;
         private int lineBottom2;
         private double centerY = 120;
-
         public double Ellipse1Left => L1 - (Radius1 / 2);
         public double Ellipse2Left => L2 - (Radius2 / 2);
         public double Ellipse3Left => L3 - (Radius3 / 2);
@@ -48,18 +31,45 @@ namespace NetworkService.ViewModel
         public double TextBlock3=> L3 - 20;
         public double TextBlock4=> L4 - 20;
         public double TextBlock5=> L5 - 20;
-
-
         public double Ellipse1Top => centerY - (Radius1 / 2);
         public double Ellipse2Top => centerY - (Radius2 / 2);
         public double Ellipse3Top => centerY - (Radius3 / 2);
         public double Ellipse4Top => centerY - (Radius4 / 2);
         public double Ellipse5Top => centerY - (Radius5 / 2);
-        
-
         private PressureInVentil selectedEntity;
         private string color1;
         private string selectedImage;
+        private string color2;
+        private string color3;
+        private string color4;
+        private string color5;
+        private int radius1;
+        private int radius2;
+        private int radius3;
+        private int radius4;
+        private int radius5;
+        private string margins;
+        private string text1;
+        private string text2;
+        private string text3;
+        private string text4;
+        private string text5;
+        private int selectedId;
+        private double selectedValue;
+        private string selectedName;
+        private string radiusProba;
+        public ICommand SelectionChanged { get; set; }
+        #endregion
+        #region Propertys
+        public ObservableCollection<PressureInVentil> ComboboxItems
+        {
+            get { return comboboxItems; }
+            set
+            {
+                comboboxItems = value;
+                OnPropertyChanged(nameof(ComboboxItems));
+            }
+        }
 
         public string SelectedImage
         {
@@ -72,12 +82,12 @@ namespace NetworkService.ViewModel
         public string Color1
         {
             get { return color1; }
-            set { color1 = value;
+            set
+            {
+                color1 = value;
                 OnPropertyChanged(nameof(Color1));
             }
         }
-
-        private string color2;
 
         public string Color2
         {
@@ -88,9 +98,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Color2));
             }
         }
-
-
-        private string color3;
 
         public string Color3
         {
@@ -103,9 +110,6 @@ namespace NetworkService.ViewModel
 
         }
 
-
-        private string color4;
-
         public string Color4
         {
             get { return color4; }
@@ -115,9 +119,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Color4));
             }
         }
-
-
-        private string color5;
 
         public string Color5
         {
@@ -129,9 +130,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-
-
         public PressureInVentil SelectedEntity
         {
             get { return selectedEntity; }
@@ -140,8 +138,6 @@ namespace NetworkService.ViewModel
                 UpdateSelectedEntityProperties();
             }
         }
-
-        private int radius1;
 
         public int Radius1
         {
@@ -152,8 +148,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Ellipse1Top));
             }
         }
-
-        private int radius2;
 
         public int Radius2
         {
@@ -167,9 +161,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        private int radius3;
-
         public int Radius3
         {
             get { return radius3; }
@@ -181,9 +172,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Ellipse3Top));
             }
         }
-
-
-        private int radius4;
 
         public int Radius4
         {
@@ -197,9 +185,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        private int radius5;
-
         public int Radius5
         {
             get { return radius5; }
@@ -211,8 +196,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Ellipse5Top));
             }
         }
-
-        public ICommand SelectionChanged { get; set; }
 
         public int L1
         {
@@ -294,8 +277,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private string margins;
-
         public string Margins
         {
             get { return margins; }
@@ -304,9 +285,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        private string text1;
-
         public string Text1
         {
             get { return text1; }
@@ -314,9 +292,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Text1));
             }
         }
-
-
-        private string text2;
 
         public string Text2
         {
@@ -329,8 +304,6 @@ namespace NetworkService.ViewModel
 
         }
 
-        private string text3;
-
         public string Text3
         {
             get { return text3; }
@@ -341,9 +314,6 @@ namespace NetworkService.ViewModel
             }
 
         }
-
-
-        private string text4;
 
         public string Text4
         {
@@ -356,8 +326,6 @@ namespace NetworkService.ViewModel
 
         }
 
-        private string text5;
-
         public string Text5
         {
             get { return text5; }
@@ -368,6 +336,35 @@ namespace NetworkService.ViewModel
             }
 
         }
+
+        public int SelectedId
+        {
+            get { return selectedId; }
+            set { selectedId = value;
+                OnPropertyChanged(nameof(SelectedId));
+            }
+        }
+
+        public double SelectedValue
+        {
+            get { return selectedValue; }
+            set
+            {
+                selectedValue = value;
+                OnPropertyChanged(nameof(SelectedValue));
+            }
+        }
+
+        public string SelectedName
+        {
+            get { return selectedName; }
+            set
+            {
+                selectedName = value;
+                OnPropertyChanged(nameof(SelectedName));
+            }
+        }
+        #endregion
 
         public GraphViewModel()
         {
@@ -393,42 +390,7 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<PressureInVentil>(this, ChangeRadiusGraph);
             Messenger.Default.Register<bool>(this, ChangeLinePositionsForToggle);
         }
-
-        private int selectedId;
-
-        public int SelectedId
-        {
-            get { return selectedId; }
-            set { selectedId = value;
-                OnPropertyChanged(nameof(SelectedId));
-            }
-        }
-
-        private double selectedValue;
-
-        public double SelectedValue
-        {
-            get { return selectedValue; }
-            set
-            {
-                selectedValue = value;
-                OnPropertyChanged(nameof(SelectedValue));
-            }
-        }
-
-        private string selectedName;
-
-        public string SelectedName
-        {
-            get { return selectedName; }
-            set
-            {
-                selectedName = value;
-                OnPropertyChanged(nameof(SelectedName));
-            }
-        }
-
-
+        #region Methods
         public void OnSelectionChanged(object obj)
         {
             SelectedEntity = (PressureInVentil)obj;
@@ -448,57 +410,53 @@ namespace NetworkService.ViewModel
             Radius5 = (int)selectedEntity.lastFive[4] * 2 + 1;
             if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
             {
-                Color1 = "Blue";
+                Color1 = Resources.NetworkService.ColorBlue;
             }
             else
             {
-                Color1 = "Red";
+                Color1 = Resources.NetworkService.RedColor;
             }
-
 
             if (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
             {
-                Color2 = "Blue";
+                Color2 = Resources.NetworkService.ColorBlue;
             }
             else
             {
-                Color2 = "Red";
+                Color2 = Resources.NetworkService.RedColor;
             }
 
             if (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
             {
-                Color3 = "Blue";
+                Color3 = Resources.NetworkService.ColorBlue;
             }
             else
             {
-                Color3 = "Red";
+                Color3 = Resources.NetworkService.RedColor;
             }
 
             if (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
             {
-                Color4 = "Blue";
+                Color4 = Resources.NetworkService.ColorBlue;
             }
             else
             {
-                Color4 = "Red";
+                Color4 = Resources.NetworkService.RedColor;
             }
 
             if (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
             {
-                Color5 = "Blue";
+                Color5 = Resources.NetworkService.ColorBlue;
             }
             else
             {
-                Color5 = "Red";
+                Color5 = Resources.NetworkService.RedColor;
             }
-
-
             Text1 = SelectedEntity.lastFiveTime[0];
             Text2 = SelectedEntity.lastFiveTime[1];
             Text3 = SelectedEntity.lastFiveTime[2];
             Text4 = SelectedEntity.lastFiveTime[3];
             Text5 = SelectedEntity.lastFiveTime[4];
-
         }
 
         public void ChangeRadiusGraph(PressureInVentil entity)
@@ -516,48 +474,48 @@ namespace NetworkService.ViewModel
                     Radius5 = (int)SelectedEntity.lastFive[4] * 2 + 1;
                     if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
                     {
-                        Color1 = "Blue";
+                        Color1 = Resources.NetworkService.ColorBlue;
                     }
                     else
                     {
-                        Color1 = "Red";
+                        Color1 = Resources.NetworkService.RedColor;
                     }
 
 
                     if (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
                     {
-                        Color2 = "Blue";
+                        Color2 = Resources.NetworkService.ColorBlue;
                     }
                     else
                     {
-                        Color2 = "Red";
+                        Color2 = Resources.NetworkService.RedColor;
                     }
 
                     if (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
                     {
-                        Color3 = "Blue";
+                        Color3 = Resources.NetworkService.ColorBlue;
                     }
                     else
                     {
-                        Color3 = "Red";
+                        Color3 = Resources.NetworkService.RedColor;
                     }
 
                     if (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
                     {
-                        Color4 = "Blue";
+                        Color4 = Resources.NetworkService.ColorBlue;
                     }
                     else
                     {
-                        Color4 = "Red";
+                        Color4 = Resources.NetworkService.RedColor;
                     }
 
                     if (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
                     {
-                        Color5 = "Blue";
+                        Color5 = Resources.NetworkService.ColorBlue;
                     }
                     else
                     {
-                        Color5 = "Red";
+                        Color5 = Resources.NetworkService.RedColor;
                     }
 
                     Text1 = SelectedEntity.lastFiveTime[0];
@@ -590,9 +548,8 @@ namespace NetworkService.ViewModel
 
         private string GetColorBasedOnValue(double value)
         {
-            return (value > 4 && value < 16) ? "Blue" : "Red";
+            return (value > 4 && value < 16) ? Resources.NetworkService.ColorBlue : Resources.NetworkService.RedColor;
         }
-
 
         public void ChangeLinePositionsForToggle(bool isToggled)
         {
@@ -618,9 +575,6 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        private string radiusProba;
-
         public string RadiusProba
         {
             get { return radiusProba; }
@@ -630,6 +584,7 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged($"{nameof(RadiusProba)}");
             }
         }
-      
+        #endregion
+
     }
 }

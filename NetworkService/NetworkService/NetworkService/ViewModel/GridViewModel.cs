@@ -6,47 +6,51 @@ using NetworkService.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.Design.Serialization;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace NetworkService.ViewModel
 {
     public class GridViewModel : BindableBase
     {
-
-        
-        private List<Point> points=ListEntities.points;
-
-        private bool addPoints=ListEntities.addPoints;
+        #region Fields
+        private List<Point> points = ListEntities.points;
+        private bool addPoints = ListEntities.addPoints;
         public ObservableCollection<DisplayLine> LinesOnDisplay { get; set; }
-
-
         private ObservableCollection<PressureInVentil> entities;
         private ObservableCollection<PressureInVentil> sourceCollection;//za brisanje
-
-        private int sourceCanvas=-1;
-
+        private int sourceCanvas = -1;
         public bool dragging;
-
-
         private int drawSource = -1;
         private int drawTarget = -1;
-
         PressureInVentil draggedItem;
         public int draggingSourceIndex = -1;
-
         private ObservableCollection<Canvas> collectionCanvas;
+        private ObservableCollection<string> selectedValue;
+        List<int> originalIndexs;
+        List<PressureInVentil> objectsOnCanvas;
+        private ObservableCollection<string> borderBrushes;
+        private ObservableCollection<string> gridbackgrounds;
+        private ObservableCollection<EntitiesByType> entitiesByTypes;
+        
+        List<int> sourceCollections;
+        public ICommand SelectionChanged { get; set; }
+        public ICommand MouseLeftButtonUp { get; set; }
+        public ICommand DragOver { get; set; }
+        public ICommand Drop { get; set; }
+        public ICommand Delete { get; set; }
+        public ICommand MouseLeftButtonDownCanvas { get; set; }
+        public ICommand MouseLeftButtonUpGrid { get; set; }
+        public ICommand StarDraw { get; set; }
+        public ICommand EndDraw { get; set; }
+        static bool dropped = false;
+        private object selectedItem;
+        #endregion
+        #region Propertys
         public ObservableCollection<Canvas> CollectionCanvas
         {
             get { return collectionCanvas; }
@@ -56,10 +60,7 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(CollectionCanvas));
             }
         }
-
         private ObservableCollection<string> selectedId;
-       
-
         public ObservableCollection<string> SelectedId
         {
             get { return selectedId; }
@@ -69,8 +70,6 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(SelectedId));
             }
         }
-
-        private ObservableCollection<string> selectedValue;
 
         public ObservableCollection<string> SelectedValue
         {
@@ -82,23 +81,15 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-        List<int> originalIndexs;
-        List<PressureInVentil> objectsOnCanvas;
-
-
-        private ObservableCollection<string> borderBrushes;
-
         public ObservableCollection<string> BorderBrushes
         {
             get { return borderBrushes; }
-            set { borderBrushes = value;
+            set
+            {
+                borderBrushes = value;
                 OnPropertyChanged(nameof(BorderBrushes));
             }
         }
-
-
-        private ObservableCollection<string> gridbackgrounds;
 
         public ObservableCollection<string> GridBackgrounds
         {
@@ -110,18 +101,11 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-
-
-        private ObservableCollection<EntitiesByType> entitiesByTypes;
-
         public ObservableCollection<EntitiesByType> EntitiesByTypes
         {
             get { return entitiesByTypes; }
             set { entitiesByTypes = value; }
         }
-
-
 
         public ObservableCollection<PressureInVentil> Entities
         {
@@ -132,33 +116,11 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Entities));
             }
         }
-
-
-        List<int> sourceCollections;
-
-
-        public ICommand SelectionChanged { get; set; }
-        public ICommand MouseLeftButtonUp { get; set; }
-        public ICommand DragOver { get; set; }
-
-        public ICommand Drop { get; set; }
-
-        public ICommand Delete { get; set; }
-        public ICommand MouseLeftButtonDownCanvas { get; set; }
-        public ICommand MouseLeftButtonUpGrid { get; set; }
-
-        public ICommand StarDraw { get; set; }
-        public ICommand EndDraw { get; set; }
-
-
-
+        #endregion
         public GridViewModel()
         {
-
-
             dragging = false;
             SelectionChanged = new MyICommand<object>(OnSelectionChanged);
-
             MouseLeftButtonUp = new MyICommand(OnMouseLeftButtonUp);
             DragOver = new MyICommand<DragEventArgs>(OnDragOver);
             Drop = new MyICommand<object>(OnDrop);
@@ -170,16 +132,12 @@ namespace NetworkService.ViewModel
             BorderBrushes = new ObservableCollection<string>();
             GridBackgrounds = new ObservableCollection<string>();
             MouseLeftButtonDownCanvas = new MyICommand<object>(OnMouseLeftButtonDownCanvas);
-
             StarDraw = new MyICommand<string>(OnStartDraw);
             EndDraw = new MyICommand<string>(OnEndDraw);
-
-
             EntitiesByType digitalEntities = ListEntities.digitalEntities;
             EntitiesByType cableEntities = ListEntities.cableEntities;
             sourceCollections = new List<int>();
             LinesOnDisplay = ListEntities.LinesOnDisplay;
-
             CollectionCanvas = ListEntities.collectionCanvas;
             SelectedId = ListEntities.selectedId;
             SelectedValue = ListEntities.selectedValue;
@@ -189,9 +147,6 @@ namespace NetworkService.ViewModel
             GridBackgrounds = ListEntities.GridBackgrounds;
             originalIndexs = ListEntities.originalIndexes;
             EntitiesByTypes = ListEntities.EntitiesByTypes;
-
-
-
             foreach (var entity in ListEntities.pressureInVentils)
             {
 
@@ -213,13 +168,10 @@ namespace NetworkService.ViewModel
                         cableEntities.Pressures.Add(entity);
                     }
                 }
-
-
-
             }
 
 
-            //definisanje tacke za linije
+
             if (addPoints)
             {
                 for (int i = 0; i < 3; i++)
@@ -232,68 +184,51 @@ namespace NetworkService.ViewModel
                 }
                 addPoints = false;
             }
-
-            //points sadrzi sve potrebne koordinate
-
-
-            
             Messenger.Default.Register<PressureInVentil>(this, UpdateValueOnCanvas);
             Messenger.Default.Register<int>(this, DeleteonCanvasAndView);
         }
-
+        #region Methods
         private void OnStartDraw(string value)
         {
             int index = int.Parse(value);
-
-            //ako nemamo tamo nigde, nemozemo ni da napravimo liniju
-            if(objectsOnCanvas[index] == null)
-            {
-                drawSource = -1;
-                drawTarget = -1;
-                return;
-            }
-
-
-            //resetovanje prethodni vrednosti
-            drawSource = -1;
-            drawTarget = -1;
-
-            drawSource = index;
-        }   
-        
-        private void OnEndDraw(string value)
-        {
-            int index = int.Parse(value);
-            //ako nemamo tamo nigde, ne mozemo ni da napravimo liniju
             if (objectsOnCanvas[index] == null)
             {
                 drawSource = -1;
                 drawTarget = -1;
                 return;
             }
+            drawSource = -1;
+            drawTarget = -1;
+            drawSource = index;
+        }
 
-            if (drawSource == -1 || index==-1) 
+        private void OnEndDraw(string value)
+        {
+            int index = int.Parse(value);
+            if (objectsOnCanvas[index] == null)
+            {
+                drawSource = -1;
+                drawTarget = -1;
+                return;
+            }
+            if (drawSource == -1 || index == -1)
             {
                 return;
             }
-
-            Point startPoint=points.ElementAt(drawSource);
-            Point endPoint=points.ElementAt(index);
-
+            Point startPoint = points.ElementAt(drawSource);
+            Point endPoint = points.ElementAt(index);
             DisplayLine todelete = null;
-
-            foreach(DisplayLine d in LinesOnDisplay)
+            foreach (DisplayLine d in LinesOnDisplay)
             {
-
-                if(d.Y1==startPoint.Y && d.X1==startPoint.X && d.X2==endPoint.X && d.Y2 == endPoint.Y)
+                if (d.Y1 == startPoint.Y && d.X1 == startPoint.X && d.X2 == endPoint.X && d.Y2 == endPoint.Y)
                 {
-                    todelete = d; 
-                    break;    
+                    todelete = d;
+                    break;
                 }
-                else if(d.Y1== endPoint.Y && d.X1== endPoint.X && d.X2==startPoint.X && d.Y2 == startPoint.Y)
+                else if (d.Y1 == endPoint.Y && d.X1 == endPoint.X && d.X2 == startPoint.X && d.Y2 == startPoint.Y)
                 {
-                    todelete = d; 
-                    break;    
+                    todelete = d;
+                    break;
                 }
             }
 
@@ -302,11 +237,8 @@ namespace NetworkService.ViewModel
                 LinesOnDisplay.Remove(todelete);
                 return;
             }
-
             DisplayLine dl = new DisplayLine(startPoint.X, endPoint.X, startPoint.Y, endPoint.Y);
-
-            LinesOnDisplay.Add(dl);          
-
+            LinesOnDisplay.Add(dl);
         }
 
         private void DeleteonCanvasAndView(int obj)
@@ -316,7 +248,8 @@ namespace NetworkService.ViewModel
             {
                 EntitiesByTypes[0].Pressures.Remove(p);
             }
-            else {
+            else
+            {
                 PressureInVentil pf = EntitiesByTypes[1].Pressures.ToList().Find(x => x.Id == obj);
                 if (pf != null)
                 {
@@ -325,15 +258,14 @@ namespace NetworkService.ViewModel
             }
 
             int index = 0;
-            foreach (PressureInVentil pr in  ListEntities.objectsOnCanvas) {
+            foreach (PressureInVentil pr in ListEntities.objectsOnCanvas)
+            {
                 if (pr != null)
                 {
                     if (pr.Id == obj)
                     {
                         Point point = points.ElementAt(index);
-
                         List<DisplayLine> toDeleteLine = new List<DisplayLine>();
-
                         foreach (DisplayLine d in LinesOnDisplay)
                         {
                             if (d.X1 == point.X && d.Y1 == point.Y)
@@ -346,13 +278,10 @@ namespace NetworkService.ViewModel
 
                             }
                         }
-
                         foreach (DisplayLine dl in toDeleteLine)
                         {
                             LinesOnDisplay.Remove(dl);
                         }
-
-
                         selectedId[index] = "";
                         selectedValue[index] = "";
                         objectsOnCanvas[index] = null;
@@ -361,20 +290,11 @@ namespace NetworkService.ViewModel
                         CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
                         break;
                     }
-                  
+
                 }
                 index++;
             }
-
-            
-
-
-
-
-
         }
-
-      
         private void OnDragOver(DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(PressureInVentil)))
@@ -387,10 +307,6 @@ namespace NetworkService.ViewModel
             }
             e.Handled = true;
         }
-
-
-
-        static bool dropped = false;
 
         private void OnDrop(object parametar)
         {
@@ -429,7 +345,7 @@ namespace NetworkService.ViewModel
                     dragging = false;
                     dropped = true;
 
-                    if (sourceCanvas!=-1)
+                    if (sourceCanvas != -1)
                     {
 
 
@@ -451,18 +367,14 @@ namespace NetworkService.ViewModel
 
                             }
                         }
-
-
-
-
-                        index =sourceCanvas;
+                        index = sourceCanvas;
                         selectedId[index] = "";
                         selectedValue[index] = "";
                         objectsOnCanvas[index] = null;
                         originalIndexs[index] = -1;
                         GridBackgrounds[index] = "White";
                         CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
-                    
+
                     }
                     sourceCanvas = -1;
                 }
@@ -479,11 +391,6 @@ namespace NetworkService.ViewModel
             draggingSourceIndex = -1;
         }
 
-
-
-
-        private object selectedItem;
-
         public object SelectedItem
         {
             get { return selectedItem; }
@@ -496,7 +403,6 @@ namespace NetworkService.ViewModel
         {
             if (!dragging && obj is PressureInVentil)
             {
-
                 dragging = true;
                 draggedItem = (PressureInVentil)obj;
                 var sourceEntities = EntitiesByTypes.FirstOrDefault(et => et.Pressures.Contains(draggedItem));
@@ -508,12 +414,8 @@ namespace NetworkService.ViewModel
 
                 }
                 DragDrop.DoDragDrop(System.Windows.Application.Current.MainWindow, draggedItem, DragDropEffects.Move);
-
             }
         }
-
-
-
 
         private void OnDelete(object parameter)
         {
@@ -521,14 +423,12 @@ namespace NetworkService.ViewModel
             int index = Convert.ToInt32(parameter);
             if (objectsOnCanvas[index] != null)
             {
-                CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom("LightSteelBlue"));
+                CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom(Resources.NetworkService.ColorLightBlue));
                 selectedId[index] = "";
                 selectedValue[index] = "";
-                // originalCollection.Insert(originalIndexs[index], objectsOnCanvas[index]);
-
                 if (sourceCollections[index] == 0)
                 {
-              
+
                     EntitiesByTypes[0].Pressures.Add(objectsOnCanvas[index]);
                     SortObservableCollectionDescending(EntitiesByTypes[0].Pressures);
                 }
@@ -554,12 +454,10 @@ namespace NetworkService.ViewModel
 
                     }
                 }
-
-                foreach(DisplayLine dl in toDeleteLine)
+                foreach (DisplayLine dl in toDeleteLine)
                 {
                     LinesOnDisplay.Remove(dl);
                 }
-
                 sourceCollections[index] = -1;
                 originalIndexs[index] = -1;
                 objectsOnCanvas[index] = null;
@@ -572,9 +470,9 @@ namespace NetworkService.ViewModel
 
         private void OnMouseLeftButtonDownCanvas(object obj)
         {
-            if (!dragging )
+            if (!dragging)
             {
-               
+
                 int index = Convert.ToInt32(obj);
                 sourceCanvas = index;
                 if (objectsOnCanvas[index] != null)
@@ -583,8 +481,6 @@ namespace NetworkService.ViewModel
                     draggedItem = (PressureInVentil)objectsOnCanvas[index];
                     draggingSourceIndex = originalIndexs[index];
                     DragDrop.DoDragDrop(CollectionCanvas[index], draggedItem, DragDropEffects.Move);
-                    
-
                 }
             }
         }
@@ -599,13 +495,14 @@ namespace NetworkService.ViewModel
             }
         }
 
-
-
-        public void UpdateValueOnCanvas(PressureInVentil p) {
+        public void UpdateValueOnCanvas(PressureInVentil p)
+        {
 
             int idx = -1;
-            for (int i = 0; i < objectsOnCanvas.Count; i++) {
-                if (SelectedId[i].Equals(p.Id.ToString())) {
+            for (int i = 0; i < objectsOnCanvas.Count; i++)
+            {
+                if (SelectedId[i].Equals(p.Id.ToString()))
+                {
                     idx = i;
                     break;
                 }
@@ -619,15 +516,14 @@ namespace NetworkService.ViewModel
                     BorderBrushes[idx] = "Red";
                     GridBackgrounds[idx] = "HotPink";
                 }
-                else {
+                else
+                {
                     BorderBrushes[idx] = "Black";
                     GridBackgrounds[idx] = "LightSteelBlue";
                 }
             }
         }
-
-
-        
+        #endregion
     }
 
 }

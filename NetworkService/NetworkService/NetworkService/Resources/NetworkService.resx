@@ -117,7 +117,99 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BlackColor" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="CableSensorString" xml:space="preserve">
+    <value>Cable sensor</value>
+  </data>
+  <data name="ColorBlue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="ColorLightBlue" xml:space="preserve">
+    <value>#2B55FF</value>
+  </data>
+  <data name="ColorWhite" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="DigitalManometarString" xml:space="preserve">
+    <value>Digital manometar</value>
+  </data>
+  <data name="GraphHelp" xml:space="preserve">
+    <value>To see five last mesurements and\n theirs values you need to select \nentity from Combobox\n
+                    --------------------------------------\n
+                \nSHORTCUTS\n
+                \nHome Ctrl+1\n
+                Table Ctrl+2\n
+                Grid Ctrl+3\n
+                Graphic Ctrl+4\n
+                Turn off help Ctrl+H\n
+                Exit Esc</value>
+  </data>
+  <data name="GrayColor" xml:space="preserve">
+    <value>Gray</value>
+  </data>
+  <data name="GridHelp" xml:space="preserve">
+    <value>Select entity from tree view and\n put on the network.\n--------------------------------------\n
+                           You can change  position of \nentity on the grid.\nDrag and drop from canvas \nto another canvas.\n
+                --------------------------------------\n
+                To connect the entities \nin grid you have to\nhold the right click\nand drag to the desired one.\n
+                --------------------------------------\n
+                To delete entities from grid\npress button x on right \ntop of canvas,\n
+                --------------------------------------\n
+                \nSHORTCUTS\n
+                \nHome Ctrl+1\n
+                Table Ctrl+2\n
+                Grid Ctrl+3\n
+                Graphic Ctrl+4\n
+                Turn off help Ctrl+H\n
+                Exit Esc</value>
+  </data>
+  <data name="HomeHelp" xml:space="preserve">
+    <value>To go to the table page press\n the TABLE button\n
+                 -------------------------\n
+                To go to the grid page press\n the GRID button\n
+                 -------------------------\n
+                To go to the graphic page press\n the GRAPHIC button\n
+                 -------------------------\n
+                To exit from app press\n EXIT button\n
+                    \nSHORTCUTS\n
+                \nHome Ctrl+1\n
+                Table Ctrl+2\n
+                Grid Ctrl+3\n
+                Graphic Ctrl+4\n
+                Turn off help Ctrl+H\n
+                Exit Esc</value>
+  </data>
+  <data name="LightBlueColor" xml:space="preserve">
+    <value>LightSteelBlue</value>
+  </data>
+  <data name="RedColor" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="TableHelp" xml:space="preserve">
+    <value>To delete entity you need to\nselect it from table\nand press DELETE button\n
+               ------------------------------------\n
+                            To serach entities you need to\nchose do you want \nto seach by type or name\nand type text in search input\nand press button SEARCH\n
+               -------------------------------------\n
+                             To restore table in previus state\npress button RESET SEARCH\n
+               --------------------------------------\n
+               To Add new entity you need \nto input all information of entity\n and Press ADD button\n
+               --------------------------------------\n    \nSHORTCUTS\n
+\nHome Ctrl+1\n
+Table Ctrl+2\n
+Grid Ctrl+3\n
+Graphic Ctrl+4\n
+Turn off help Ctrl+H\n
+Exit Esc</value>
+  </data>
   <data name="TableViewModel_Id" xml:space="preserve">
     <value>Input id here</value>
+  </data>
+  <data name="TableViewModel_Name" xml:space="preserve">
+    <value>Input name here</value>
+  </data>
+  <data name="TableViewModel_Search" xml:space="preserve">
+    <value>Input search here</value>
   </data>
 </root>
