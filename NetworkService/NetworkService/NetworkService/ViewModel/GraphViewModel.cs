@@ -408,7 +408,7 @@ namespace NetworkService.ViewModel
             Radius3 = (int)selectedEntity.lastFive[2] * 2 + 1;
             Radius4 = (int)selectedEntity.lastFive[3] * 2 + 1;
             Radius5 = (int)selectedEntity.lastFive[4] * 2 + 1;
-            if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
+            if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16) //koristi operator ? umesto if else
             {
                 Color1 = Resources.NetworkService.ColorBlue;
             }
@@ -472,7 +472,7 @@ namespace NetworkService.ViewModel
                     Radius3 = (int)SelectedEntity.lastFive[2] * 2 + 1;
                     Radius4 = (int)SelectedEntity.lastFive[3] * 2 + 1;
                     Radius5 = (int)SelectedEntity.lastFive[4] * 2 + 1;
-                    if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
+                    if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16) // opearator takodje
                     {
                         Color1 = Resources.NetworkService.ColorBlue;
                     }
