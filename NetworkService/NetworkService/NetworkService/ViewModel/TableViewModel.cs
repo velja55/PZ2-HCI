@@ -1,19 +1,14 @@
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using MVVM1;
 using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
 using Notification.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
 
 //Generalno obrisi svuda usinge koje ne koristis i razmake
 
@@ -29,7 +24,7 @@ namespace NetworkService.ViewModel
         private string _nameText;
         private string _valueText;
         private string _typeText;
-        public ICommand AddCommand { get; set; }
+        public ICommand AddCommand { get; set; } // Ovo je property :)
         public ICommand SearchCommand { get; set; }
         public ICommand ClearCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
@@ -53,7 +48,8 @@ namespace NetworkService.ViewModel
         private PressureInVentil selectedEntity;
         int idxDeleted = -1;
         #endregion
-        #region Propertys
+        //spelling
+        #region Propertys 
         public string TypeText
         {
             get { return _typeText; }
@@ -245,10 +241,10 @@ namespace NetworkService.ViewModel
             DeleteCommand = new MyICommand(OnDelete);
             LostFocused = new MyICommand<string>(OnLostFocus);
             ClearInputs = new MyICommand(ResetFormFields);
-            ID = Resources.NetworkService.TableViewModel_Id;//"Input id here"; //ove stvari se binduju kroz resourse fajlove guglaj resx :)
+            ID = Resources.NetworkService.TableViewModel_Id;
             SearchText = Resources.NetworkService.TableViewModel_Search;
             NameText = Resources.NetworkService.TableViewModel_Name;
-            BorderBrushId = Resources.NetworkService.BlackColor; // takodje ovo se binduje na xamlu ne ovde
+            BorderBrushId = Resources.NetworkService.BlackColor;
             BorderBrushName = Resources.NetworkService.BlackColor;
             BorderBrushSearch = Resources.NetworkService.BlackColor;
             ColorId = Resources.NetworkService.GrayColor;
@@ -288,7 +284,7 @@ namespace NetworkService.ViewModel
                         SearchText =Resources.NetworkService.TableViewModel_Search;
                         ColorSearch =Resources.NetworkService.GrayColor;
                     }
-
+                    //Obrisi visak linije
                 }
         }
 
@@ -338,7 +334,7 @@ namespace NetworkService.ViewModel
             if (addi && addn && addt)
             {
                 path = TypeText.Equals(Resources.NetworkService.CableSensorString) ?
-                    "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg" :
+                    "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg" : //stavi relativnu putanju i promeni da se sa buildom kopira
                     "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg";
 
                 PressureInVentil p = ListEntities.pressureInVentils.ToList().Find(x => x.Id == int.Parse(ID));
