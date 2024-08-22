@@ -3,72 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\views\\tableview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\views\\tableview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\viewmodel\\tableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\tableviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\networkservice\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\model\\listentities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\listentities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\networkservice\\viewmodel\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\viewmodel\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\gridviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\helpers\\commands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\helpers\\commands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70040013-90CC-47B4-BBC8-85865136BD4E}|GridTests\\GridTests.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\gridtests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70040013-90CC-47B4-BBC8-85865136BD4E}|GridTests\\GridTests.csproj|solutionrelative:gridtests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\networkservice\\viewmodel\\graphviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{70040013-90CC-47B4-BBC8-85865136BD4E}|GridTests\\GridTests.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\gridtests\\gridtests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{70040013-90CC-47B4-BBC8-85865136BD4E}|GridTests\\GridTests.csproj|solutionrelative:gridtests\\gridtests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\testproba\\graphtests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|solutionrelative:testproba\\graphtests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\testproba\\radiustest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|solutionrelative:testproba\\radiustest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\viewmodel\\graphviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\viewmodel\\graphviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\testproba\\changelinepositionsfortoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|solutionrelative:testproba\\changelinepositionsfortoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\testproba\\selectionchanged.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}|TestProba\\Graphtests.csproj|solutionrelative:testproba\\selectionchanged.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\model\\pressureinventil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\pressureinventil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\networkservice\\model\\navigationelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\navigationelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\networkservice\\model\\navigationdictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\navigationdictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\networkservice\\resources\\networkservice.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\resources\\networkservice.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\model\\krug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\krug.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\model\\entitiesbytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\entitiesbytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\model\\displayline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\model\\displayline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\networkservice\\helpers\\validator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\helpers\\validator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\helpers\\myicommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\helpers\\myicommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|c:\\users\\lukic\\desktop\\praksa\\projekat\\networkservice\\networkservice\\networkservice\\helpers\\bindablebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AE2C93C-D3CE-4614-9394-158338AD45C1}|NetworkService\\NetworkService.csproj|solutionrelative:networkservice\\helpers\\bindablebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,226 +46,127 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "NetworkService.resx",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Resources\\NetworkService.resx",
-              "RelativeDocumentMoniker": "NetworkService\\Resources\\NetworkService.resx",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Resources\\NetworkService.resx",
-              "RelativeToolTip": "NetworkService\\Resources\\NetworkService.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-08-16T10:07:32.88Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TableView.xaml",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Views\\TableView.xaml",
-              "RelativeDocumentMoniker": "NetworkService\\Views\\TableView.xaml",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Views\\TableView.xaml",
-              "RelativeToolTip": "NetworkService\\Views\\TableView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-18T12:58:36.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PressureInVentil.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\PressureInVentil.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Model\\PressureInVentil.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\PressureInVentil.cs",
-              "RelativeToolTip": "NetworkService\\Model\\PressureInVentil.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAA/wFEAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:40:36.003Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ListEntities.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\ListEntities.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Model\\ListEntities.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\ListEntities.cs",
-              "RelativeToolTip": "NetworkService\\Model\\ListEntities.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAB1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:28:32.968Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Commands.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\Commands.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Helpers\\Commands.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\Commands.cs",
-              "RelativeToolTip": "NetworkService\\Helpers\\Commands.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:27:29.509Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindowViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\MainWindowViewModel.cs",
-              "ViewState": "AQIAABMBAAAAAAAAAAAgwCMBAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T11:54:09.961Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TableViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\TableViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\TableViewModel.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\TableViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\TableViewModel.cs",
-              "ViewState": "AQIAALsBAAAAAAAAAAAwwOUBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T17:29:27.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "NavigationDictionary.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\NavigationDictionary.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Model\\NavigationDictionary.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\NavigationDictionary.cs",
-              "RelativeToolTip": "NetworkService\\Model\\NavigationDictionary.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAbAQAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T15:39:39.545Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GraphViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GraphViewModel.cs",
-              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\GraphViewModel.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GraphViewModel.cs",
-              "RelativeToolTip": "NetworkService\\ViewModel\\GraphViewModel.cs",
-              "ViewState": "AQIAADACAAAAAAAAAAAcwEoCAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T17:05:27.285Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "GridViewModel.cs",
               "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GridViewModel.cs",
               "RelativeDocumentMoniker": "NetworkService\\ViewModel\\GridViewModel.cs",
               "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GridViewModel.cs",
               "RelativeToolTip": "NetworkService\\ViewModel\\GridViewModel.cs",
-              "ViewState": "AQIAAPQBAAAAAAAAAAAAwA0CAAASAAAA",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAKcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T17:18:51.542Z",
+              "WhenOpened": "2024-08-22T15:07:17.261Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Krug.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\Krug.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Model\\Krug.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\Krug.cs",
-              "RelativeToolTip": "NetworkService\\Model\\Krug.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:28:22.411Z",
+              "DocumentIndex": 3,
+              "Title": "GraphTests",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\GraphTests.csproj",
+              "RelativeDocumentMoniker": "TestProba\\GraphTests.csproj",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\GraphTests.csproj",
+              "RelativeToolTip": "TestProba\\GraphTests.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-22T15:06:29.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "EntitiesByType.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\EntitiesByType.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Model\\EntitiesByType.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\EntitiesByType.cs",
-              "RelativeToolTip": "NetworkService\\Model\\EntitiesByType.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:28:12.898Z",
+              "DocumentIndex": 2,
+              "Title": "GridTests",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\GridTests\\GridTests.csproj",
+              "RelativeDocumentMoniker": "GridTests\\GridTests.csproj",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\GridTests\\GridTests.csproj",
+              "RelativeToolTip": "GridTests\\GridTests.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-22T15:05:46.95Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DisplayLine.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\DisplayLine.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Model\\DisplayLine.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\DisplayLine.cs",
-              "RelativeToolTip": "NetworkService\\Model\\DisplayLine.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\GridTests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "GridTests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\GridTests\\UnitTest1.cs",
+              "RelativeToolTip": "GridTests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:28:01.873Z",
+              "WhenOpened": "2024-08-22T15:05:35.636Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "MyICommand.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\MyICommand.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Helpers\\MyICommand.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\MyICommand.cs",
-              "RelativeToolTip": "NetworkService\\Helpers\\MyICommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "RadiusTest.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\RadiusTest.cs",
+              "RelativeDocumentMoniker": "TestProba\\RadiusTest.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\RadiusTest.cs",
+              "RelativeToolTip": "TestProba\\RadiusTest.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:27:38.773Z",
+              "WhenOpened": "2024-08-22T14:33:18.965Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "BindableBase.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\BindableBase.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Helpers\\BindableBase.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\BindableBase.cs",
-              "RelativeToolTip": "NetworkService\\Helpers\\BindableBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:27:11.505Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "NavigationElement.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\NavigationElement.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Model\\NavigationElement.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\NavigationElement.cs",
-              "RelativeToolTip": "NetworkService\\Model\\NavigationElement.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAADgvxMAAACOAAAA",
+              "Title": "PressureInVentil.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\PressureInVentil.cs",
+              "RelativeDocumentMoniker": "NetworkService\\Model\\PressureInVentil.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Model\\PressureInVentil.cs",
+              "RelativeToolTip": "NetworkService\\Model\\PressureInVentil.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAqwHAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T15:36:20.927Z",
+              "WhenOpened": "2024-08-22T13:50:32.877Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Validator.cs",
-              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\Validator.cs",
-              "RelativeDocumentMoniker": "NetworkService\\Helpers\\Validator.cs",
-              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\Helpers\\Validator.cs",
-              "RelativeToolTip": "NetworkService\\Helpers\\Validator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAA6AAAA",
+              "DocumentIndex": 7,
+              "Title": "SelectionChanged.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\SelectionChanged.cs",
+              "RelativeDocumentMoniker": "TestProba\\SelectionChanged.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\SelectionChanged.cs",
+              "RelativeToolTip": "TestProba\\SelectionChanged.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAIwJwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T10:49:07.403Z",
+              "WhenOpened": "2024-08-22T13:40:07.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GraphViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GraphViewModel.cs",
+              "RelativeDocumentMoniker": "NetworkService\\ViewModel\\GraphViewModel.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\NetworkService\\ViewModel\\GraphViewModel.cs",
+              "RelativeToolTip": "NetworkService\\ViewModel\\GraphViewModel.cs",
+              "ViewState": "AgIAAOkBAAAAAAAAAAAIwO4BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T13:37:27.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChangeLinePositionsForToggle.cs",
+              "DocumentMoniker": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\ChangeLinePositionsForToggle.cs",
+              "RelativeDocumentMoniker": "TestProba\\ChangeLinePositionsForToggle.cs",
+              "ToolTip": "C:\\Users\\lukic\\Desktop\\Praksa\\Projekat\\NetworkService\\NetworkService\\TestProba\\ChangeLinePositionsForToggle.cs",
+              "RelativeToolTip": "TestProba\\ChangeLinePositionsForToggle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T10:32:40.476Z",
               "EditorCaption": ""
             }
           ]

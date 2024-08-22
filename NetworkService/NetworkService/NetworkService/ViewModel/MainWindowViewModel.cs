@@ -31,14 +31,10 @@ namespace NetworkService.ViewModel
         private string helpWidth;
         private string toolTipVisibility;
         private string title;
-        public MyICommand<string> NavCommand { get; private set; }
-        public ICommand ExitCommand { get; set; }
-        public ICommand ToggleCommand { get; set; }
-        public ICommand MainWindowDelete { get; set; }
         public NavigationDictionary navigationDictionaty = new NavigationDictionary();
         public Action CloseAction { get; set; }
         #endregion
-        #region Propertys
+        #region Properties
         public ObservableCollection<string> Colors
         {
             get { return colors; }
@@ -138,6 +134,10 @@ namespace NetworkService.ViewModel
                 SetProperty(ref currentViewModel, value);
             }
         }
+        public MyICommand<string> NavCommand { get; private set; }
+        public ICommand ExitCommand { get; set; }
+        public ICommand ToggleCommand { get; set; }
+        public ICommand MainWindowDelete { get; set; }
         #endregion
         public MainWindowViewModel()
         {

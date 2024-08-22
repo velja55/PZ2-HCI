@@ -179,9 +179,7 @@
     <Resource Include="Images\digital.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\cable.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Images\cable.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

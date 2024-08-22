@@ -36,21 +36,11 @@ namespace NetworkService.ViewModel
         private ObservableCollection<string> borderBrushes;
         private ObservableCollection<string> gridbackgrounds;
         private ObservableCollection<EntitiesByType> entitiesByTypes;
-        
         List<int> sourceCollections;
-        public ICommand SelectionChanged { get; set; }
-        public ICommand MouseLeftButtonUp { get; set; }
-        public ICommand DragOver { get; set; }
-        public ICommand Drop { get; set; }
-        public ICommand Delete { get; set; }
-        public ICommand MouseLeftButtonDownCanvas { get; set; }
-        public ICommand MouseLeftButtonUpGrid { get; set; }
-        public ICommand StarDraw { get; set; }
-        public ICommand EndDraw { get; set; }
         static bool dropped = false;
         private object selectedItem;
         #endregion
-        #region Propertys
+        #region Properties
         public ObservableCollection<Canvas> CollectionCanvas
         {
             get { return collectionCanvas; }
@@ -116,6 +106,15 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(Entities));
             }
         }
+        public ICommand SelectionChanged { get; set; }
+        public ICommand MouseLeftButtonUp { get; set; }
+        public ICommand DragOver { get; set; }
+        public ICommand Drop { get; set; }
+        public ICommand Delete { get; set; }
+        public ICommand MouseLeftButtonDownCanvas { get; set; }
+        public ICommand MouseLeftButtonUpGrid { get; set; }
+        public ICommand StarDraw { get; set; }
+        public ICommand EndDraw { get; set; }
         #endregion
         public GridViewModel()
         {
@@ -188,7 +187,7 @@ namespace NetworkService.ViewModel
             Messenger.Default.Register<int>(this, DeleteonCanvasAndView);
         }
         #region Methods
-        private void OnStartDraw(string value)
+        public void OnStartDraw(string value)
         {
             int index = int.Parse(value);
             if (objectsOnCanvas[index] == null)
@@ -202,7 +201,7 @@ namespace NetworkService.ViewModel
             drawSource = index;
         }
 
-        private void OnEndDraw(string value)
+        public void OnEndDraw(string value)
         {
             int index = int.Parse(value);
             if (objectsOnCanvas[index] == null)
@@ -241,7 +240,7 @@ namespace NetworkService.ViewModel
             LinesOnDisplay.Add(dl);
         }
 
-        private void DeleteonCanvasAndView(int obj)
+        public void DeleteonCanvasAndView(int obj)
         {
             PressureInVentil p = EntitiesByTypes[0].Pressures.ToList().Find(x => x.Id == obj);
             if (p != null)
@@ -295,7 +294,7 @@ namespace NetworkService.ViewModel
                 index++;
             }
         }
-        private void OnDragOver(DragEventArgs e)
+        public void OnDragOver(DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(PressureInVentil)))
             {
@@ -308,7 +307,7 @@ namespace NetworkService.ViewModel
             e.Handled = true;
         }
 
-        private void OnDrop(object parametar)
+        public void OnDrop(object parametar)
         {
 
             if (draggedItem != null)
@@ -383,7 +382,7 @@ namespace NetworkService.ViewModel
 
         }
 
-        private void OnMouseLeftButtonUp()
+        public void OnMouseLeftButtonUp()
         {
             draggedItem = null;
 
@@ -399,7 +398,7 @@ namespace NetworkService.ViewModel
 
         private ObservableCollection<PressureInVentil> originalCollection;
         private int originalIndex;
-        private void OnSelectionChanged(object obj)
+        public void OnSelectionChanged(object obj)
         {
             if (!dragging && obj is PressureInVentil)
             {
@@ -417,7 +416,7 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private void OnDelete(object parameter)
+        public void OnDelete(object parameter)
         {
 
             int index = Convert.ToInt32(parameter);
@@ -468,7 +467,7 @@ namespace NetworkService.ViewModel
         }
 
 
-        private void OnMouseLeftButtonDownCanvas(object obj)
+        public void OnMouseLeftButtonDownCanvas(object obj)
         {
             if (!dragging)
             {

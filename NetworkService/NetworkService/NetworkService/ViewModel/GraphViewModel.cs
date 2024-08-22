@@ -60,7 +60,7 @@ namespace NetworkService.ViewModel
         private string radiusProba;
         public ICommand SelectionChanged { get; set; }
         #endregion
-        #region Propertys
+        #region Properties
         public ObservableCollection<PressureInVentil> ComboboxItems
         {
             get { return comboboxItems; }
@@ -397,61 +397,37 @@ namespace NetworkService.ViewModel
             ListEntities.selectectedForGraph = (PressureInVentil)obj;
             List<string> linesWithIdTwo = new List<string>();
 
-
             SelectedId = SelectedEntity.Id;
-            SelectedName = selectedEntity.Name;
-            SelectedValue = selectedEntity.Value;
+            SelectedName = SelectedEntity.Name;
+            SelectedValue = SelectedEntity.Value;
             SelectedImage = SelectedEntity.Image;
             RadiusProba = "100";
-            Radius1 = (int)selectedEntity.lastFive[0] * 2 + 1;
-            Radius2 = (int)selectedEntity.lastFive[1] * 2 + 1;
-            Radius3 = (int)selectedEntity.lastFive[2] * 2 + 1;
-            Radius4 = (int)selectedEntity.lastFive[3] * 2 + 1;
-            Radius5 = (int)selectedEntity.lastFive[4] * 2 + 1;
-            if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16) //koristi operator ? umesto if else
-            {
-                Color1 = Resources.NetworkService.ColorBlue;
-            }
-            else
-            {
-                Color1 = Resources.NetworkService.RedColor;
-            }
+            Radius1 = (int)SelectedEntity.lastFive[0] * 2 + 1;
+            Radius2 = (int)SelectedEntity.lastFive[1] * 2 + 1;
+            Radius3 = (int)SelectedEntity.lastFive[2] * 2 + 1;
+            Radius4 = (int)SelectedEntity.lastFive[3] * 2 + 1;
+            Radius5 = (int)SelectedEntity.lastFive[4] * 2 + 1;
 
-            if (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
-            {
-                Color2 = Resources.NetworkService.ColorBlue;
-            }
-            else
-            {
-                Color2 = Resources.NetworkService.RedColor;
-            }
+            Color1 = (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
+                      ? Resources.NetworkService.ColorBlue
+                      : Resources.NetworkService.RedColor;
 
-            if (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
-            {
-                Color3 = Resources.NetworkService.ColorBlue;
-            }
-            else
-            {
-                Color3 = Resources.NetworkService.RedColor;
-            }
+            Color2 = (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
+                      ? Resources.NetworkService.ColorBlue
+                      : Resources.NetworkService.RedColor;
 
-            if (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
-            {
-                Color4 = Resources.NetworkService.ColorBlue;
-            }
-            else
-            {
-                Color4 = Resources.NetworkService.RedColor;
-            }
+            Color3 = (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
+                      ? Resources.NetworkService.ColorBlue
+                      : Resources.NetworkService.RedColor;
 
-            if (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
-            {
-                Color5 = Resources.NetworkService.ColorBlue;
-            }
-            else
-            {
-                Color5 = Resources.NetworkService.RedColor;
-            }
+            Color4 = (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
+                      ? Resources.NetworkService.ColorBlue
+                      : Resources.NetworkService.RedColor;
+
+            Color5 = (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
+                      ? Resources.NetworkService.ColorBlue
+                      : Resources.NetworkService.RedColor;
+
             Text1 = SelectedEntity.lastFiveTime[0];
             Text2 = SelectedEntity.lastFiveTime[1];
             Text3 = SelectedEntity.lastFiveTime[2];
@@ -461,75 +437,42 @@ namespace NetworkService.ViewModel
 
         public void ChangeRadiusGraph(PressureInVentil entity)
         {
-
-            if (SelectedEntity != null)
+            if (SelectedEntity != null && entity.Id == SelectedEntity.Id)
             {
+                Radius1 = (int)SelectedEntity.lastFive[0] * 2 + 1;
+                Radius2 = (int)SelectedEntity.lastFive[1] * 2 + 1;
+                Radius3 = (int)SelectedEntity.lastFive[2] * 2 + 1;
+                Radius4 = (int)SelectedEntity.lastFive[3] * 2 + 1;
+                Radius5 = (int)SelectedEntity.lastFive[4] * 2 + 1;
 
-                if (entity.Id == SelectedEntity.Id)
-                {
-                    Radius1 = (int)SelectedEntity.lastFive[0] * 2 + 1;
-                    Radius2 = (int)SelectedEntity.lastFive[1] * 2 + 1;
-                    Radius3 = (int)SelectedEntity.lastFive[2] * 2 + 1;
-                    Radius4 = (int)SelectedEntity.lastFive[3] * 2 + 1;
-                    Radius5 = (int)SelectedEntity.lastFive[4] * 2 + 1;
-                    if (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16) // opearator takodje
-                    {
-                        Color1 = Resources.NetworkService.ColorBlue;
-                    }
-                    else
-                    {
-                        Color1 = Resources.NetworkService.RedColor;
-                    }
+                Color1 = (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
+                         ? Resources.NetworkService.ColorBlue
+                         : Resources.NetworkService.RedColor;
 
+                Color2 = (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
+                         ? Resources.NetworkService.ColorBlue
+                         : Resources.NetworkService.RedColor;
 
-                    if (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
-                    {
-                        Color2 = Resources.NetworkService.ColorBlue;
-                    }
-                    else
-                    {
-                        Color2 = Resources.NetworkService.RedColor;
-                    }
+                Color3 = (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
+                         ? Resources.NetworkService.ColorBlue
+                         : Resources.NetworkService.RedColor;
 
-                    if (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
-                    {
-                        Color3 = Resources.NetworkService.ColorBlue;
-                    }
-                    else
-                    {
-                        Color3 = Resources.NetworkService.RedColor;
-                    }
+                Color4 = (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
+                         ? Resources.NetworkService.ColorBlue
+                         : Resources.NetworkService.RedColor;
 
-                    if (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
-                    {
-                        Color4 = Resources.NetworkService.ColorBlue;
-                    }
-                    else
-                    {
-                        Color4 = Resources.NetworkService.RedColor;
-                    }
+                Color5 = (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
+                         ? Resources.NetworkService.ColorBlue
+                         : Resources.NetworkService.RedColor;
 
-                    if (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
-                    {
-                        Color5 = Resources.NetworkService.ColorBlue;
-                    }
-                    else
-                    {
-                        Color5 = Resources.NetworkService.RedColor;
-                    }
-
-                    Text1 = SelectedEntity.lastFiveTime[0];
-                    Text2 = SelectedEntity.lastFiveTime[1];
-                    Text3 = SelectedEntity.lastFiveTime[2];
-                    Text4 = SelectedEntity.lastFiveTime[3];
-                    Text5 = SelectedEntity.lastFiveTime[4];
-                    SelectedValue = SelectedEntity.Value;
-
-                }
+                Text1 = SelectedEntity.lastFiveTime[0];
+                Text2 = SelectedEntity.lastFiveTime[1];
+                Text3 = SelectedEntity.lastFiveTime[2];
+                Text4 = SelectedEntity.lastFiveTime[3];
+                Text5 = SelectedEntity.lastFiveTime[4];
+                SelectedValue = SelectedEntity.Value;
             }
         }
-
-
 
         private void UpdateSelectedEntityProperties()
         {

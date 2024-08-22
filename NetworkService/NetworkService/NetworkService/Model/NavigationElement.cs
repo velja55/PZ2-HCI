@@ -1,13 +1,8 @@
 ﻿using NetworkService.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NetworkService.Model
 {
-   public class NavigationElement//klasa koja se koristi u dictionary-u za navigiranje kroz prozore
+    public class NavigationElement//klasa koja se koristi u dictionary-u za navigiranje kroz prozore
     {
         public BindableBase ViewModel { get; set; }
         public string Title { get; set; }
