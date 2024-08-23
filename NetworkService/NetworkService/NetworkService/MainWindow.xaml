@@ -1,0 +1,152 @@
+﻿<Window x:Class="NetworkService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkService"
+        
+        xmlns:viewModel="clr-namespace:NetworkService.ViewModel"
+        xmlns:views="clr-namespace:NetworkService.Views"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/" xmlns:notifications="clr-namespace:Notification.Wpf.Controls;assembly=Notification.Wpf"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="MainWindow" Height="600" Width="1000"
+        Background="{StaticResource BlueBrush}"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        >
+    
+    
+   
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+            <views:HomeView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:TableViewModel}">
+            <views:TableView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:GridViewModel}">
+            <views:GridView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:GraphViewModel}">
+            <views:GraphView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="home" Key="D1" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="table" Key="D2" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="grid" Key="D3" Modifiers="Control"/>
+        <KeyBinding Command="{Binding NavCommand}" CommandParameter="graph" Key="D4" Modifiers="Control"/>
+        <KeyBinding Command="{Binding ToggleCommand}" Key="H" Modifiers="Control"/>
+        <KeyBinding Command="{Binding ExitCommand}" Key="Esc"/>
+
+    </Window.InputBindings>
+
+
+
+    <Grid>
+
+       
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+
+        <notifications:NotificationArea
+             x:Name="MainWindowNotificationArea"
+             Panel.ZIndex="1000"
+             MaxItems="3"
+             Position="TopLeft"
+                Grid.Column="1" 
+            Width="400"
+            Height="200"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            />
+        <Grid Grid.Column="0" Background="{StaticResource DarkBlueBrush}" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Margin="10" Name="HomeButton" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="home" ToolTip="Go to home page" 
+                    ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
+                <StackPanel Orientation="Vertical">
+                    <fa5:FontAwesome Icon="Solid_Home" FontSize="25"/>
+                    <TextBlock Text="Home" FontSize="15" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+
+            <Rectangle Grid.Column="1" Fill="{Binding Colors[0]}" Margin="10"> </Rectangle>
+            <Rectangle Grid.Column="1" Grid.Row="1" Fill="{Binding Colors[1]}" Margin="10"> </Rectangle>
+            <Rectangle Grid.Column="1" Grid.Row="2" Fill="{Binding Colors[2]}" Margin="10"> </Rectangle>
+            <Rectangle Grid.Column="1" Grid.Row="3" Fill="{Binding Colors[3]}" Margin="10"> </Rectangle>
+
+            <Button Margin="10" Name="TableButton" Grid.Row="1" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="table" ToolTip="Go to trable page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
+                <StackPanel Orientation="Vertical">
+                    <fa5:FontAwesome Icon="Solid_Table" FontSize="25"/>
+                    <TextBlock Text="Table" FontSize="15" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="10" Name="GridButton" Grid.Row="2" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="grid" ToolTip="Go to grid page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
+                <StackPanel Orientation="Vertical">
+                    <fa5:FontAwesome Icon="Solid_Th" FontSize="25"/>
+                    <TextBlock Text="Grid" FontSize="15" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="10" Name="GraphButton" Grid.Row="3" Cursor="Hand" Command="{Binding NavCommand}" Background="{StaticResource LightBlueBrush}" CommandParameter="graph" ToolTip="Go to graphic page" ToolTipService.IsEnabled="{Binding ToolTipVisibility}">
+                <StackPanel Orientation="Vertical">
+                    <fa5:FontAwesome Icon="Solid_ChartPie" FontSize="25"/>
+                    <TextBlock Text="Graphic" FontSize="15" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="10" Name="HelpButton" Grid.Row="4" Cursor="Hand" ToolTip="Exit from app" ToolTipService.IsEnabled="{Binding ToolTipVisibility}" Background="{StaticResource LightBlueBrush}" Command="{Binding ExitCommand}" >
+                <StackPanel Orientation="Vertical">
+                    <fa5:FontAwesome Icon="Solid_PowerOff" FontSize="30"/>
+                    <TextBlock Text="Exit" FontSize="15" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Help" FontSize="20" Foreground="White" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                <ToggleButton Cursor="Hand" Style="{StaticResource ToggleButtonStyle1}" Background="White" Foreground="{StaticResource DarkBlueBrush}" FontSize="15" FontWeight="Bold" IsChecked="{Binding IsToggled}" Margin="5,12,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+            <Border Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="{Binding ColspanFrame}" Margin="8,3,8,7" BorderBrush="{StaticResource DarkBlueBrush}" BorderThickness="1" >
+            <ContentControl   x:Name="ContentControl" Content="{Binding CurrentViewModel}" />
+            </Border>
+                <TextBlock Text="{Binding Title}" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Black" Foreground="White"> </TextBlock>
+            <StackPanel Background="White" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Margin="7" Width="{Binding HelpWidth}">
+                <TextBlock Text="Help" HorizontalAlignment="Center" FontSize="20"  FontWeight="Bold" Foreground="{StaticResource DarkBlueBrush}"></TextBlock>
+
+                <TextBlock Text="{Binding Help}" Foreground="{StaticResource DarkBlueBrush}" FontSize="13" Margin="5"/>
+                           
+                   
+                
+            </StackPanel>
+        </Grid>
+        
+        </Grid>
+</Window>
