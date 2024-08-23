@@ -1,2 +1,4 @@
-*.v2
-*.vsidx
+*
+!*.cs
+!*.csproj
+!*.sln

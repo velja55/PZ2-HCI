@@ -1,6 +1,0 @@
-C:\Users\lukic\Desktop\Praksa\Projekat\NetworkService\NetworkService\TestProba\obj\Debug\net4.7.2\TestProba.csproj.AssemblyReference.cache
-C:\Users\lukic\Desktop\Praksa\Projekat\NetworkService\NetworkService\TestProba\obj\Debug\net4.7.2\TestProba.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\lukic\Desktop\Praksa\Projekat\NetworkService\NetworkService\TestProba\obj\Debug\net4.7.2\TestProba.AssemblyInfoInputs.cache
-C:\Users\lukic\Desktop\Praksa\Projekat\NetworkService\NetworkService\TestProba\obj\Debug\net4.7.2\TestProba.AssemblyInfo.cs
-C:\Users\lukic\Desktop\Praksa\Projekat\NetworkService\NetworkService\TestProba\obj\Debug\net4.7.2\TestProba.csproj.CoreCompileInputs.cache
-C:\Users\lukic\Desktop\Praksa\Projekat\NetworkService\NetworkService\TestProba\obj\Debug\net4.7.2\TestProba.sourcelink.json
