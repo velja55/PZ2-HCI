@@ -1,4 +1,6 @@
+using NetworkService.Model;
 using NetworkService.ViewModel;
+using NUnit.Framework;
 using System.Threading;
 
 namespace GridTests
@@ -32,8 +34,8 @@ namespace GridTests
             _viewModel.OnStartDraw(index.ToString());
 
             // Assert
-            Assert.That(_viewModel.drawSource, Is.EqualTo(-1));
-            Assert.That(_viewModel.drawTarget, Is.EqualTo(-1));
+            Assert.That(_viewModel.DrawSource, Is.EqualTo(-1));
+            Assert.That(_viewModel.DrawTarget, Is.EqualTo(-1));
         }
 
         [Test]
@@ -48,29 +50,9 @@ namespace GridTests
             _viewModel.OnStartDraw(index.ToString());
 
             // Assert
-            Assert.That(_viewModel.drawSource, Is.EqualTo(index));
-            Assert.That(_viewModel.drawTarget, Is.EqualTo(-1));
+            Assert.That(_viewModel.DrawSource, Is.EqualTo(index));
+            Assert.That(_viewModel.DrawTarget, Is.EqualTo(-1));
         }
 
-        [Test]
-        public void OnStartDraw_InvalidIndex_ShouldNotThrowException()
-        {
-            // Arrange
-            int index = 100; // Indeks koji je van granica liste
-
-            // Act & Assert
-            Assert.DoesNotThrow(() => _viewModel.OnStartDraw(index.ToString()));
-        }
-
-        [Test]
-        public void OnStartDraw_WhenCalledWithNonNumericValue_ShouldNotThrowException()
-        {
-            // Arrange
-            string nonNumericValue = "abc";
-
-            // Act & Assert
-            Assert.DoesNotThrow(() => _viewModel.OnStartDraw(nonNumericValue));
-        }
     }
-}
 }

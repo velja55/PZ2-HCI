@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NetworkService.Resources {
+namespace MainVindow_Tests {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NetworkService.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NetworkService.Resources.NetworkService", typeof(NetworkService).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MainVindow_Tests.NetworkService", typeof(NetworkService).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -116,14 +116,14 @@ namespace NetworkService.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to To see five last mesurements and\n theirs values you need to select \nentity from Combobox\n
-        ///                --------------------------------------\n
-        ///\nSHORTCUTS\n
-        ///\nHome Ctrl+1\n
-        ///Table Ctrl+2\n
-        ///Grid Ctrl+3\n
-        ///Graphic Ctrl+4\n
-        ///Turn off help Ctrl+H\n
-        ///Exit Esc.
+        ///                    --------------------------------------\n
+        ///                \nSHORTCUTS\n
+        ///                \nHome Ctrl+1\n
+        ///                Table Ctrl+2\n
+        ///                Grid Ctrl+3\n
+        ///                Graphic Ctrl+4\n
+        ///                Turn off help Ctrl+H\n
+        ///                Exit Esc.
         /// </summary>
         internal static string GraphHelp {
             get {
@@ -142,12 +142,11 @@ namespace NetworkService.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Select entity from tree view and\n put on the network.\n--------------------------------------\n
-        ///You can change  position of \n entity on the grid.\n Drag and drop from canvas \n to another canvas.\n
-        ///--------------------------------------\n
-        ///To connect the entities \n in grid you have to\n hold the right click\n and drag to the desired one.\n
+        ///                           You can change  position of \nentity on the grid.\nDrag and drop from canvas \nto another canvas.\n
         ///                --------------------------------------\n
-        ///To delete entities from grid\n press button x on right \n top of canvas,\n
-        ///                -------------- [rest of string was truncated]&quot;;.
+        ///                To connect the entities \nin grid you have to\nhold the right click\nand drag to the desired one.\n
+        ///                --------------------------------------\n
+        ///                To delete entities from grid\npress b [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GridHelp {
             get {
@@ -157,19 +156,16 @@ namespace NetworkService.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to To go to the table page press\n the TABLE button\n
-        ///-------------------------\n
-        ///To go to the grid page press\n the GRID button\n
-        ///-------------------------\n
-        ///To go to the graphic page press\n the GRAPHIC button\n
-        ///-------------------------\n
-        ///To exit from app press\n EXIT button\n
-        ///\nSHORTCUTS\n
-        ///\nHome Ctrl+1\n
-        ///Table Ctrl+2\n
-        ///Grid Ctrl+3\n
-        ///Graphic Ctrl+4\n
-        ///Turn off help Ctrl+H\n
-        ///Exit Esc.
+        ///                 -------------------------\n
+        ///                To go to the grid page press\n the GRID button\n
+        ///                 -------------------------\n
+        ///                To go to the graphic page press\n the GRAPHIC button\n
+        ///                 -------------------------\n
+        ///                To exit from app press\n EXIT button\n
+        ///                    \nSHORTCUTS\n
+        ///                \nHome Ctrl+1\n
+        ///                Table Ctrl+2\n
+        ///                Grid Ctrl+3\ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string HomeHelp {
             get {
@@ -196,13 +192,13 @@ namespace NetworkService.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To delete entity you need to\n select it from table\n and press DELETE button\n
+        ///   Looks up a localized string similar to To delete entity you need to\nselect it from table\nand press DELETE button\n
         ///               ------------------------------------\n
-        ///To search entities you need to\n chose do you want \n to search by type or name\n and type text in search input\n and press button SEARCH\n
+        ///                            To serach entities you need to\nchose do you want \nto seach by type or name\nand type text in search input\nand press button SEARCH\n
         ///               -------------------------------------\n
-        ///To restore table in previous state\n press button RESET SEARCH\n
+        ///                             To restore table in previus state\npress button RESET SEARCH\n
         ///               --------------------------------------\n
-        ///To Add new entity you need \n to input all information o [rest of string was truncated]&quot;;.
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TableHelp {
             get {

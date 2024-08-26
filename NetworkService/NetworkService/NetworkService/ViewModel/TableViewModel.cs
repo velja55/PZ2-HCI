@@ -317,7 +317,7 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private void OnAdd()
+        public void OnAdd()
         {
             string path = "";
             bool addi = Validator.ValidateId(ID, out string idError, out string borderBrushId);
@@ -333,7 +333,7 @@ namespace NetworkService.ViewModel
             if (addi && addn && addt)
             {
                 path = TypeText.Equals(Resources.NetworkService.CableSensorString) ?
-                    "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg" :
+                    "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg" ://ovde kopiranje
                     "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg";
 
                 PressureInVentil p = ListEntities.pressureInVentils.ToList().Find(x => x.Id == int.Parse(ID));
@@ -356,7 +356,7 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private void OnSearch()
+        public void OnSearch()
         {
             bool searchValid = Validator.ValidateSearch(SearchText, out string searchError, out string borderBrushSearch);
 
@@ -395,7 +395,7 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private void ShowNotification(string title, string message, NotificationType type, Color color)
+        public void ShowNotification(string title, string message, NotificationType type, Color color)
         {
             var notificationContent = new NotificationContent
             {
@@ -434,7 +434,7 @@ namespace NetworkService.ViewModel
                 OnPropertyChanged(nameof(SelectedEntity));
             }
         }
-        private void OnDelete()
+        public void OnDelete()
         {
             if (SelectedEntity != null)
             {

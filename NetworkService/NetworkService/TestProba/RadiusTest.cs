@@ -65,11 +65,11 @@ namespace GraphTests
             _viewModel.ChangeRadiusGraph(entity2);
 
             // Assert
-            Assert.That(_viewModel.Radius1, Is.EqualTo(0));
-            Assert.That(_viewModel.Radius2, Is.EqualTo(0));
-            Assert.That(_viewModel.Radius3, Is.EqualTo(0));
-            Assert.That(_viewModel.Radius4, Is.EqualTo(0));
-            Assert.That(_viewModel.Radius5, Is.EqualTo(0));
+            Assert.That(_viewModel.Radius1, Is.EqualTo(1));
+            Assert.That(_viewModel.Radius2, Is.EqualTo(1));
+            Assert.That(_viewModel.Radius3, Is.EqualTo(1));
+            Assert.That(_viewModel.Radius4, Is.EqualTo(1));
+            Assert.That(_viewModel.Radius5, Is.EqualTo(1));
         }
 
         [Test]

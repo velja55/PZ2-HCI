@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NetworkService.Resources {
+namespace Table_Tests {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NetworkService.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NetworkService.Resources.NetworkService", typeof(NetworkService).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Table_Tests.NetworkService", typeof(NetworkService).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -278,15 +278,18 @@ namespace NetworkService.ViewModel
             count += 1;
         }
        
-        private void OnNav(string destination)
+        public void OnNav(string destination)
         {
-            CurrentViewModel = navigationDictionaty.collection[destination].ViewModel;
-            Title = navigationDictionaty.collection[destination].Title;
-            Colors[0] = navigationDictionaty.collection[destination].Color0;
-            Colors[1] = navigationDictionaty.collection[destination].Color1;
-            Colors[2] = navigationDictionaty.collection[destination].Color2;
-            Colors[3] = navigationDictionaty.collection[destination].Color3;
-            Help = navigationDictionaty.collection[destination].Help;
+            if (destination.Equals("home") || destination.Equals("table") || destination.Equals("grid") || destination.Equals("graph"))
+            {
+                CurrentViewModel = navigationDictionaty.collection[destination].ViewModel;
+                Title = navigationDictionaty.collection[destination].Title;
+                Colors[0] = navigationDictionaty.collection[destination].Color0;
+                Colors[1] = navigationDictionaty.collection[destination].Color1;
+                Colors[2] = navigationDictionaty.collection[destination].Color2;
+                Colors[3] = navigationDictionaty.collection[destination].Color3;
+                Help = navigationDictionaty.collection[destination].Help;
+            }
         }
 
         #endregion

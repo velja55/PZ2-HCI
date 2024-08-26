@@ -15,6 +15,10 @@ namespace NetworkService.Model
         public List<double> lastFive = new List<double>() { 0, 0, 0, 0, 0 };
         public List<string> lastFiveTime = new List<string>() { "", "", "", "", "" };
         private int brojac;
+        private int v1;
+        private string v2;
+        private string v3;
+
         public event PropertyChangedEventHandler PropertyChanged;
         public int Id
 		{
@@ -106,6 +110,13 @@ namespace NetworkService.Model
                 }
                
             }
+        }
+
+        public PressureInVentil(int v1, string v2, string v3)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
         }
     }
 }
