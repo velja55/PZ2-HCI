@@ -23,19 +23,4 @@
 		<ProjectReference Include="..\NetworkService\NetworkService.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Compile Update="NetworkService.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>NetworkService.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-		<EmbeddedResource Update="NetworkService.resx">
-			<LastGenOutput>NetworkService.Designer.cs</LastGenOutput>
-			<Generator>ResXFileCodeGenerator</Generator>
-		</EmbeddedResource>
-	</ItemGroup>
-
 </Project>

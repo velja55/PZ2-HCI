@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,104 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BlackColor" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="CableSensorString" xml:space="preserve">
+    <value>Cable sensor</value>
+  </data>
+  <data name="ColorBlue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="ColorLightBlue" xml:space="preserve">
+    <value>#2B55FF</value>
+  </data>
+  <data name="ColorWhite" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="DigitalManometarString" xml:space="preserve">
+    <value>Digital manometar</value>
+  </data>
+  <data name="GraphHelp" xml:space="preserve">
+    <value>To see five last mesurements and\n theirs values you need to select \nentity from Combobox\n
+                --------------------------------------\n
+\nSHORTCUTS\n
+\nHome Ctrl+1\n
+Table Ctrl+2\n
+Grid Ctrl+3\n
+Graphic Ctrl+4\n
+Turn off help Ctrl+H\n
+Exit Esc</value>
+  </data>
+  <data name="GrayColor" xml:space="preserve">
+    <value>Gray</value>
+  </data>
+  <data name="GridHelp" xml:space="preserve">
+    <value>Select entity from tree view and\n put on the network.\n--------------------------------------\n
+You can change  position of \n entity on the grid.\n Drag and drop from canvas \n to another canvas.\n
+--------------------------------------\n
+To connect the entities \n in grid you have to\n hold the right click\n and drag to the desired one.\n
+                --------------------------------------\n
+To delete entities from grid\n press button x on right \n top of canvas,\n
+                --------------------------------------\n
+\nSHORTCUTS\n
+\nHome Ctrl+1\n
+Table Ctrl+2\n
+Grid Ctrl+3\n
+Graphic Ctrl+4\n
+Turn off help Ctrl+H\n
+Exit Esc</value>
+  </data>
+  <data name="HomeHelp" xml:space="preserve">
+    <value>To go to the table page press\n the TABLE button\n
+-------------------------\n
+To go to the grid page press\n the GRID button\n
+-------------------------\n
+To go to the graphic page press\n the GRAPHIC button\n
+-------------------------\n
+To exit from app press\n EXIT button\n
+\nSHORTCUTS\n
+\nHome Ctrl+1\n
+Table Ctrl+2\n
+Grid Ctrl+3\n
+Graphic Ctrl+4\n
+Turn off help Ctrl+H\n
+Exit Esc</value>
+  </data>
+  <data name="LightBlueColor" xml:space="preserve">
+    <value>LightSteelBlue</value>
+  </data>
+  <data name="RedColor" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="TableHelp" xml:space="preserve">
+    <value>To delete entity you need to\n select it from table\n and press DELETE button\n
+               ------------------------------------\n
+To search entities you need to\n chose do you want \n to search by type or name\n and type text in search input\n and press button SEARCH\n
+               -------------------------------------\n
+To restore table in previous state\n press button RESET SEARCH\n
+               --------------------------------------\n
+To Add new entity you need \n to input all information of entity\n and Press ADD button\n
+               --------------------------------------\n    \nSHORTCUTS\n
+\nHome Ctrl+1\n
+Table Ctrl+2\n
+Grid Ctrl+3\n
+Graphic Ctrl+4\n
+Turn off help Ctrl+H\n
+Exit Esc</value>
+  </data>
+  <data name="TableViewModel_Id" xml:space="preserve">
+    <value>Input id here</value>
+  </data>
+  <data name="TableViewModel_Name" xml:space="preserve">
+    <value>Input name here</value>
+  </data>
+  <data name="TableViewModel_Search" xml:space="preserve">
+    <value>Input search here</value>
+  </data>
 </root>

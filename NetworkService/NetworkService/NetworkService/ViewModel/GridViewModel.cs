@@ -340,6 +340,7 @@ namespace NetworkService.ViewModel
                 index++;
             }
         }
+
         private void OnDragOver(DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(PressureInVentil)))

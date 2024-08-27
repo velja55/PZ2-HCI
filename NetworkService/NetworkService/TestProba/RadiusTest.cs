@@ -1,13 +1,9 @@
-﻿using NetworkService.Model;
+﻿using System.Collections.Generic;
+using System.Threading;
+using NetworkService.Model;
+using NetworkService.Properties;
 using NetworkService.ViewModel;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace GraphTests
 {
@@ -33,7 +29,7 @@ namespace GraphTests
         public void ChangeRadiusGraph_IDSePoklapaSaSelektovanim()
         {
             // Arrange
-            var entity = new PressureInVentil(1, "Ventil 1", NetworkService.CableSensorString, "image.png")
+            var entity = new PressureInVentil(1, "Ventil 1", Resources.CableSensorString, "image.png")
             {
                 lastFive = new List<double> { 3, 6, 9, 12, 15 }
             };
@@ -54,8 +50,8 @@ namespace GraphTests
         public void ChangeRadiusGraph_IDSeNePoklapaSaSelectovanim()
         {
             // Arrange
-            var entity1 = new PressureInVentil(1, "Ventil 1", NetworkService.CableSensorString, "image.png");
-            var entity2 = new PressureInVentil(2, "Ventil 2", NetworkService.DigitalManometarString, "image2.png")
+            var entity1 = new PressureInVentil(1, "Ventil 1", Resources.CableSensorString, "image.png");
+            var entity2 = new PressureInVentil(2, "Ventil 2", Resources.DigitalManometarString, "image2.png")
             {
                 lastFive = new List<double> { 5, 7, 11, 13, 17 }
             };
@@ -76,7 +72,7 @@ namespace GraphTests
         public void ChangeRadiusGraph_UpdateColors_KadaSeIDPoklapaSaSelektovanim()
         {
             // Arrange
-            var entity = new PressureInVentil(1, "Ventil 1", NetworkService.DigitalManometarString, "image.png")
+            var entity = new PressureInVentil(1, "Ventil 1", Resources.DigitalManometarString, "image.png")
             {
                 lastFive = new List<double> { 5, 10, 3, 15, 20 }
             };
@@ -86,18 +82,18 @@ namespace GraphTests
             _viewModel.ChangeRadiusGraph(entity);
 
             // Assert
-            Assert.That(_viewModel.Color1, Is.EqualTo(NetworkService.ColorBlue)); // 5 je unutar opsega
-            Assert.That(_viewModel.Color2, Is.EqualTo(NetworkService.ColorBlue)); // 10 je unutar opsega
-            Assert.That(_viewModel.Color3, Is.EqualTo(NetworkService.RedColor));  // 3 je izvan opsega
-            Assert.That(_viewModel.Color4, Is.EqualTo(NetworkService.ColorBlue)); // 15 je unutar opsega
-            Assert.That(_viewModel.Color5, Is.EqualTo(NetworkService.RedColor));  // 20 je izvan opsega
+            Assert.That(_viewModel.Color1, Is.EqualTo(Resources.ColorBlue)); // 5 je unutar opsega
+            Assert.That(_viewModel.Color2, Is.EqualTo(Resources.ColorBlue)); // 10 je unutar opsega
+            Assert.That(_viewModel.Color3, Is.EqualTo(Resources.RedColor));  // 3 je izvan opsega
+            Assert.That(_viewModel.Color4, Is.EqualTo(Resources.ColorBlue)); // 15 je unutar opsega
+            Assert.That(_viewModel.Color5, Is.EqualTo(Resources.RedColor));  // 20 je izvan opsega
         }
 
         [Test]
         public void ChangeRadiusGraph_UpdateTextValues_NEPolapaSeId()
         {
             // Arrange
-            var entity = new PressureInVentil(1, "Ventil 1",NetworkService.CableSensorString, "image.png")
+            var entity = new PressureInVentil(1, "Ventil 1",Resources.CableSensorString, "image.png")
             {
                 lastFiveTime = new List<string> { "08:00", "09:00", "10:00", "11:00", "12:00" }
             };

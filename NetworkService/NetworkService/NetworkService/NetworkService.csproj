@@ -92,11 +92,6 @@
     <Compile Include="Model\NavigationDictionary.cs" />
     <Compile Include="Model\NavigationElement.cs" />
     <Compile Include="Model\PressureInVentil.cs" />
-    <Compile Include="Resources\NetworkService.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NetworkService.resx</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\GraphViewModel.cs" />
     <Compile Include="ViewModel\GridViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
@@ -160,10 +155,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\NetworkService.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>NetworkService.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -1,29 +1,30 @@
-﻿namespace NetworkService.Helpers
+﻿using NetworkService.Properties;
+
+namespace NetworkService.Helpers
 {
     public static class Validator
     {
         public static bool ValidateId(string id, out string errorMessage, out string borderBrush)
         {
             errorMessage = string.Empty;
-            borderBrush = Resources.NetworkService.BlackColor;
-            int res;
+            borderBrush = Resources.BlackColor;
 
-            if (string.IsNullOrEmpty(id) || id.Equals(Resources.NetworkService.TableViewModel_Id))
+            if (string.IsNullOrEmpty(id) || id.Equals(Resources.TableViewModel_Id))
             {
                 errorMessage = "Id can't be empty!";
-                borderBrush = Resources.NetworkService.RedColor;
+                borderBrush = Resources.RedColor;
                 return false;
             }
-            else if (!int.TryParse(id, out res))
+            else if (!int.TryParse(id, out int res))
             {
                 errorMessage = "Id must be a number";
-                borderBrush = Resources.NetworkService.RedColor;
+                borderBrush = Resources.RedColor;
                 return false;
             }
             else if (res < 0)
             {
                 errorMessage = "Id must be a positive number";
-                borderBrush = Resources.NetworkService.RedColor;
+                borderBrush = Resources.RedColor;
                 return false;
             }
             return true;
@@ -34,10 +35,10 @@
             errorMessage = string.Empty;
             borderBrush = "Black";
 
-            if (string.IsNullOrEmpty(name) || name.Equals(Resources.NetworkService.TableViewModel_Name))
+            if (string.IsNullOrEmpty(name) || name.Equals(Resources.TableViewModel_Name))
             {
                 errorMessage = "Name can't be empty!";
-                borderBrush = Resources.NetworkService.RedColor;
+                borderBrush = Resources.RedColor;
                 return false;
             }
             return true;
@@ -63,7 +64,7 @@
             if (string.IsNullOrEmpty(searchText) || searchText.Equals("Input search here"))
             {
                 errorMessage = "Search input can't be empty!";
-                borderBrush = Resources.NetworkService.RedColor;
+                borderBrush = Resources.RedColor;
                 return false;
             }
             return true;

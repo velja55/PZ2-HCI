@@ -1,11 +1,11 @@
-﻿using MVVM1;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using MVVM1;
 using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
+using NetworkService.Properties;
 
 namespace NetworkService.ViewModel
 {
@@ -409,24 +409,24 @@ namespace NetworkService.ViewModel
             Radius5 = (int)SelectedEntity.lastFive[4] * 2 + 1;
 
             Color1 = (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
-                      ? Resources.NetworkService.ColorBlue
-                      : Resources.NetworkService.RedColor;
+                      ? Resources.ColorBlue
+                      : Resources.RedColor;
 
             Color2 = (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
-                      ? Resources.NetworkService.ColorBlue
-                      : Resources.NetworkService.RedColor;
+                      ? Resources.ColorBlue
+                      : Resources.RedColor;
 
             Color3 = (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
-                      ? Resources.NetworkService.ColorBlue
-                      : Resources.NetworkService.RedColor;
+                      ? Resources.ColorBlue
+                      : Resources.RedColor;
 
             Color4 = (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
-                      ? Resources.NetworkService.ColorBlue
-                      : Resources.NetworkService.RedColor;
+                      ? Resources.ColorBlue
+                      : Resources.RedColor;
 
             Color5 = (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
-                      ? Resources.NetworkService.ColorBlue
-                      : Resources.NetworkService.RedColor;
+                      ? Resources.ColorBlue
+                      : Resources.RedColor;
 
             Text1 = SelectedEntity.lastFiveTime[0];
             Text2 = SelectedEntity.lastFiveTime[1];
@@ -446,24 +446,24 @@ namespace NetworkService.ViewModel
                 Radius5 = (int)SelectedEntity.lastFive[4] * 2 + 1;
 
                 Color1 = (SelectedEntity.lastFive[0] > 4 && SelectedEntity.lastFive[0] < 16)
-                         ? Resources.NetworkService.ColorBlue
-                         : Resources.NetworkService.RedColor;
+                         ? Resources.ColorBlue
+                         : Resources.RedColor;
 
                 Color2 = (SelectedEntity.lastFive[1] > 4 && SelectedEntity.lastFive[1] < 16)
-                         ? Resources.NetworkService.ColorBlue
-                         : Resources.NetworkService.RedColor;
+                         ? Resources.ColorBlue
+                         : Resources.RedColor;
 
                 Color3 = (SelectedEntity.lastFive[2] > 4 && SelectedEntity.lastFive[2] < 16)
-                         ? Resources.NetworkService.ColorBlue
-                         : Resources.NetworkService.RedColor;
+                         ? Resources.ColorBlue
+                         : Resources.RedColor;
 
                 Color4 = (SelectedEntity.lastFive[3] > 4 && SelectedEntity.lastFive[3] < 16)
-                         ? Resources.NetworkService.ColorBlue
-                         : Resources.NetworkService.RedColor;
+                         ? Resources.ColorBlue
+                         : Resources.RedColor;
 
                 Color5 = (SelectedEntity.lastFive[4] > 4 && SelectedEntity.lastFive[4] < 16)
-                         ? Resources.NetworkService.ColorBlue
-                         : Resources.NetworkService.RedColor;
+                         ? Resources.ColorBlue
+                         : Resources.RedColor;
 
                 Text1 = SelectedEntity.lastFiveTime[0];
                 Text2 = SelectedEntity.lastFiveTime[1];
@@ -491,7 +491,7 @@ namespace NetworkService.ViewModel
 
         private string GetColorBasedOnValue(double value)
         {
-            return (value > 4 && value < 16) ? Resources.NetworkService.ColorBlue : Resources.NetworkService.RedColor;
+            return (value > 4 && value < 16) ? Resources.ColorBlue : Resources.RedColor;
         }
 
         public void ChangeLinePositionsForToggle(bool isToggled)
