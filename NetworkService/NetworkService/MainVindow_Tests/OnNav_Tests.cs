@@ -1,17 +1,13 @@
-using NetworkService.Helpers;
 using NetworkService.Model;
 using NetworkService.ViewModel;
 using NUnit.Framework;
-using System.Resources;
 using System.Threading;
 
 namespace MainVindow_Tests
 {
-    public class OnNav_Tests { 
-    private MainWindowViewModel _viewModel;
-
-
-
+    public class OnNav_Tests
+    {
+        private MainWindowViewModel _viewModel;
         [SetUp]
         public void Setup()
         {

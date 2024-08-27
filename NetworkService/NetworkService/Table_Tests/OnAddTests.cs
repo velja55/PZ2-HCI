@@ -36,7 +36,7 @@ namespace Table_Tests
         }
 
         [Test]
-        public void OnAdd_ValidInputs_AddsEntityAndShowsNotification()
+        public void OnAdd_ValidInputs_AddsEntity()
         {
             // Arrange
             _viewModel.ID = "1";
@@ -57,14 +57,12 @@ namespace Table_Tests
         }
 
         [Test]
-        public void OnAdd_InvalidInputs_DoesNotAddEntityAndShowsErrorNotification()
+        public void OnAdd_InvalidInputs()
         {
             // Arrange
             _viewModel.ID = "1";
             _viewModel.NameText = ""; // Invalid input
             _viewModel.TypeText =NetworkService.CableSensorString;
-           
-
             // Act
             _viewModel.OnAdd();
 
@@ -73,15 +71,13 @@ namespace Table_Tests
         }
 
         [Test]
-        public void OnAdd_EntityWithSameIdAlreadyExists_ShowsErrorNotification()
+        public void OnAdd_EntitetSaIstimIdVecpostoji()
         {
             // Arrange
             ListEntities.pressureInVentils.Add(new PressureInVentil(1, "Existing Name",NetworkService.CableSensorString, "path"));
             _viewModel.ID = "1";
             _viewModel.NameText = "New Name";
             _viewModel.TypeText =NetworkService.CableSensorString;
-            
-
             // Act
             _viewModel.OnAdd();
 

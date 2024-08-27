@@ -30,7 +30,7 @@ namespace GraphTests
         }
 
         [Test]
-        public void ChangeRadiusGraph_Should_UpdateRadiusValues_WhenEntityIdMatchesSelectedEntity()
+        public void ChangeRadiusGraph_IDSePoklapaSaSelektovanim()
         {
             // Arrange
             var entity = new PressureInVentil(1, "Ventil 1", NetworkService.CableSensorString, "image.png")
@@ -51,7 +51,7 @@ namespace GraphTests
         }
 
         [Test]
-        public void ChangeRadiusGraph_Should_NotUpdateRadiusValues_WhenEntityIdDoesNotMatchSelectedEntity()
+        public void ChangeRadiusGraph_IDSeNePoklapaSaSelectovanim()
         {
             // Arrange
             var entity1 = new PressureInVentil(1, "Ventil 1", NetworkService.CableSensorString, "image.png");
@@ -73,7 +73,7 @@ namespace GraphTests
         }
 
         [Test]
-        public void ChangeRadiusGraph_Should_UpdateColorsBasedOnValues_WhenEntityIdMatchesSelectedEntity()
+        public void ChangeRadiusGraph_UpdateColors_KadaSeIDPoklapaSaSelektovanim()
         {
             // Arrange
             var entity = new PressureInVentil(1, "Ventil 1", NetworkService.DigitalManometarString, "image.png")
@@ -94,7 +94,7 @@ namespace GraphTests
         }
 
         [Test]
-        public void ChangeRadiusGraph_Should_UpdateTextValues_WhenEntityIdMatchesSelectedEntity()
+        public void ChangeRadiusGraph_UpdateTextValues_NEPolapaSeId()
         {
             // Arrange
             var entity = new PressureInVentil(1, "Ventil 1",NetworkService.CableSensorString, "image.png")
@@ -115,19 +115,14 @@ namespace GraphTests
         }
 
         [Test]
-        public void ChangeRadiusGraph_Should_UpdateSelectedValue_WhenEntityIdMatchesSelectedEntity()
+        public void ChangeRadiusGraph_UpdateSelectedValue_KadaSeIdPoklapa()
         {
-            // Arrange
             var entity = new PressureInVentil(1, "Ventil 1", "Type A", "image.png")
             {
                 Value = 100.5
             };
             _viewModel.SelectedEntity = entity;
-
-            // Act
             _viewModel.ChangeRadiusGraph(entity);
-
-            // Assert
             Assert.That(_viewModel.SelectedValue, Is.EqualTo(100.5));
         }
 

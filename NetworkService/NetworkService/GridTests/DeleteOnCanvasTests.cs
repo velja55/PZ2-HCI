@@ -22,12 +22,8 @@ namespace GridTests
             {
 
                 _viewModel = new GridViewModel();
-
-                // Initialize test entities
                 _testEntity1 = new PressureInVentil(0, "Digital manometar", "image1.png");
                 _testEntity2 = new PressureInVentil(1, "Cable sensor", "image2.png");
-
-                // Add test entities to the canvas and entities collection
                 _viewModel.EntitiesByTypes = new ObservableCollection<EntitiesByType>
             {
                 new EntitiesByType("Digital manometar") {Pressures = new ObservableCollection<PressureInVentil> { _testEntity1 } },
@@ -57,17 +53,12 @@ namespace GridTests
         }
 
         [Test]
-        public void DeleteonCanvasAndView_Should_RemoveLinesAssociatedWithEntity()
+        public void DeleteonCanvasAndView_UklanjanjeLinijaSaEntitetom()
         {
-            // Arrange
             int entityIdToRemove = 1;
-            double x = 100; // Primer X koordinate
-            double y = 100; // Primer Y koordinate
-
-            // Dodaj liniju koja je povezana sa tačkom
-            _viewModel.LinesOnDisplay.Add(new DisplayLine(x, 200, y, 200)); // Linija povezana sa (x, y)
-
-            // Act
+            double x = 100;
+            double y = 100;
+            _viewModel.LinesOnDisplay.Add(new DisplayLine(x, 200, y, 200)); 
             _viewModel.DeleteonCanvasAndView(entityIdToRemove);
 
             // Assert
@@ -77,19 +68,13 @@ namespace GridTests
 
 
         [Test]
-        public void DeleteonCanvasAndView_Should_NotFail_WhenEntityDoesNotExist()
+        public void DeleteonCanvasAndView_EntitetNePostoji()
         {
-            // Arrange
-            int entityIdToRemove = 999; // Non-existent entity ID
-
-            // Act
+            int entityIdToRemove = 999;
             _viewModel.DeleteonCanvasAndView(entityIdToRemove);
-
-            // Assert
-            // Ensure nothing is removed or changed when the entity does not exist
-            Assert.AreEqual(2, _viewModel.objectsOnCanvas.Count, "No entities should be removed from the canvas.");
-            Assert.AreEqual(1, _viewModel.EntitiesByTypes[0].Pressures.Count, "No entities should be removed from the Digital manometar collection.");
-            Assert.AreEqual(1, _viewModel.EntitiesByTypes[1].Pressures.Count, "No entities should be removed from the Cable sensor collection.");
+            Assert.AreEqual(2, _viewModel.objectsOnCanvas.Count);
+            Assert.AreEqual(1, _viewModel.EntitiesByTypes[0].Pressures.Count);
+            Assert.AreEqual(1, _viewModel.EntitiesByTypes[1].Pressures.Count);
         }
 
     }

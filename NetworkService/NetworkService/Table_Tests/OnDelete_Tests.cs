@@ -48,7 +48,7 @@ namespace Table_Tests
         }
 
         [Test]
-        public void OnDelete_NoEntitySelected_ShowsWarningNotification()
+        public void OnDelete_NoEntitySelected()
         {
             _viewModel.SelectedEntity = null;
             MessageBoxResult result = MessageBoxResult.No;
@@ -61,7 +61,7 @@ namespace Table_Tests
         }
 
         [Test]
-        public void OnDelete_EntitySelected_ShowsSuccessNotification()
+        public void OnDelete_EntitySelected()
         {
             _viewModel.SelectedEntity = _viewModel.Entities[1];
             MessageBoxResult result = MessageBoxResult.Yes;

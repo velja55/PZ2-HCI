@@ -38,7 +38,7 @@ namespace GridTests
         }
 
         [Test]
-        public void UpdateValueOnCanvas_UpdatesValues_Correctly_WhenPressureValueIsOutOfRange()
+        public void UpdateValueOnCanvas_PressureValueVanOpsega()
         {
             // Arrange
             var pressure = new PressureInVentil(2, "UpdatedValue", "Digital manometar", "image2");
@@ -55,7 +55,7 @@ namespace GridTests
         }
 
         [Test]
-        public void UpdateValueOnCanvas_DoesNotUpdateValues_WhenPressureIdNotInSelectedId()
+        public void UpdateValueOnCanvas_KadaValueNijeSelektovan()
         {
             // Arrange
             var pressure = new PressureInVentil(3, "UpdatedValue", "Cable sensor", "image3");

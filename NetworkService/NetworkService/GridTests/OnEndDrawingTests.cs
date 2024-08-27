@@ -35,10 +35,10 @@ namespace GridTests
         {
             // Arrange
             _viewModel.DrawSource = 0;
-            string value = "1"; // Updated to match the target point index
+            string value = "1"; 
             _viewModel.Points = new List<System.Windows.Point>
     {
-        new System.Windows.Point(0, 0), // drawSource point
+        new System.Windows.Point(0, 0), // source point
         new System.Windows.Point(100, 100) // target point
     };
             _viewModel.objectsOnCanvas = new List<PressureInVentil>

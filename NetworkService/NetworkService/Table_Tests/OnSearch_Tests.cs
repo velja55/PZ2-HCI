@@ -65,10 +65,10 @@ namespace Table_Tests
         }
 
         [Test]
-        public void OnSearch_InvalidSearch_ShowsErrorNotification()
+        public void OnSearch_InvalidSearch()
         {
             // Arrange
-            _viewModel.SearchText = ""; // Invalid search text
+            _viewModel.SearchText = "";
 
             // Act
             _viewModel.OnSearch();

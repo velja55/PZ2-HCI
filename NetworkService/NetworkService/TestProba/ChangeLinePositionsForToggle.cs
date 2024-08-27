@@ -23,11 +23,10 @@ namespace GraphTests
         }
 
         [Test]
-        public void ChangeLinePositionsForToggle_WhenToggled_IsTrue_UpdatesLinePositions()
+        public void ChangeLinePositionsForToggle_KadaJeToggleTrue()
         { 
                 _viewModel = new GraphViewModel();
                 _viewModel.ChangeLinePositionsForToggle(true);
-         
                 Assert.That(_viewModel.L1, Is.EqualTo(150));
                 Assert.That(_viewModel.L2, Is.EqualTo(232));
                 Assert.That(_viewModel.L3, Is.EqualTo(314));
@@ -35,11 +34,10 @@ namespace GraphTests
                 Assert.That(_viewModel.L5, Is.EqualTo(478));
                 Assert.That(_viewModel.LineBottom, Is.EqualTo(100));
                 Assert.That(_viewModel.LineBottom2, Is.EqualTo(520));
-           
         }
 
         [Test]
-        public void ChangeLinePositionsForToggle_WhenToggled_IsFalse_UpdatesLinePositions()
+        public void ChangeLinePositionsForToggle_KadaJeToggleFalse()
         {
                 _viewModel = new GraphViewModel();
                 _viewModel.ChangeLinePositionsForToggle(false);

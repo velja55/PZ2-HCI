@@ -24,7 +24,7 @@ namespace GridTests
 
 
         [Test]
-        public void OnStartDraw_WhenObjectOnCanvasIsNull_ShouldSetDrawSourceAndDrawTargetToMinusOne()
+        public void OnStartDraw_KadaJeCanvasPrazan()
         {
             // Arrange
             int index = 1; // Indeks gde je objekat null
@@ -39,7 +39,7 @@ namespace GridTests
         }
 
         [Test]
-        public void OnStartDraw_WhenObjectOnCanvasIsNotNull_ShouldSetDrawSourceToIndexAndDrawTargetToMinusOne()
+        public void OnStartDraw_KadaCanvasNijePrazan()
         {
             // Arrange
             int index = 1; // Indeks gde objekat nije null
