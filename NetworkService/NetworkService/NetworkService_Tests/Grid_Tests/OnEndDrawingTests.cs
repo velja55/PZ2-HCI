@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading;
-using NetworkService.Model;
+﻿using NetworkService.Model;
+using NetworkService.Properties;
 using NetworkService.ViewModel;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace GridTests
 {
@@ -38,8 +39,8 @@ namespace GridTests
     };
             _viewModel.objectsOnCanvas = new List<PressureInVentil>
     {
-        new PressureInVentil(0,"Ventil 1",NetworkService.CableSensorString,"image.png"), // index 0
-        new PressureInVentil(1,"Ventil 2",NetworkService.DigitalManometarString,"image.png")  // index 1
+        new PressureInVentil(0,"Ventil 1",Resources.CableSensorString,"image.png"), // index 0
+        new PressureInVentil(1,"Ventil 2",Resources.DigitalManometarString,"image.png")  // index 1
     };
             _viewModel.LinesOnDisplay = new ObservableCollection<DisplayLine>();
 

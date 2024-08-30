@@ -2,6 +2,7 @@
 using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
+using NetworkService.Properties;
 using Notification.Wpf;
 using System;
 using System.Collections.ObjectModel;
@@ -240,17 +241,17 @@ namespace NetworkService.ViewModel
             DeleteCommand = new MyICommand(OnDelete);
             LostFocused = new MyICommand<string>(OnLostFocus);
             ClearInputs = new MyICommand(ResetFormFields);
-            ID = Resources.NetworkService.TableViewModel_Id;//"Input id here"; //ove stvari se binduju kroz resourse fajlove guglaj resx :)
-            SearchText = Resources.NetworkService.TableViewModel_Search;
-            NameText = Resources.NetworkService.TableViewModel_Name;
-            BorderBrushId = Resources.NetworkService.BlackColor; // takodje ovo se binduje na xamlu ne ovde
-            BorderBrushName = Resources.NetworkService.BlackColor;
-            BorderBrushSearch = Resources.NetworkService.BlackColor;
-            ColorId = Resources.NetworkService.GrayColor;
-            ColorName = Resources.NetworkService.GrayColor;
-            ColorSearch = Resources.NetworkService.GrayColor;
+            ID = Resources.TableViewModel_Id;//"Input id here"; //ove stvari se binduju kroz resourse fajlove guglaj resx :)
+            SearchText = Resources.TableViewModel_Search;
+            NameText = Resources.TableViewModel_Name;
+            BorderBrushId = Resources.BlackColor; // takodje ovo se binduje na xamlu ne ovde
+            BorderBrushName = Resources.BlackColor;
+            BorderBrushSearch = Resources.BlackColor;
+            ColorId = Resources.GrayColor;
+            ColorName = Resources.GrayColor;
+            ColorSearch = Resources.GrayColor;
             Entities = ListEntities.pressureInVentils;
-            Types = new ObservableCollection<string> { Resources.NetworkService.CableSensorString, Resources.NetworkService.DigitalManometarString };
+            Types = new ObservableCollection<string> { Resources.CableSensorString, Resources.DigitalManometarString };
             Messenger.Default.Register<string>(this,ChangeVisibilityToolTips);
         }
         #region Methods
@@ -263,8 +264,8 @@ namespace NetworkService.ViewModel
         {
             if (obj.Equals("id")) {
                 if (ID.Equals("")) {
-                    ID = Resources.NetworkService.TableViewModel_Id;
-                    ColorId = Resources.NetworkService.GrayColor;
+                    ID = Resources.TableViewModel_Id;
+                    ColorId = Resources.GrayColor;
 
                 }
             }
@@ -272,16 +273,16 @@ namespace NetworkService.ViewModel
             {
                 if (NameText.Equals(""))
                 {
-                    NameText = Resources.NetworkService.TableViewModel_Name;
-                    ColorName = Resources.NetworkService.GrayColor;
+                    NameText = Resources.TableViewModel_Name;
+                    ColorName = Resources.GrayColor;
                 }
 
             }else if (obj.Equals("search"))
                 {
                     if (SearchText.Equals(""))
                     {
-                        SearchText =Resources.NetworkService.TableViewModel_Search;
-                        ColorSearch =Resources.NetworkService.GrayColor;
+                        SearchText =Resources.TableViewModel_Search;
+                        ColorSearch =Resources.GrayColor;
                     }
 
                 }
@@ -290,27 +291,27 @@ namespace NetworkService.ViewModel
         private void OnFocus(string obj)
         {
             if (obj.Equals("id")) {
-                if (ID.Equals(Resources.NetworkService.TableViewModel_Id)) {
+                if (ID.Equals(Resources.TableViewModel_Id)) {
                     ID = String.Empty;
-                    ColorId = Resources.NetworkService.BlackColor;
+                    ColorId = Resources.BlackColor;
                 }
             }
             else if (obj.Equals("name"))
             {
-                if (NameText.Equals(Resources.NetworkService.TableViewModel_Name))
+                if (NameText.Equals(Resources.TableViewModel_Name))
                 {
                     NameText =String.Empty;
-                    ColorName = Resources.NetworkService.BlackColor;
+                    ColorName = Resources.BlackColor;
 
                 }
 
             }
             else if (obj.Equals("search"))
             {
-                if (SearchText.Equals(Resources.NetworkService.TableViewModel_Search))
+                if (SearchText.Equals(Resources.TableViewModel_Search))
                 {
                     SearchText = String.Empty;
-                    ColorSearch = Resources.NetworkService.BlackColor;
+                    ColorSearch = Resources.BlackColor;
 
                 }
 
@@ -332,7 +333,7 @@ namespace NetworkService.ViewModel
 
             if (addi && addn && addt)
             {
-                path = TypeText.Equals(Resources.NetworkService.CableSensorString) ?
+                path = TypeText.Equals(Resources.CableSensorString) ?
                     "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg" ://ovde kopiranje
                     "C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\digital.jpg";
 

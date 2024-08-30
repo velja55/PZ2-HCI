@@ -24,8 +24,7 @@ namespace GraphTests
 
         [Test]
         public void ChangeLinePositionsForToggle_KadaJeToggleTrue()
-        { 
-                _viewModel = new GraphViewModel();
+        {
                 _viewModel.ChangeLinePositionsForToggle(true);
                 Assert.That(_viewModel.L1, Is.EqualTo(150));
                 Assert.That(_viewModel.L2, Is.EqualTo(232));
@@ -39,7 +38,6 @@ namespace GraphTests
         [Test]
         public void ChangeLinePositionsForToggle_KadaJeToggleFalse()
         {
-                _viewModel = new GraphViewModel();
                 _viewModel.ChangeLinePositionsForToggle(false);
 
                 Assert.AreEqual(60, _viewModel.L1);

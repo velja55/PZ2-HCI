@@ -1,5 +1,6 @@
 using System.Threading;
 using NetworkService.Model;
+using NetworkService.Properties;
 using NetworkService.ViewModel;
 using NUnit.Framework;
 
@@ -33,9 +34,9 @@ namespace MainVindow_Tests
             // Assert
             Assert.AreEqual("HOME VIEW", _viewModel.Title);
             Assert.AreEqual(Resources.ColorLightBlue, _viewModel.Colors[0]);
-            Assert.AreEqual(NetworkService.ColorWhite, _viewModel.Colors[1]);
-            Assert.AreEqual(NetworkService.ColorWhite, _viewModel.Colors[2]);
-            Assert.AreEqual(NetworkService.ColorWhite, _viewModel.Colors[3]);
+            Assert.AreEqual(Resources.ColorWhite, _viewModel.Colors[1]);
+            Assert.AreEqual(Resources.ColorWhite, _viewModel.Colors[2]);
+            Assert.AreEqual(Resources.ColorWhite, _viewModel.Colors[3]);
             //Assert.AreEqual(NetworkService.HomeHelp, _viewModel.Help);
             Assert.AreEqual(_viewModel.navigationDictionaty.collection["home"].ViewModel, _viewModel.CurrentViewModel);
         }
@@ -48,10 +49,10 @@ namespace MainVindow_Tests
 
             // Assert
             Assert.AreEqual("TABLE VIEW", _viewModel.Title);
-            Assert.AreEqual(NetworkService.ColorWhite, _viewModel.Colors[0]);
-            Assert.AreEqual(NetworkService.ColorLightBlue, _viewModel.Colors[1]);
-            Assert.AreEqual(NetworkService.ColorWhite, _viewModel.Colors[2]);
-            Assert.AreEqual(NetworkService.ColorWhite, _viewModel.Colors[3]);
+            Assert.AreEqual(Resources.ColorWhite, _viewModel.Colors[0]);
+            Assert.AreEqual(Resources.ColorLightBlue, _viewModel.Colors[1]);
+            Assert.AreEqual(Resources.ColorWhite, _viewModel.Colors[2]);
+            Assert.AreEqual(Resources.ColorWhite, _viewModel.Colors[3]);
             //Assert.AreEqual(NetworkService.TableHelp, _viewModel.Help);
             Assert.AreEqual(_viewModel.navigationDictionaty.collection["table"].ViewModel, _viewModel.CurrentViewModel);
         }

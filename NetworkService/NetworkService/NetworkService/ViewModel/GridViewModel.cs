@@ -3,6 +3,7 @@ using MVVM1;
 using MVVMLight.Messaging;
 using NetworkService.Helpers;
 using NetworkService.Model;
+using NetworkService.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -470,7 +471,7 @@ namespace NetworkService.ViewModel
             int index = Convert.ToInt32(parameter);
             if (objectsOnCanvas[index] != null)
             {
-                CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom(Resources.NetworkService.ColorLightBlue));
+                CollectionCanvas[index].Background = (Brush)(new BrushConverter().ConvertFrom(Resources.ColorLightBlue));
                 selectedId[index] = "";
                 selectedValue[index] = "";
                 if (sourceCollections[index] == 0)

@@ -1,14 +1,12 @@
-using Castle.Core.Resource;
-using Moq;
 using NetworkService.Model;
+using NetworkService.Properties;
 using NetworkService.ViewModel;
 using NUnit.Framework;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Resources;
 using System.Threading;
 
-namespace Table_Tests
+namespace Resources_Tests.Table_Tests
 {
     [TestFixture]
     public class OnAddTests
@@ -22,13 +20,13 @@ namespace Table_Tests
             {
                 ListEntities.pressureInVentils = new ObservableCollection<PressureInVentil>();
 
-            _viewModel = new TableViewModel
-            {
-                ID = "1",
-                NameText = "Test Name",
-                TypeText = NetworkService.CableSensorString,
-                Entities = ListEntities.pressureInVentils
-            };
+                _viewModel = new TableViewModel
+                {
+                    ID = "1",
+                    NameText = "Test Name",
+                    TypeText = Resources.CableSensorString,
+                    Entities = ListEntities.pressureInVentils
+                };
             });
             staThread.SetApartmentState(ApartmentState.STA);
             staThread.Start();
@@ -41,8 +39,8 @@ namespace Table_Tests
             // Arrange
             _viewModel.ID = "1";
             _viewModel.NameText = "Test Name";
-            _viewModel.TypeText = NetworkService.CableSensorString;
-            
+            _viewModel.TypeText = Resources.CableSensorString;
+
 
             // Act
             _viewModel.OnAdd();
@@ -52,8 +50,7 @@ namespace Table_Tests
             var addedEntity = ListEntities.pressureInVentils.First();
             Assert.AreEqual(1, addedEntity.Id);
             Assert.AreEqual("Test Name", addedEntity.Name);
-            Assert.AreEqual(NetworkService.CableSensorString, addedEntity.Type);
-            Assert.AreEqual("C:\\Users\\lukic\\Desktop\\fax3.godina\\2.semestar\\HCI\\PZ2Z\\PZ2-HCI\\NetworkService\\NetworkService\\NetworkService\\Images\\cable.jpg", addedEntity.Image);
+            Assert.AreEqual(Resources.CableSensorString, addedEntity.Type);
         }
 
         [Test]
@@ -62,7 +59,7 @@ namespace Table_Tests
             // Arrange
             _viewModel.ID = "1";
             _viewModel.NameText = ""; // Invalid input
-            _viewModel.TypeText =NetworkService.CableSensorString;
+            _viewModel.TypeText = Resources.CableSensorString;
             // Act
             _viewModel.OnAdd();
 
@@ -74,10 +71,10 @@ namespace Table_Tests
         public void OnAdd_EntitetSaIstimIdVecpostoji()
         {
             // Arrange
-            ListEntities.pressureInVentils.Add(new PressureInVentil(1, "Existing Name",NetworkService.CableSensorString, "path"));
+            ListEntities.pressureInVentils.Add(new PressureInVentil(1, "Existing Name", Resources.CableSensorString, "path"));
             _viewModel.ID = "1";
             _viewModel.NameText = "New Name";
-            _viewModel.TypeText =NetworkService.CableSensorString;
+            _viewModel.TypeText = Resources.CableSensorString;
             // Act
             _viewModel.OnAdd();
 

@@ -1,13 +1,9 @@
 ﻿using NetworkService.Model;
+using NetworkService.Properties;
 using NetworkService.ViewModel;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Resources;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace GraphTests
 {
@@ -22,7 +18,7 @@ namespace GraphTests
             var staThread = new Thread(() =>
             {
                 _viewModel = new GraphViewModel();
-                _pressureInVentil = new PressureInVentil(1, "TestVentil", NetworkService.CableSensorString, "TestImage.png")
+                _pressureInVentil = new PressureInVentil(1, "TestVentil", Resources.CableSensorString, "TestImage.png")
                 {
                     lastFive = new List<double> { 5, 15, 25, 10, 4 },
                     lastFiveTime = new List<string> { "10:00", "11:00", "12:00", "13:00", "14:00" }
@@ -51,11 +47,11 @@ namespace GraphTests
             Assert.AreEqual(21, _viewModel.Radius4);
             Assert.AreEqual(9, _viewModel.Radius5);
             // Provera boja
-            Assert.AreEqual(NetworkService.ColorBlue, _viewModel.Color1);
-            Assert.AreEqual(NetworkService.ColorBlue, _viewModel.Color2);
-            Assert.AreEqual(NetworkService.RedColor, _viewModel.Color3);
-            Assert.AreEqual(NetworkService.ColorBlue, _viewModel.Color4);
-            Assert.AreEqual(NetworkService.RedColor, _viewModel.Color5);
+            Assert.AreEqual(Resources.ColorBlue, _viewModel.Color1);
+            Assert.AreEqual(Resources.ColorBlue, _viewModel.Color2);
+            Assert.AreEqual(Resources.RedColor, _viewModel.Color3);
+            Assert.AreEqual(Resources.ColorBlue, _viewModel.Color4);
+            Assert.AreEqual(Resources.RedColor, _viewModel.Color5);
             // Provera tekstova
             Assert.AreEqual("10:00", _viewModel.Text1);
             Assert.AreEqual("11:00", _viewModel.Text2);
@@ -89,11 +85,11 @@ namespace GraphTests
             _viewModel.OnSelectionChanged(entity);
 
             // Assert
-            Assert.That(_viewModel.Color1, Is.EqualTo(NetworkService.ColorBlue));
-            Assert.That(_viewModel.Color2, Is.EqualTo(NetworkService.ColorBlue));
-            Assert.That(_viewModel.Color3, Is.EqualTo(NetworkService.RedColor));  
-            Assert.That(_viewModel.Color4, Is.EqualTo(NetworkService.ColorBlue));
-            Assert.That(_viewModel.Color5, Is.EqualTo(NetworkService.RedColor));  
+            Assert.That(_viewModel.Color1, Is.EqualTo(Resources.ColorBlue));
+            Assert.That(_viewModel.Color2, Is.EqualTo(Resources.ColorBlue));
+            Assert.That(_viewModel.Color3, Is.EqualTo(Resources.RedColor));  
+            Assert.That(_viewModel.Color4, Is.EqualTo(Resources.ColorBlue));
+            Assert.That(_viewModel.Color5, Is.EqualTo(Resources.RedColor));  
         }
 
         [Test]

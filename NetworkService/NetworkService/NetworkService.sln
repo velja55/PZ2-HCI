@@ -7,15 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkService", "NetworkSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeteringSimulator", "..\..\MeteringSimulator\MeteringSimulator\MeteringSimulator.csproj", "{134D87AD-F428-469F-A98E-5F007EDD241B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3E8EDBF2-8BE8-437A-957E-8404AAF38135}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphTests", "TestProba\GraphTests.csproj", "{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GridTests", "GridTests\GridTests.csproj", "{70040013-90CC-47B4-BBC8-85865136BD4E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Table_Tests", "Table_Tests\Table_Tests.csproj", "{9D8ABE4E-BD20-441D-B401-11DADDAE4A78}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainVindow_Tests", "MainVindow_Tests\MainVindow_Tests.csproj", "{D402FF92-5875-48C1-A2DA-1802EF6E1EDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkService_Tests", "NetworkService_Tests\NetworkService_Tests.csproj", "{EB5BBD50-1EDF-437D-ADD5-D92DE363C408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,31 +23,13 @@ Global
 		{134D87AD-F428-469F-A98E-5F007EDD241B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{134D87AD-F428-469F-A98E-5F007EDD241B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{134D87AD-F428-469F-A98E-5F007EDD241B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70040013-90CC-47B4-BBC8-85865136BD4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70040013-90CC-47B4-BBC8-85865136BD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70040013-90CC-47B4-BBC8-85865136BD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70040013-90CC-47B4-BBC8-85865136BD4E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D8ABE4E-BD20-441D-B401-11DADDAE4A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D8ABE4E-BD20-441D-B401-11DADDAE4A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D8ABE4E-BD20-441D-B401-11DADDAE4A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D8ABE4E-BD20-441D-B401-11DADDAE4A78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D402FF92-5875-48C1-A2DA-1802EF6E1EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D402FF92-5875-48C1-A2DA-1802EF6E1EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D402FF92-5875-48C1-A2DA-1802EF6E1EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D402FF92-5875-48C1-A2DA-1802EF6E1EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5BBD50-1EDF-437D-ADD5-D92DE363C408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5BBD50-1EDF-437D-ADD5-D92DE363C408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5BBD50-1EDF-437D-ADD5-D92DE363C408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5BBD50-1EDF-437D-ADD5-D92DE363C408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{E2ACE304-6EB5-41D3-B35C-CE1487EB44CB} = {3E8EDBF2-8BE8-437A-957E-8404AAF38135}
-		{70040013-90CC-47B4-BBC8-85865136BD4E} = {3E8EDBF2-8BE8-437A-957E-8404AAF38135}
-		{9D8ABE4E-BD20-441D-B401-11DADDAE4A78} = {3E8EDBF2-8BE8-437A-957E-8404AAF38135}
-		{D402FF92-5875-48C1-A2DA-1802EF6E1EDA} = {3E8EDBF2-8BE8-437A-957E-8404AAF38135}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34061525-F501-4328-9B1F-3DB3C6257D0E}
